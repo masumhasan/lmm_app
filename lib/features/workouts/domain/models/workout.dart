@@ -56,6 +56,22 @@ class Workout {
       status: WorkoutStatus.notStarted,
       sections: [],
     ),
+    Workout(
+      id: 3,
+      title: 'Reclaiming Safety',
+      description: 'Teaching the system when it is actually safe.',
+      difficulty: 4,
+      status: WorkoutStatus.notStarted,
+      sections: [],
+    ),
+    Workout(
+      id: 4,
+      title: 'The Overthinking Mind',
+      description: 'Internal noise & attention regulation.',
+      difficulty: 5,
+      status: WorkoutStatus.notStarted,
+      sections: [],
+    ),
   ];
 }
 

@@ -118,7 +118,7 @@ class _WorkoutListTile extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            '0${workout.id}',
+            workout.id.toString().padLeft(2, '0'),
             style: AppTypography.mono.copyWith(
               fontSize: 10,
               color: AppColors.ink.withOpacity(0.08),
@@ -198,55 +198,89 @@ class _QuickResetCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E2135),
+        color: const Color(0xFF0F1223),
         borderRadius: BorderRadius.circular(32),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Quick Reset',
-                style: AppTypography.h2.copyWith(
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 28,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(LucideIcons.play, color: Colors.white, size: 20),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            '3-minute cognitive recalibration',
-            style: AppTypography.p.copyWith(
-              color: Colors.white.withOpacity(0.3),
-              fontSize: 12,
+          // Background Painter
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _QuickResetPainter(),
             ),
           ),
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              _Tag(label: 'FOCUS'),
-              _Tag(label: 'CLARITY'),
-              _Tag(label: 'PEACE'),
-            ],
+          
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Quick Reset',
+                      style: AppTypography.h2.copyWith(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 32,
+                        letterSpacing: -0.5,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.08),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white.withOpacity(0.05)),
+                      ),
+                      child: const Icon(LucideIcons.play, color: Colors.white, size: 24),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  '3-minute cognitive recalibration',
+                  style: AppTypography.p.copyWith(
+                    color: Colors.white.withOpacity(0.3),
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Row(
+                  children: [
+                    _Tag(label: 'FOCUS'),
+                    _Tag(label: 'CLARITY'),
+                    _Tag(label: 'PEACE'),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
+}
+
+class _QuickResetPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withOpacity(0.03)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.8;
+
+    final center = Offset(size.width * 0.9, size.height * 0.8);
+    for (var i = 1; i < 15; i++) {
+        canvas.drawCircle(center, i * 40.0, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class _Tag extends StatelessWidget {

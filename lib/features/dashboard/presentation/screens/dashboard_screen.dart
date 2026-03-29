@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/shared/widgets/premium_card.dart';
@@ -99,6 +100,47 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(height: 32),
+            GestureDetector(
+              onTap: () => context.go('/now'),
+              child: PremiumCard(
+                padding: const EdgeInsets.all(24),
+                borderRadius: 32,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: AppColors.accent.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(LucideIcons.zap, color: AppColors.accent, size: 24),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Return to Now'.toUpperCase(),
+                            style: AppTypography.columnHeader.copyWith(letterSpacing: 1.0),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Re-orient attention instantly.',
+                            style: AppTypography.p.copyWith(
+                              fontSize: 14, 
+                              color: AppColors.ink.withOpacity(0.4),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(LucideIcons.chevronRight, size: 20, color: AppColors.ink.withOpacity(0.1)),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 48),

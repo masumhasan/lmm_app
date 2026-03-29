@@ -6,6 +6,7 @@ import 'package:lmm_app/features/workouts/presentation/screens/workout_sections_
 import 'package:lmm_app/features/workouts/presentation/screens/workout0/workout0_orchestrator.dart';
 import 'package:lmm_app/features/auth/presentation/screens/onboarding_flow.dart';
 import 'package:lmm_app/features/drift/presentation/screens/drift_screen.dart';
+import 'package:lmm_app/features/now/presentation/screens/rtn_orchestrator.dart';
 import 'package:lmm_app/core/router/scaffold_with_navbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -83,7 +84,10 @@ final appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/now',
-              builder: (context, state) => const PlaceholderScreen(title: 'Now'),
+              builder: (context, state) {
+                final fromWorkout = state.uri.queryParameters['from'] == 'workout';
+                return RTNOrchestrator(accessedFromWorkout: fromWorkout);
+              },
             ),
           ],
         ),
