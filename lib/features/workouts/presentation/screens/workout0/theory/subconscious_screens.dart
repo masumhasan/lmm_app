@@ -116,7 +116,7 @@ class IcebergModelScreen extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'The tiny part at the top — thoughts — is what you’re aware of.',
+            'The tiny part at the top thoughts is what you’re aware of.',
             style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
             textAlign: TextAlign.center,
           ),
@@ -155,23 +155,44 @@ class IcebergContentsScreen extends StatelessWidget {
               children: [
                 Positioned(
                   top: 40, bottom: 0, left: 0, right: 0,
-                  child: Container(color: AppColors.surface, child: Column(
-                    children: [
-                      const SizedBox(height: 40),
-                       ...List.generate(contents.length, (i) {
-                          return FadeInUp(
-                            delay: Duration(milliseconds: i * 800),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 4),
-                              child: Text(
-                                contents[i],
-                                style: AppTypography.columnHeader.copyWith(fontSize: 8, color: AppColors.ink.withOpacity(0.3)),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 20),
+                         ...List.generate(contents.length, (i) {
+                            return FadeInUp(
+                              delay: Duration(milliseconds: i * 400),
+                              child: Container(
+                                width: double.infinity,
+                                margin: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(color: AppColors.line.withOpacity(0.1)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.01),
+                                      blurRadius: 8,
+                                      offset: const Offset(0, 2),
+                                    )
+                                  ],
+                                ),
+                                child: Text(
+                                  contents[i],
+                                  style: AppTypography.columnHeader.copyWith(
+                                    fontSize: 9, 
+                                    color: AppColors.ink.withOpacity(0.6),
+                                    letterSpacing: 1.0,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                            ),
-                          );
-                       }),
-                    ],
-                  )),
+                            );
+                         }),
+                      ],
+                    ),
+                  ),
                 ),
                 Container(height: 40, width: 80, color: AppColors.accent.withOpacity(0.05)),
               ],
@@ -215,7 +236,7 @@ class SubconsciousControlScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-             'This training system runs most of your day automatically — without asking.',
+             'This training system runs most of your day automatically, without asking.',
             style: AppTypography.h2.copyWith(fontSize: 22),
             textAlign: TextAlign.center,
           ),
@@ -226,7 +247,7 @@ class SubconsciousControlScreen extends StatelessWidget {
           ),
           const SizedBox(height: 48),
           Text(
-            '“That’s why change can feel hard — even when you want it.”',
+            '“That’s why change can feel hard, even when you want it.”',
             style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.35)),
           ),
         ],
@@ -255,7 +276,7 @@ class SubconsciousRuleScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            'Not because it’s real — but because it’s familiar.',
+            'Not because it’s real, but because it’s familiar.',
             style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5)),
             textAlign: TextAlign.center,
           ),
@@ -286,13 +307,32 @@ class SubconsciousOldScriptsScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ...List.generate(scripts.length, (i) {
-            return FadeInLeft(
-              delay: Duration(milliseconds: i * 1200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+            return FadeInUp(
+              delay: Duration(milliseconds: i * 600),
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.line.withOpacity(0.12)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.015),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    )
+                  ],
+                ),
                 child: Text(
                   scripts[i],
-                  style: AppTypography.h2.copyWith(fontSize: 22, color: AppColors.ink.withOpacity(0.2 + (i * 0.1))),
+                  style: AppTypography.p.copyWith(
+                    fontSize: 18, 
+                    color: AppColors.ink.withOpacity(0.7),
+                    fontStyle: FontStyle.italic,
+                  ),
+                  textAlign: TextAlign.left,
                 ),
               ),
             );

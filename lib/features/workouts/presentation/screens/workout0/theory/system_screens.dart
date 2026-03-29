@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+
 
 class SystemTitleScreen extends StatelessWidget {
   final VoidCallback onNext;
@@ -17,7 +17,10 @@ class SystemTitleScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(LucideIcons.layoutGrid, size: 48, color: AppColors.ink.withOpacity(0.1)),
+          Image.asset(
+            'assets/images/system_icon.png',
+            height: 160,
+          ),
           const SizedBox(height: 32),
           Text(
             'The System',
@@ -92,7 +95,7 @@ class SystemDefinitionScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'A hardworking one. But one that was designed to spot problems fast — not modern life.',
+            'A hardworking one. But one that was designed to spot problems fast, not modern life.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.4)),
             textAlign: TextAlign.center,
           ),

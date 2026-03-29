@@ -145,7 +145,7 @@ class _JournalScreenState extends State<JournalScreen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
               ),
               onPressed: widget.onNext,
-              child: Text('💾 Save Reflection', style: AppTypography.btnText.copyWith(color: Colors.white)),
+              child: Text('Save Reflection', style: AppTypography.btnText.copyWith(color: Colors.white)),
             ),
             const SizedBox(height: 24),
             TextButton(
@@ -266,7 +266,7 @@ class JournalConfirmScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                 ),
                 onPressed: onContinue,
-                child: Text('🟢 Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                child: Text('Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
               ),
               const SizedBox(height: 16),
               OutlinedButton(
@@ -276,7 +276,7 @@ class JournalConfirmScreen extends StatelessWidget {
                   side: BorderSide(color: AppColors.ink.withOpacity(0.1)),
                 ),
                 onPressed: onHome,
-                child: Text('⚪ Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.5))),
+                child: Text('Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.5))),
               ),
             ],
           ),

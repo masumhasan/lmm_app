@@ -145,13 +145,31 @@ class SystemSymptomsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 48),
           ...List.generate(symptoms.length, (index) {
-            return FadeIn(
+            return FadeInUp(
               delay: Duration(milliseconds: 1000 + (index * 400)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.line.withOpacity(0.12)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.015),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    )
+                  ],
+                ),
                 child: Text(
                   symptoms[index],
-                  style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.4)),
+                  style: AppTypography.p.copyWith(
+                    fontSize: 16, 
+                    color: AppColors.ink.withOpacity(0.6),
+                  ),
+                  textAlign: TextAlign.left,
                 ),
               ),
             );

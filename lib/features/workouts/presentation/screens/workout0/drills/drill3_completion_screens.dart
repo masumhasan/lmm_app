@@ -22,7 +22,7 @@ class Drill3EntryScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 32),
           Text(
-            'Completion Tolerance — Open Loop Test',
+            'Completion Tolerance Open Loop Test',
             style: AppTypography.h1.copyWith(fontSize: 34, fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),

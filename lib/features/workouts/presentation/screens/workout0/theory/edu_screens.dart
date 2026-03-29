@@ -72,16 +72,27 @@ class EduUntrainedScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   margin: const EdgeInsets.only(bottom: 12),
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColors.line.withOpacity(0.2)),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColors.line.withOpacity(0.12)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.015),
+                        blurRadius: 12,
+                        offset: const Offset(0, 4),
+                      )
+                    ],
                   ),
                   child: Text(
                     e.value,
-                    style: AppTypography.columnHeader.copyWith(fontSize: 10, letterSpacing: 1.5),
-                    textAlign: TextAlign.center,
+                    style: AppTypography.columnHeader.copyWith(
+                      fontSize: 10, 
+                      letterSpacing: 2.0,
+                      color: AppColors.ink.withOpacity(0.5),
+                    ),
+                    textAlign: TextAlign.left,
                   ),
                 ),
               );

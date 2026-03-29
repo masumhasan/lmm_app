@@ -58,7 +58,7 @@ class ClosingMainScreen extends StatelessWidget {
           const SizedBox(height: 24),
           _PacedText(text: 'You saw where it moves.', delayMs: 1400),
           const SizedBox(height: 24),
-          _PacedText(text: 'It was already happening—', delayMs: 2800),
+          _PacedText(text: 'It was already happening', delayMs: 2800),
           const SizedBox(height: 24),
           _PacedText(text: 'Now it’s visible.', delayMs: 4200),
         ],
