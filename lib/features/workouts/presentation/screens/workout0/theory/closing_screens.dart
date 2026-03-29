@@ -19,7 +19,7 @@ class ClosingIntroScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '✨ Workout Complete',
+            'Workout Complete',
             style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32),
             textAlign: TextAlign.center,
           ),

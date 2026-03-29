@@ -24,7 +24,7 @@ class PlaceholderScreen extends StatelessWidget {
 }
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/onboarding',
   navigatorKey: _rootNavigatorKey,
   routes: [
     StatefulShellRoute.indexedStack(

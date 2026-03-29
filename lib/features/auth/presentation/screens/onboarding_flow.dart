@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
@@ -26,7 +27,7 @@ class _OnboardingFlowState extends ConsumerState<OnboardingFlow> {
         curve: Curves.easeInOut,
       );
     } else {
-      // Login or complete
+      context.go('/');
     }
   }
 
@@ -67,8 +68,10 @@ class _OnboardingStepView extends StatelessWidget {
         children: [
           const Spacer(flex: 3),
           if (isWelcome) ...[
-            Icon(step.welcomeIcon, size: 64, color: AppColors.ink),
-            const SizedBox(height: 32),
+            Image.asset(
+              'assets/images/logo/logo-black.png',
+              height: 100,
+            ),
           ],
           if (!isWelcome) ...[
             Text(

@@ -63,9 +63,14 @@ class _JournalScreenState extends State<JournalScreen> {
                     ],
                   ),
                 ),
-                Text(
-                  'Training Log — Workout 0',
-                  style: AppTypography.columnHeader.copyWith(fontSize: 8, color: AppColors.ink.withOpacity(0.2)),
+                const SizedBox(width: 16),
+                Flexible(
+                  child: Text(
+                    'Training Log — Workout 0',
+                    style: AppTypography.columnHeader.copyWith(fontSize: 8, color: AppColors.ink.withOpacity(0.2)),
+                    textAlign: TextAlign.right,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),

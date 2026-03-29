@@ -36,11 +36,10 @@ class OnboardingScreen extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(LucideIcons.brain, color: AppColors.surface, size: 64),
-                          const SizedBox(height: 16),
-                          Text(
-                            'LearnMyMind',
-                            style: AppTypography.h1.copyWith(color: AppColors.surface),
+                          Image.asset(
+                            'assets/images/logo/logo-black.png',
+                            height: 120,
+                            color: Colors.white,
                           ),
                         ],
                       ),
