@@ -9,13 +9,19 @@ import 'package:lucide_icons/lucide_icons.dart';
 class SystemDetailedDefinitionScreen extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const SystemDetailedDefinitionScreen({required this.onNext, required this.onBack, super.key});
+  const SystemDetailedDefinitionScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
-  State<SystemDetailedDefinitionScreen> createState() => _SystemDetailedDefinitionScreenState();
+  State<SystemDetailedDefinitionScreen> createState() =>
+      _SystemDetailedDefinitionScreenState();
 }
 
-class _SystemDetailedDefinitionScreenState extends State<SystemDetailedDefinitionScreen> {
+class _SystemDetailedDefinitionScreenState
+    extends State<SystemDetailedDefinitionScreen> {
   bool showMicroLine = false;
   bool showCTA = false;
 
@@ -43,11 +49,15 @@ class _SystemDetailedDefinitionScreenState extends State<SystemDetailedDefinitio
           // Shield Symbol
           FadeInDown(
             duration: const Duration(milliseconds: 1000),
-            child: Icon(LucideIcons.shield, size: 64, color: AppColors.accent.withOpacity(0.1)),
+            child: Icon(
+              LucideIcons.shield,
+              size: 64,
+              color: AppColors.accent.withOpacity(0.1),
+            ),
           ),
           const SizedBox(height: 48),
           Text(
-            'It is a high-alert system.\nA loyal one.\nA hardworking one.\nBut one that was designed to spot problems fast — not modern life.',
+            'It is a high-alert system.\nA loyal one.\nA hardworking one.\nBut one that was designed to spot problems fast, not modern life.',
             style: AppTypography.h2.copyWith(fontSize: 22, height: 1.5),
             textAlign: TextAlign.center,
           ),
@@ -57,7 +67,11 @@ class _SystemDetailedDefinitionScreenState extends State<SystemDetailedDefinitio
               duration: const Duration(milliseconds: 600),
               child: Text(
                 'Protection ≠ Truth',
-                style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.accent, letterSpacing: 2),
+                style: AppTypography.columnHeader.copyWith(
+                  fontSize: 10,
+                  color: AppColors.accent,
+                  letterSpacing: 2,
+                ),
               ),
             ),
         ],
@@ -69,7 +83,11 @@ class _SystemDetailedDefinitionScreenState extends State<SystemDetailedDefinitio
 class SystemContextScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const SystemContextScreen({required this.onNext, required this.onBack, super.key});
+  const SystemContextScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -86,13 +104,21 @@ class SystemContextScreen extends StatelessWidget {
               children: [
                 FadeInLeft(
                   duration: const Duration(milliseconds: 750),
-                  child: Icon(LucideIcons.alertTriangle, size: 40, color: Colors.red.withOpacity(0.1)),
+                  child: Icon(
+                    LucideIcons.alertTriangle,
+                    size: 40,
+                    color: Colors.red.withOpacity(0.1),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 80),
                   child: FadeInRight(
                     duration: const Duration(milliseconds: 1500),
-                    child: Icon(LucideIcons.layers, size: 40, color: AppColors.accent.withOpacity(0.1)),
+                    child: Icon(
+                      LucideIcons.layers,
+                      size: 40,
+                      color: AppColors.accent.withOpacity(0.1),
+                    ),
                   ),
                 ),
               ],
@@ -107,7 +133,11 @@ class SystemContextScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             'Now?\nIt scans your phone notifications, your conversations, your to-do list, your relationships, your image, your past, your future… everything.',
-            style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5), height: 1.6),
+            style: AppTypography.p.copyWith(
+              fontSize: 16,
+              color: AppColors.ink.withOpacity(0.5),
+              height: 1.6,
+            ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -119,7 +149,11 @@ class SystemContextScreen extends StatelessWidget {
 class SystemSymptomsScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const SystemSymptomsScreen({required this.onNext, required this.onBack, super.key});
+  const SystemSymptomsScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +184,10 @@ class SystemSymptomsScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 12),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 20,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -160,13 +197,13 @@ class SystemSymptomsScreen extends StatelessWidget {
                       color: Colors.black.withOpacity(0.015),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
-                    )
+                    ),
                   ],
                 ),
                 child: Text(
                   symptoms[index],
                   style: AppTypography.p.copyWith(
-                    fontSize: 16, 
+                    fontSize: 16,
                     color: AppColors.ink.withOpacity(0.6),
                   ),
                   textAlign: TextAlign.left,
@@ -183,7 +220,11 @@ class SystemSymptomsScreen extends StatelessWidget {
 class SystemShiftScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const SystemShiftScreen({required this.onNext, required this.onBack, super.key});
+  const SystemShiftScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +245,10 @@ class SystemShiftScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'Now, you’ll step outside of them.',
-              style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
+              style: AppTypography.h1.copyWith(
+                fontSize: 28,
+                fontStyle: FontStyle.italic,
+              ),
               textAlign: TextAlign.center,
             ),
           ],

@@ -80,7 +80,10 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
           ),
 
           // Central Animation
-          Center(
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.32,
+            left: 0,
+            right: 0,
             child: SizedBox(
               width: 256,
               height: 256,
@@ -99,7 +102,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
 
           // Bottom Texts
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.62,
+            top: MediaQuery.of(context).size.height * 0.65,
             left: 0,
             right: 0,
             child: Container(
@@ -113,7 +116,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
           // Action Button
           if (!isLocked && breathCycle == 2)
             Positioned(
-              bottom: 96,
+              bottom: 80,
               left: 48,
               right: 48,
               child: FadeInUp(
@@ -122,19 +125,24 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                   children: [
                     Text(
                       'YOU ARE TRAINING ATTENTION.',
-                      style: AppTypography.columnHeader.copyWith(color: AppColors.ink.withOpacity(0.3)),
+                      style: AppTypography.columnHeader.copyWith(
+                        color: AppColors.ink.withOpacity(0.3),
+                        fontSize: 10,
+                        letterSpacing: 2.0,
+                      ),
                     ),
                     const SizedBox(height: 24),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.accent,
-                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 18),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                        elevation: 0,
                       ),
                       onPressed: widget.onNext,
                       child: Text(
                         '▶ Begin Workout',
-                        style: AppTypography.btnText.copyWith(color: Colors.white),
+                        style: AppTypography.btnText.copyWith(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ],

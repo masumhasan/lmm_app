@@ -34,7 +34,6 @@ class OnboardingStepModel {
       type: OnboardingStepType.welcome,
       welcomeIcon: LucideIcons.brain,
       buttonLabel: 'Begin',
-      footerText: 'ALREADY HAVE AN ACCOUNT? LOGIN',
     ),
     OnboardingStepModel(
       stepIndex: 1,

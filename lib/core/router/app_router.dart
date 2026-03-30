@@ -8,13 +8,16 @@ import 'package:lmm_app/features/auth/presentation/screens/onboarding_flow.dart'
 import 'package:lmm_app/features/drift/presentation/screens/drift_screen.dart';
 import 'package:lmm_app/features/now/presentation/screens/rtn_orchestrator.dart';
 import 'package:lmm_app/core/router/scaffold_with_navbar.dart';
+import 'package:lmm_app/features/tools_hub/presentation/screens/tools_hub_screen.dart';
+import 'package:lmm_app/features/ai_coach/presentation/screens/ai_coach_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
 final GlobalKey<NavigatorState> _shellNavigatorWorkoutsKey = GlobalKey<NavigatorState>(debugLabel: 'workouts');
 final GlobalKey<NavigatorState> _shellNavigatorDriftKey = GlobalKey<NavigatorState>(debugLabel: 'drift');
 final GlobalKey<NavigatorState> _shellNavigatorNowKey = GlobalKey<NavigatorState>(debugLabel: 'now');
-final GlobalKey<NavigatorState> _shellNavigatorProfileKey = GlobalKey<NavigatorState>(debugLabel: 'profile');
+final GlobalKey<NavigatorState> _shellNavigatorAICoachKey = GlobalKey<NavigatorState>(debugLabel: 'ai-coach');
+final GlobalKey<NavigatorState> _shellNavigatorHubKey = GlobalKey<NavigatorState>(debugLabel: 'hub');
 
 // Placeholder screen builders
 class PlaceholderScreen extends StatelessWidget {
@@ -92,11 +95,26 @@ final appRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorProfileKey,
+          navigatorKey: _shellNavigatorAICoachKey,
           routes: [
             GoRoute(
-              path: '/profile',
-              builder: (context, state) => const PlaceholderScreen(title: 'Profile'),
+              path: '/ai-coach',
+              builder: (context, state) => const AICoachScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorHubKey,
+          routes: [
+            GoRoute(
+              path: '/hub',
+              builder: (context, state) => const ToolsHubScreen(),
+              routes: [
+                GoRoute(
+                  path: 'profile',
+                  builder: (context, state) => const PlaceholderScreen(title: 'Profile'),
+                ),
+              ],
             ),
           ],
         ),

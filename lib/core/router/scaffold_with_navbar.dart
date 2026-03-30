@@ -42,7 +42,7 @@ class ScaffoldWithNavbar extends StatelessWidget {
                   onTap: () => _onTap(context, 0),
                 ),
                 _NavBarItem(
-                  icon: LucideIcons.brain,
+                  icon: LucideIcons.activity,
                   label: 'Workouts',
                   isSelected: navigationShell.currentIndex == 1,
                   onTap: () => _onTap(context, 1),
@@ -60,10 +60,16 @@ class ScaffoldWithNavbar extends StatelessWidget {
                   onTap: () => _onTap(context, 3),
                 ),
                 _NavBarItem(
-                  icon: LucideIcons.user,
-                  label: 'Profile',
+                  icon: LucideIcons.messageSquare,
+                  label: 'AI Coach',
                   isSelected: navigationShell.currentIndex == 4,
                   onTap: () => _onTap(context, 4),
+                ),
+                _NavBarItem(
+                  icon: LucideIcons.layoutGrid,
+                  label: 'Tools Hub',
+                  isSelected: navigationShell.currentIndex == 5,
+                  onTap: () => _onTap(context, 5),
                 ),
               ],
             ),

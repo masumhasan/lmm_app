@@ -19,7 +19,7 @@ class SubconsciousTitleScreen extends StatelessWidget {
         children: [
           FadeInDown(
             child: Text(
-              '🧠 The Training System\n(How Repetition Builds Muscle)',
+              'The Training System\nHow Repetition Builds Muscle',
               style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
@@ -145,65 +145,49 @@ class IcebergContentsScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          // Visual (Simplified Iceberg again)
-          SizedBox(
-            height: 250,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Positioned(
-                  top: 40, bottom: 0, left: 0, right: 0,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 20),
-                         ...List.generate(contents.length, (i) {
-                            return FadeInUp(
-                              delay: Duration(milliseconds: i * 400),
-                              child: Container(
-                                width: double.infinity,
-                                margin: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(16),
-                                  border: Border.all(color: AppColors.line.withOpacity(0.1)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.01),
-                                      blurRadius: 8,
-                                      offset: const Offset(0, 2),
-                                    )
-                                  ],
-                                ),
-                                child: Text(
-                                  contents[i],
-                                  style: AppTypography.columnHeader.copyWith(
-                                    fontSize: 9, 
-                                    color: AppColors.ink.withOpacity(0.6),
-                                    letterSpacing: 1.0,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            );
-                         }),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(height: 40, width: 80, color: AppColors.accent.withOpacity(0.05)),
-              ],
+          const SizedBox(height: 24),
+          FadeInDown(
+            child: Text(
+              'Underneath is everything else.',
+              style: AppTypography.h1.copyWith(
+                fontSize: 28,
+                fontStyle: FontStyle.italic,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 48),
-          Text(
-            'Underneath is everything else.',
-            style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
-            textAlign: TextAlign.center,
-          ),
+          ...List.generate(contents.length, (i) {
+            return FadeInUp(
+              delay: Duration(milliseconds: 200 + (i * 100)),
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.line.withOpacity(0.4)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    )
+                  ],
+                ),
+                child: Text(
+                  contents[i],
+                  style: AppTypography.columnHeader.copyWith(
+                    fontSize: 14,
+                    color: AppColors.ink.withOpacity(0.7),
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            );
+          }),
         ],
       ),
     );
