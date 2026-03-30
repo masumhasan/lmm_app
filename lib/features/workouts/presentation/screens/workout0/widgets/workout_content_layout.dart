@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
+import 'package:go_router/go_router.dart';
 import 'package:animate_do/animate_do.dart';
 
 class WorkoutContentLayout extends StatelessWidget {
@@ -50,7 +51,11 @@ class WorkoutContentLayout extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(LucideIcons.home, size: 18, color: textColor.withOpacity(0.2)),
+                GestureDetector(
+                  onTap: () => context.go('/'),
+                  behavior: HitTestBehavior.opaque,
+                  child: Icon(LucideIcons.home, size: 18, color: textColor.withOpacity(0.2)),
+                ),
               ],
             ),
           ),
@@ -72,7 +77,7 @@ class WorkoutContentLayout extends StatelessWidget {
               bottom: 64,
               left: 48,
               right: 48,
-              child: FadeInUp(
+              child: FadeIn(
                 delay: const Duration(milliseconds: 400),
                 duration: const Duration(milliseconds: 600),
                 child: ElevatedButton(

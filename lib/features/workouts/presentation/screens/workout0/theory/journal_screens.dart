@@ -120,7 +120,7 @@ class _JournalScreenState extends State<JournalScreen> {
             const SizedBox(height: 64),
             
             // Prompts
-            FadeInUp(
+            FadeIn(
               child: Text(
                 'Where did your attention move automatically today?',
                 style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
@@ -128,7 +128,7 @@ class _JournalScreenState extends State<JournalScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            FadeInUp(
+            FadeIn(
               delay: const Duration(milliseconds: 600),
               child: Text(
                 'Which muscle could have been applied?',
@@ -356,7 +356,7 @@ class JournalConfirmScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              FadeInDown(
+              FadeIn(
                 child: Text(
                   'Training log updated.',
                   style: AppTypography.h2.copyWith(fontSize: 26, fontStyle: FontStyle.italic),
@@ -364,7 +364,7 @@ class JournalConfirmScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              FadeInDown(
+              FadeIn(
                 delay: const Duration(milliseconds: 600),
                 child: Text(
                   'Repetition builds strength.',
@@ -372,25 +372,31 @@ class JournalConfirmScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 64),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF10B981),
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+              FadeIn(
+                delay: const Duration(milliseconds: 1000),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF10B981),
+                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                      ),
+                      onPressed: onContinue,
+                      child: Text('Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                    ),
+                    const SizedBox(height: 16),
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                        side: BorderSide(color: AppColors.ink.withOpacity(0.1)),
+                      ),
+                      onPressed: onHome,
+                      child: Text('Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.5))),
+                    ),
+                  ],
                 ),
-                onPressed: onContinue,
-                child: Text('Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
-              ),
-              const SizedBox(height: 16),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-                  side: BorderSide(color: AppColors.ink.withOpacity(0.1)),
-                ),
-                onPressed: onHome,
-                child: Text('Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.5))),
               ),
             ],
           ),

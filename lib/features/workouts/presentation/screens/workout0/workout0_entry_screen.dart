@@ -119,7 +119,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
               bottom: 80,
               left: 48,
               right: 48,
-              child: FadeInUp(
+              child: FadeIn(
                 duration: const Duration(milliseconds: 800),
                 child: Column(
                   children: [
@@ -190,10 +190,13 @@ class _BrainCircle extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: Center(
-        child: Icon(
-          LucideIcons.brain,
-          color: AppColors.accent.withOpacity(0.3),
-          size: 32,
+        child: Opacity(
+          opacity: 0.15,
+          child: Image.asset(
+            'assets/images/logo/logo-black.png',
+            width: 42,
+            height: 42,
+          ),
         ),
       ),
     );

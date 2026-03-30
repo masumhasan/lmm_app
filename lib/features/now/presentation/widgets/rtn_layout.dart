@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:go_router/go_router.dart';
 
 class RTNLayout extends StatelessWidget {
   final Widget child;
@@ -43,7 +44,11 @@ class RTNLayout extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(LucideIcons.home, size: 18, color: AppColors.ink.withOpacity(0.1)),
+                GestureDetector(
+                  onTap: () => context.go('/'),
+                  behavior: HitTestBehavior.opaque,
+                  child: Icon(LucideIcons.home, size: 18, color: AppColors.ink.withOpacity(0.1)),
+                ),
               ],
             ),
           ),

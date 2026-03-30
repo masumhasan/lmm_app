@@ -9,7 +9,11 @@ import 'package:animate_do/animate_do.dart';
 class Drill1ReflexScreen extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Drill1ReflexScreen({required this.onNext, required this.onBack, super.key});
+  const Drill1ReflexScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   State<Drill1ReflexScreen> createState() => _Drill1ReflexScreenState();
@@ -29,7 +33,7 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
     await Future.delayed(const Duration(milliseconds: 2000));
     if (!mounted) return;
     setState(() => notifications.add('NEW MESSAGE RECEIVED.'));
-    
+
     await Future.delayed(const Duration(milliseconds: 1500));
     if (!mounted) return;
     setState(() => notifications.add('REMINDER: YOU FORGOT SOMETHING.'));
@@ -67,7 +71,10 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
             right: 0,
             child: Text(
               'DRILL 1: REFLEX',
-              style: AppTypography.columnHeader.copyWith(letterSpacing: 4.0, color: AppColors.ink.withOpacity(0.3)),
+              style: AppTypography.columnHeader.copyWith(
+                letterSpacing: 4.0,
+                color: AppColors.ink.withOpacity(0.3),
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -92,17 +99,24 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
                             color: Colors.black.withOpacity(0.05),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
-                          )
+                          ),
                         ],
                       ),
                       child: Row(
                         children: [
-                          Icon(LucideIcons.bell, size: 14, color: AppColors.accent),
+                          Icon(
+                            LucideIcons.bell,
+                            size: 14,
+                            color: AppColors.accent,
+                          ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               text,
-                              style: AppTypography.mono.copyWith(fontSize: 9, color: AppColors.ink),
+                              style: AppTypography.mono.copyWith(
+                                fontSize: 9,
+                                color: AppColors.ink,
+                              ),
                             ),
                           ),
                         ],
@@ -121,8 +135,13 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
             right: 0,
             child: FadeIn(
               child: Text(
-                isCompleted ? 'A GUESS CAN FEEL REAL — WITHOUT BEING EVIDENCE.' : 'JUST NOTICE THE PULL.',
-                style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.2)),
+                isCompleted
+                    ? 'A GUESS CAN FEEL REAL — WITHOUT BEING EVIDENCE.'
+                    : 'DO NOT TAP ANYTHING',
+                style: AppTypography.columnHeader.copyWith(
+                  fontSize: 9,
+                  color: AppColors.ink.withOpacity(0.2),
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -138,8 +157,13 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.accent,
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 16,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
                   ),
                   onPressed: widget.onNext,
                   child: Text(
