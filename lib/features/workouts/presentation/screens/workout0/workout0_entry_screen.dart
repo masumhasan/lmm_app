@@ -26,11 +26,11 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
     await Future.delayed(const Duration(milliseconds: 100));
     if (!mounted) return;
     setState(() => breathCycle = 1);
-    
+
     // Total cycle is 10s as per web app
     await Future.delayed(const Duration(seconds: 4)); // Inhale peak
     if (!mounted) return;
-    
+
     await Future.delayed(const Duration(seconds: 6)); // Exhale back
     if (!mounted) return;
     setState(() {
@@ -53,14 +53,24 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
               onTap: () => Navigator.pop(context),
               child: Row(
                 children: [
-                  Icon(LucideIcons.arrowLeft, size: 14, color: AppColors.ink.withOpacity(0.3)),
+                  Icon(
+                    LucideIcons.arrowLeft,
+                    size: 14,
+                    color: AppColors.ink.withOpacity(0.3),
+                  ),
                   const SizedBox(width: 8),
-                  Text('BACK', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.3))),
+                  Text(
+                    'BACK',
+                    style: AppTypography.columnHeader.copyWith(
+                      fontSize: 10,
+                      color: AppColors.ink.withOpacity(0.3),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          
+
           // Header Instruction
           Positioned(
             top: MediaQuery.of(context).size.height * 0.22,
@@ -92,7 +102,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                 children: [
                   // Glow
                   _PulseCircle(breathCycle: breathCycle),
-                  
+
                   // Brain Core
                   _BrainCircle(breathCycle: breathCycle),
                 ],
@@ -135,14 +145,22 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.accent,
-                        padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 18),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 48,
+                          vertical: 18,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
                         elevation: 0,
                       ),
                       onPressed: widget.onNext,
                       child: Text(
-                        '▶ Begin Workout',
-                        style: AppTypography.btnText.copyWith(color: Colors.white, fontSize: 16),
+                        'Begin Workout',
+                        style: AppTypography.btnText.copyWith(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],
@@ -215,7 +233,10 @@ class _BreathText extends StatelessWidget {
       return FadeIn(
         child: Text(
           'Inhale: I’m here.',
-          style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
+          style: AppTypography.h2.copyWith(
+            fontSize: 24,
+            fontStyle: FontStyle.italic,
+          ),
           textAlign: TextAlign.center,
         ),
       );
@@ -226,13 +247,19 @@ class _BreathText extends StatelessWidget {
         children: [
           Text(
             'Exhale: Back to now.',
-            style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
+            style: AppTypography.h2.copyWith(
+              fontSize: 24,
+              fontStyle: FontStyle.italic,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Text(
             'This is not about fixing your mind. This is the first repetition in training it.',
-            style: AppTypography.p.copyWith(fontSize: 13, color: AppColors.ink.withOpacity(0.4)),
+            style: AppTypography.p.copyWith(
+              fontSize: 13,
+              color: AppColors.ink.withOpacity(0.4),
+            ),
             textAlign: TextAlign.center,
           ),
         ],
