@@ -49,11 +49,14 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
       backgroundColor: AppColors.surface,
       body: Stack(
         children: [
-          // Background - subtle brain
+          // Background - subtle logo
           Center(
             child: Opacity(
-              opacity: 0.03,
-              child: Icon(LucideIcons.brain, size: 300, color: AppColors.ink),
+              opacity: 0.05,
+              child: Image.asset(
+                'assets/images/logo/logo-black.png',
+                width: 280,
+              ),
             ),
           ),
 

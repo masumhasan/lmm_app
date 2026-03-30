@@ -3,6 +3,7 @@ import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:lmm_app/shared/widgets/theory_card.dart';
 
 class EduIntroScreen extends StatelessWidget {
   final VoidCallback onNext;
@@ -69,22 +70,7 @@ class EduUntrainedScreen extends StatelessWidget {
             children: ['FEAR', 'OVERTHINKING', 'PRESSURE', 'SELF-DOUBT'].asMap().entries.map((e) {
               return FadeInUp(
                 delay: Duration(milliseconds: 1000 + (e.key * 800)),
-                child: Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 12),
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.line.withOpacity(0.12)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.015),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
-                      )
-                    ],
-                  ),
+                child: TheoryCard(
                   child: Text(
                     e.value,
                     style: AppTypography.columnHeader.copyWith(

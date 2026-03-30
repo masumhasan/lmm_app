@@ -9,7 +9,11 @@ import 'package:animate_do/animate_do.dart';
 class Drill2EntryScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Drill2EntryScreen({required this.onNext, required this.onBack, super.key});
+  const Drill2EntryScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,26 @@ class Drill2EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(LucideIcons.zap, size: 48, color: AppColors.accent.withOpacity(0.2)),
+          Icon(
+            LucideIcons.zap,
+            size: 48,
+            color: AppColors.accent.withOpacity(0.2),
+          ),
           const SizedBox(height: 32),
           Text(
             'The Urgency Bait',
-            style: AppTypography.h1.copyWith(fontSize: 34, fontStyle: FontStyle.italic),
+            style: AppTypography.h1.copyWith(
+              fontSize: 34,
+              fontStyle: FontStyle.italic,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
             'Urgency feels real. Watch closely.',
-            style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.4)),
+            style: AppTypography.p.copyWith(
+              color: AppColors.ink.withOpacity(0.4),
+            ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -77,14 +90,14 @@ class _Drill2CountdownScreenState extends State<Drill2CountdownScreen> {
     // Button remains visible for 0.8s
     await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
-    
+
     // Then button fades out (0.4s) - handled by conditional build
     setState(() => isFrozen = true);
-    
+
     // Then freeze 1.5s
     await Future.delayed(const Duration(milliseconds: 1500));
     if (!mounted) return;
-    
+
     widget.onNext();
   }
 
@@ -126,7 +139,10 @@ class _Drill2CountdownScreenState extends State<Drill2CountdownScreen> {
                   FadeIn(
                     child: Text(
                       'You have $secondsRemaining seconds to press the button below.',
-                      style: AppTypography.h2.copyWith(fontSize: 22, height: 1.5),
+                      style: AppTypography.h2.copyWith(
+                        fontSize: 22,
+                        height: 1.5,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -137,23 +153,38 @@ class _Drill2CountdownScreenState extends State<Drill2CountdownScreen> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.accent,
-                            padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 48,
+                              vertical: 16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
                           ),
                           onPressed: () {
                             // Non-responsive during countdown
-                            Navigator.of(context).maybePop(); // This is wrong, it should just do nothing
-                            debugPrint('User pressed non-responsive urgency button.');
+                            Navigator.of(
+                              context,
+                            ).maybePop(); // This is wrong, it should just do nothing
+                            debugPrint(
+                              'User pressed non-responsive urgency button.',
+                            );
                           },
                           child: Text(
                             'PRESS NOW',
-                            style: AppTypography.btnText.copyWith(color: Colors.white),
+                            style: AppTypography.btnText.copyWith(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 32),
                         Text(
                           '$secondsRemaining',
-                          style: AppTypography.mono.copyWith(fontSize: 48, color: AppColors.ink.withOpacity(0.05)),
+                          style: AppTypography.mono.copyWith(
+                            fontSize: 96,
+                            color: AppColors.ink.withOpacity(0.05),
+                            fontWeight: FontWeight.w100,
+                          ),
                         ),
                       ],
                     ),
@@ -184,7 +215,11 @@ class _Drill2CountdownScreenState extends State<Drill2CountdownScreen> {
 class Drill2RevealScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Drill2RevealScreen({required this.onNext, required this.onBack, super.key});
+  const Drill2RevealScreen({
+    required this.onNext,
+    required this.onBack,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +232,10 @@ class Drill2RevealScreen extends StatelessWidget {
           FadeInDown(
             child: Text(
               'Nothing required action.',
-              style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
+              style: AppTypography.h2.copyWith(
+                fontSize: 24,
+                fontStyle: FontStyle.italic,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -206,7 +244,10 @@ class Drill2RevealScreen extends StatelessWidget {
             delay: const Duration(milliseconds: 800),
             child: Text(
               'The pressure was artificial.',
-              style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
+              style: AppTypography.h2.copyWith(
+                fontSize: 24,
+                fontStyle: FontStyle.italic,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -215,7 +256,10 @@ class Drill2RevealScreen extends StatelessWidget {
             delay: const Duration(milliseconds: 1600),
             child: Text(
               'Urgency trained your attention.',
-              style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)),
+              style: AppTypography.p.copyWith(
+                fontSize: 14,
+                color: AppColors.ink.withOpacity(0.5),
+              ),
               textAlign: TextAlign.center,
             ),
           ),

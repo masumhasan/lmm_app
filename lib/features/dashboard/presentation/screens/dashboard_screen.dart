@@ -87,7 +87,7 @@ class DashboardScreen extends StatelessWidget {
                   AppButton(
                     text: 'Continue Training',
                     icon: LucideIcons.playCircle,
-                    onPressed: () {},
+                    onPressed: () => context.go('/workouts'),
                   ),
                   const SizedBox(height: 16),
                   Center(
