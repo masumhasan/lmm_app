@@ -1,6 +1,6 @@
 # Project Technical Details
 
-This document lists the SDKs, packages, and 3rd party components used in the **lmm_app** Flutter project.
+This document lists the SDKs, packages, and 3rd party components used in the **lmm_app** project.
 
 ## Core SDK
 - **Flutter SDK**: Used for building the cross-platform application.
