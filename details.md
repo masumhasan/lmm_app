@@ -2,9 +2,11 @@
 
 This document lists the SDKs, packages, and 3rd party components used in the **lmm_app** project.
 
-## Core SDK
+## Core SDKs
 - **Flutter SDK**: Used for building the cross-platform application.
 - **Dart SDK**: version `^3.10.4`
+
+
 
 ## Dependencies (Packages)
 
