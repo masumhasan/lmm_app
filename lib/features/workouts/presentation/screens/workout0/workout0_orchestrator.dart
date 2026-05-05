@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import 'workout0_entry_screen.dart';
 import 'theory/edu_screens.dart';
-import 'theory/system_screens.dart';
 import 'theory/muscle_summary_screen.dart';
 import 'drills/drill1_reflex_screen.dart';
 import 'drills/drill2_urgency_screens.dart';
@@ -20,10 +19,9 @@ import 'reps/sr2_attention_pull.dart';
 import 'reps/sr3_stay_shift.dart';
 
 // Detailed Theory Phase Imports
+import 'theory/system_screens.dart';
 import 'theory/system_detailed_screens.dart';
-import 'theory/subconscious_screens.dart';
 import 'theory/pattern_screens.dart';
-import 'theory/science_screens.dart';
 
 class Workout0Orchestrator extends ConsumerStatefulWidget {
   final String? initialSection;
@@ -43,11 +41,11 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
   }
 
   int _getInitialStep() {
-    if (widget.initialSection == 'drills') return 24;
-    if (widget.initialSection == 'skill_reps' || widget.initialSection == 'skill-reps') return 42;
-    if (widget.initialSection == 'sr1') return 43;
-    if (widget.initialSection == 'sr2') return 47;
-    if (widget.initialSection == 'sr3') return 51;
+    if (widget.initialSection == 'drills') return 5;
+    if (widget.initialSection == 'skill_reps' || widget.initialSection == 'skill-reps') return 28;
+    if (widget.initialSection == 'sr1') return 26;
+    if (widget.initialSection == 'sr2') return 32;
+    if (widget.initialSection == 'sr3') return 35;
     return 0;
   }
 
@@ -82,58 +80,23 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
       case 0:
         return Workout0EntryScreen(onNext: _onNext);
       case 1:
-        return EduIntroScreen(onNext: _onNext, onBack: _onBack);
-      case 2:
         return EduUntrainedScreen(onNext: _onNext, onBack: _onBack);
-      case 3:
-        return SystemTitleScreen(onNext: _onNext, onBack: _onBack);
-      case 4:
-        return SystemReframeScreen(onNext: _onNext, onBack: _onBack);
-      case 5:
-        return SystemDefinitionScreen(onNext: _onNext, onBack: _onBack);
-      
       // Detailed Theory Phase
-      case 6:
+      case 2:
         return SystemDetailedDefinitionScreen(onNext: _onNext, onBack: _onBack);
-      case 7:
-        return SystemContextScreen(onNext: _onNext, onBack: _onBack);
-      case 8:
-        return SystemSymptomsScreen(onNext: _onNext, onBack: _onBack);
-      case 9:
-        return SystemShiftScreen(onNext: _onNext, onBack: _onBack);
-      case 10:
-        return SubconsciousTitleScreen(onNext: _onNext, onBack: _onBack);
-      case 11:
-        return IcebergModelScreen(onNext: _onNext, onBack: _onBack);
-      case 12:
-        return IcebergContentsScreen(onNext: _onNext, onBack: _onBack);
-      case 13:
-        return SubconsciousControlScreen(onNext: _onNext, onBack: _onBack);
-      case 14:
-        return SubconsciousRuleScreen(onNext: _onNext, onBack: _onBack);
-      case 15:
-        return SubconsciousOldScriptsScreen(onNext: _onNext, onBack: _onBack);
-      case 16:
-        return SubconsciousResetScreen(onNext: _onNext, onBack: _onBack);
-      case 17:
-        return PatternIntroScreen(onNext: _onNext, onBack: _onBack);
-      case 18:
+      case 3:
+        return TrainingSystemRuleScreen(onNext: _onNext, onBack: _onBack);
+      case 4:
         return PatternExample1Screen(onNext: _onNext, onBack: _onBack);
-      case 19:
-        return PatternExample2Screen(onNext: _onNext, onBack: _onBack);
-      case 20:
-        return PatternExample3Screen(onNext: _onNext, onBack: _onBack);
-      case 21:
-        return PatternExample4Screen(onNext: _onNext, onBack: _onBack);
-      case 22:
-        return ScienceTwoSystemsScreen(onNext: _onNext, onBack: _onBack);
-      case 23:
-        return ScienceShiftScreen(onNext: _onNext, onBack: _onBack);
 
       // Drills Phase
-      case 24:
+      case 5:
+        return Drill1EntryScreen(onNext: _onNext, onBack: _onBack);
+      case 6:
         return Drill1ReflexScreen(onNext: _onNext, onBack: _onBack);
-      case 25:
+      case 7:
+        return Drill1RevealScreen(onNext: _onNext, onBack: _onBack);
+      case 8:
         return Workout0PennyScreen(
           text1: 'Most reactions are rehearsed.',
           text2: 'You just interrupted one.',
@@ -141,13 +104,13 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 26:
+      case 9:
         return Drill2EntryScreen(onNext: _onNext, onBack: _onBack);
-      case 27:
+      case 10:
         return Drill2CountdownScreen(onNext: _onNext);
-      case 28:
+      case 11:
         return Drill2RevealScreen(onNext: _onNext, onBack: _onBack);
-      case 29:
+      case 12:
         return Workout0PennyScreen(
           text1: 'Urgency is a sensation.',
           text2: 'Not a directive.',
@@ -155,13 +118,13 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 30:
+      case 13:
         return Drill3EntryScreen(onNext: _onNext, onBack: _onBack);
-      case 31:
+      case 14:
         return Drill3IncompleteScreen(onNext: _onNext);
-      case 32:
+      case 15:
         return Drill3ReleaseScreen(onNext: _onNext, onBack: _onBack);
-      case 33:
+      case 16:
         return Workout0PennyScreen(
           text1: 'Your system preferred closure.',
           text2: 'You proved closure is optional.',
@@ -169,15 +132,15 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 34:
+      case 17:
         return MuscleSummaryScreen(onNext: _onNext, onBack: _onBack);
 
       // Closing & Notice Phase
-      case 35:
+      case 18:
         return ClosingIntroScreen(onNext: _onNext, onBack: _onBack);
-      case 36:
+      case 19:
         return ClosingMainScreen(onNext: _onNext, onBack: _onBack);
-      case 37:
+      case 20:
         return NoticeScreen(
           line1: 'It will happen again today.',
           line2: 'Something will pull your attention.',
@@ -186,7 +149,7 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           hold1Ms: 1200,
           hold2Ms: 1400,
         );
-      case 38:
+      case 21:
         return NoticeScreen(
           line1: 'It will feel important.',
           line2: 'Nothing will actually require you.',
@@ -195,7 +158,7 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           hold1Ms: 1200,
           hold2Ms: 1500,
         );
-      case 39:
+      case 22:
         return NoticeScreen(
           line1: 'Your system will try to close it.',
           line2: 'You’ll see it this time.',
@@ -204,35 +167,35 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           hold1Ms: 1200,
           hold2Ms: 1600,
         );
-      case 40:
+      case 23:
         return JournalScreen(
           onNext: _onNext,
-          onSkip: () => setState(() => currentStep = 41),
+          onSkip: () => setState(() => currentStep = 25),
           onBack: _onBack,
         );
-      case 41:
+      case 24:
         return JournalConfirmScreen(
           onContinue: _onNext,
           onHome: () => context.pop(),
         );
 
       // Skill Reps Phase
-      case 42:
+      case 25:
         return SkillRepsEntryScreen(onNext: _onNext, onBack: _onBack);
-      case 43:
+      case 26:
         return SRIntroScreen(
           title: 'Which One Do You Believe?',
           subtext: 'All thoughts appear. Not all are believed.',
           instruction: 'Tap the one that feels more believable.',
           onStart: _onNext,
-          onSkip: () => setState(() => currentStep = 47),
+          onSkip: () => setState(() => currentStep = 32),
           onBack: _onBack,
         );
-      case 44:
+      case 27:
         return SR1BeliefBiasPlayScreen(onNext: _onNext);
-      case 45:
+      case 28:
         return SR1InsightScreen(onNext: _onNext, onBack: _onBack);
-      case 46:
+      case 29:
         return Workout0PennyScreen(
           text1: 'Belief wasn’t chosen logically.',
           text2: 'It felt familiar.',
@@ -240,20 +203,20 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 47:
+      case 30:
         return SRIntroScreen(
           title: 'The Pull',
           subtext: 'Attention moves before you decide.',
           instruction: 'Tap what pulled you first.',
           onStart: _onNext,
-          onSkip: () => setState(() => currentStep = 51),
+          onSkip: () => setState(() => currentStep = 36),
           onBack: _onBack,
         );
-      case 48:
+      case 31:
         return SR2AttentionPullPlayScreen(onNext: _onNext);
-      case 49:
+      case 32:
         return SR2InsightScreen(onNext: _onNext, onBack: _onBack);
-      case 50:
+      case 33:
         return Workout0PennyScreen(
           text1: 'You saw attention move first.',
           text2: 'That makes training possible.',
@@ -261,20 +224,20 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 51:
+      case 34:
         return SRIntroScreen(
           title: 'Stay or Shift',
           subtext: 'Where attention sits shapes experience.',
           instruction: 'Choose what you usually do.',
           onStart: _onNext,
-          onSkip: () => setState(() => currentStep = 55),
+          onSkip: () => setState(() => currentStep = 39),
           onBack: _onBack,
         );
-      case 52:
+      case 35:
         return SR3StayOrShiftPlayScreen(onNext: _onNext);
-      case 53:
+      case 36:
         return SR3InsightScreen(onNext: _onNext, onBack: _onBack);
-      case 54:
+      case 37:
         return Workout0PennyScreen(
           text1: 'You noticed your position.',
           text2: 'That creates distance.',
@@ -282,7 +245,7 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
           onNext: _onNext,
           onBack: _onBack,
         );
-      case 55:
+      case 38:
         return WorkoutCompleteScreen(onHome: () => context.pop());
       
       default:

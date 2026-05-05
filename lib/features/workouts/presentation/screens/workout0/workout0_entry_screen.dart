@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
-import 'package:animate_do/animate_do.dart';
 
 class Workout0EntryScreen extends StatefulWidget {
   final VoidCallback onNext;
@@ -13,256 +13,183 @@ class Workout0EntryScreen extends StatefulWidget {
 }
 
 class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
-  int breathCycle = 0;
-  bool isLocked = true;
+  bool showLine1 = false;
+  bool showLine2 = false;
+  bool showLine3 = false;
+  bool showCTA = false;
+  late final AudioPlayer _audioPlayer;
 
   @override
   void initState() {
     super.initState();
-    _startBreathCycle();
+    _audioPlayer = AudioPlayer();
+    _initAudio();
+    _runSequence();
   }
 
-  void _startBreathCycle() async {
-    await Future.delayed(const Duration(milliseconds: 100));
-    if (!mounted) return;
-    setState(() => breathCycle = 1);
+  Future<void> _initAudio() async {
+    try {
+      await _audioPlayer.setAsset('assets/audios/ambient/Workout0_Entry.mp3');
+      await _audioPlayer.setLoopMode(LoopMode.one);
+      await _audioPlayer.play();
+    } catch (_) {}
+  }
 
-    // Total cycle is 10s as per web app
-    await Future.delayed(const Duration(seconds: 4)); // Inhale peak
-    if (!mounted) return;
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
 
-    await Future.delayed(const Duration(seconds: 6)); // Exhale back
+  void _runSequence() async {
+    await Future.delayed(const Duration(milliseconds: 400));
     if (!mounted) return;
-    setState(() {
-      breathCycle = 2;
-      isLocked = false;
-    });
+    setState(() => showLine1 = true);
+
+    await Future.delayed(const Duration(milliseconds: 1400));
+    if (!mounted) return;
+    setState(() => showLine2 = true);
+
+    await Future.delayed(const Duration(milliseconds: 1400));
+    if (!mounted) return;
+    setState(() => showLine3 = true);
+
+    await Future.delayed(const Duration(milliseconds: 1600));
+    if (!mounted) return;
+    setState(() => showCTA = true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.surface,
-      body: Stack(
-        children: [
-          // Nav fallback placeholder or back button
-          Positioned(
-            top: 60,
-            left: 24,
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Row(
-                children: [
-                  Icon(
-                    LucideIcons.arrowLeft,
-                    size: 14,
-                    color: AppColors.ink.withOpacity(0.3),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'BACK',
-                    style: AppTypography.columnHeader.copyWith(
-                      fontSize: 10,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFF7F5F2),
+              Color(0xFFEDE9E3),
+            ],
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 60,
+              left: 24,
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Row(
+                  children: [
+                    Icon(
+                      LucideIcons.arrowLeft,
+                      size: 14,
                       color: AppColors.ink.withOpacity(0.3),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Header Instruction
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.22,
-            left: 0,
-            right: 0,
-            child: FadeIn(
-              duration: const Duration(seconds: 1),
-              child: Text(
-                'TAKE ONE SLOW BREATH.',
-                style: AppTypography.columnHeader.copyWith(
-                  color: AppColors.ink.withOpacity(0.35),
-                  letterSpacing: 2.5,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-
-          // Central Animation
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.32,
-            left: 0,
-            right: 0,
-            child: SizedBox(
-              width: 256,
-              height: 256,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Glow
-                  _PulseCircle(breathCycle: breathCycle),
-
-                  // Brain Core
-                  _BrainCircle(breathCycle: breathCycle),
-                ],
-              ),
-            ),
-          ),
-
-          // Bottom Texts
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.65,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 48),
-              height: 120,
-              alignment: Alignment.center,
-              child: _BreathText(breathCycle: breathCycle),
-            ),
-          ),
-
-          // Action Button
-          if (!isLocked && breathCycle == 2)
-            Positioned(
-              bottom: 80,
-              left: 48,
-              right: 48,
-              child: FadeIn(
-                duration: const Duration(milliseconds: 800),
-                child: Column(
-                  children: [
+                    const SizedBox(width: 8),
                     Text(
-                      'YOU ARE TRAINING ATTENTION.',
+                      'BACK',
                       style: AppTypography.columnHeader.copyWith(
-                        color: AppColors.ink.withOpacity(0.3),
                         fontSize: 10,
-                        letterSpacing: 2.0,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.accent,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 48,
-                          vertical: 18,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        elevation: 0,
-                      ),
-                      onPressed: widget.onNext,
-                      child: Text(
-                        'Begin Workout',
-                        style: AppTypography.btnText.copyWith(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                        color: AppColors.ink.withOpacity(0.3),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-        ],
-      ),
-    );
-  }
-}
 
-class _PulseCircle extends StatelessWidget {
-  final int breathCycle;
-  const _PulseCircle({required this.breathCycle});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(seconds: 4),
-      curve: Curves.easeInOut,
-      width: breathCycle == 1 ? 256 : 140,
-      height: breathCycle == 1 ? 256 : 140,
-      decoration: BoxDecoration(
-        color: AppColors.accent.withOpacity(breathCycle == 1 ? 0.08 : 0.03),
-        shape: BoxShape.circle,
-      ),
-    );
-  }
-}
-
-class _BrainCircle extends StatelessWidget {
-  final int breathCycle;
-  const _BrainCircle({required this.breathCycle});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(seconds: 4),
-      curve: Curves.easeInOut,
-      width: breathCycle == 1 ? 160 : 120,
-      height: breathCycle == 1 ? 160 : 120,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.accent.withOpacity(0.1)),
-        shape: BoxShape.circle,
-      ),
-      child: Center(
-        child: Opacity(
-          opacity: 0.15,
-          child: Image.asset(
-            'assets/images/logo/logo-black.png',
-            width: 42,
-            height: 42,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _BreathText extends StatelessWidget {
-  final int breathCycle;
-  const _BreathText({required this.breathCycle});
-
-  @override
-  Widget build(BuildContext context) {
-    if (breathCycle == 0) return const SizedBox.shrink();
-
-    if (breathCycle == 1) {
-      return FadeIn(
-        child: Text(
-          'Inhale: I’m here.',
-          style: AppTypography.h2.copyWith(
-            fontSize: 24,
-            fontStyle: FontStyle.italic,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      );
-    }
-
-    return FadeIn(
-      child: Column(
-        children: [
-          Text(
-            'Exhale: Back to now.',
-            style: AppTypography.h2.copyWith(
-              fontSize: 24,
-              fontStyle: FontStyle.italic,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 48),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.ink.withOpacity(0.12),
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+                    AnimatedOpacity(
+                      opacity: showLine1 ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 400),
+                      child: Text(
+                        'Your attention moves fast.',
+                        style: AppTypography.h1.copyWith(
+                          fontSize: 28,
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    AnimatedOpacity(
+                      opacity: showLine2 ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 400),
+                      child: Text(
+                        'Usually before you notice.',
+                        style: AppTypography.p.copyWith(
+                          fontSize: 18,
+                          color: AppColors.ink.withOpacity(0.45),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    AnimatedOpacity(
+                      opacity: showLine3 ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 400),
+                      child: Text(
+                        'Today you\u2019ll catch it.',
+                        style: AppTypography.h2.copyWith(
+                          fontSize: 22,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 12),
-          Text(
-            'This is not about fixing your mind. This is the first repetition in training it.',
-            style: AppTypography.p.copyWith(
-              fontSize: 13,
-              color: AppColors.ink.withOpacity(0.4),
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+
+            if (showCTA)
+              Positioned(
+                bottom: 80,
+                left: 48,
+                right: 48,
+                child: AnimatedOpacity(
+                  opacity: showCTA ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 600),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.accent,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 48,
+                        vertical: 18,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      elevation: 0,
+                    ),
+                    onPressed: widget.onNext,
+                    child: Text(
+                      'Begin Workout',
+                      style: AppTypography.btnText.copyWith(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 name: lmm_app
-description: "A new Flutter project."
+description: "A Mind Training App"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -41,6 +41,9 @@ dependencies:
   animate_do: ^3.3.4
   lucide_icons: ^0.257.0
   intl: ^0.18.1
+  just_audio: ^0.9.43
+  lottie: ^3.3.1
+  dotlottie_loader: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +70,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/logo/
+    - assets/audios/ambient/
+    - assets/audios/voiceovers/
+    - assets/lotties/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
