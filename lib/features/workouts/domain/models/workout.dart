@@ -77,9 +77,9 @@ class Workout {
           description: 'Train alarm loop interruption.',
           duration: '4 min',
           subSections: [
-            WorkoutSection(id: 'sr1', title: 'FIRST ALARM', description: '2 min reps', duration: ''),
-            WorkoutSection(id: 'sr2', title: 'ECHO DETECT', description: '2 min reps', duration: ''),
-            WorkoutSection(id: 'sr3', title: 'LOOP BREAK', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr1', title: 'THE CHECKING TRAP', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'THE CONTROL REBOUND', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'THE ESCAPE REFLEX', description: '2 min reps', duration: ''),
           ],
         ),
       ],

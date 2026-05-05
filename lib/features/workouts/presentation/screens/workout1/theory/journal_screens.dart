@@ -201,7 +201,7 @@ class _Workout1JournalScreenState extends State<Workout1JournalScreen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
               ),
               onPressed: widget.onNext,
-              child: Text('💾 Save Training Log', style: AppTypography.btnText.copyWith(color: Colors.white)),
+              child: Text('Save Training Log', style: AppTypography.btnText.copyWith(color: Colors.white)),
             ),
             const SizedBox(height: 24),
             TextButton(
