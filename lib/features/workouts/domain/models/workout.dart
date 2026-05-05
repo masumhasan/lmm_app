@@ -99,9 +99,9 @@ class Workout {
           description: 'Train safety signal recognition.',
           duration: '4 min',
           subSections: [
-            WorkoutSection(id: 'sr1', title: 'SAFETY SCAN', description: '2 min reps', duration: ''),
-            WorkoutSection(id: 'sr2', title: 'THREAT REFRAME', description: '2 min reps', duration: ''),
-            WorkoutSection(id: 'sr3', title: 'GROUND STATE', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr1', title: 'CREATE THE SIGNAL', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'DON’T CHECK', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'THE INTERPRETATION RACE', description: '2 min reps', duration: ''),
           ],
         ),
       ],

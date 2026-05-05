@@ -6,6 +6,7 @@ import 'package:lmm_app/features/workouts/presentation/screens/workout_sections_
 import 'package:lmm_app/features/workouts/presentation/screens/workout0/workout0_orchestrator.dart';
 import 'package:lmm_app/features/workouts/presentation/screens/workout1/workout1_orchestrator.dart';
 import 'package:lmm_app/features/workouts/presentation/screens/workout2/workout2_orchestrator.dart';
+import 'package:lmm_app/features/workouts/presentation/screens/workout3/workout3_orchestrator.dart';
 import 'package:lmm_app/features/auth/presentation/screens/onboarding_flow.dart';
 import 'package:lmm_app/features/drift/presentation/screens/drift_screen.dart';
 import 'package:lmm_app/features/now/presentation/screens/rtn_orchestrator.dart';
@@ -68,6 +69,8 @@ final appRouter = GoRouter(
                         final id = state.pathParameters['id']!;
                         final section = state.uri.queryParameters['section'];
                         switch (id) {
+                          case '3':
+                            return Workout3Orchestrator(initialSection: section);
                           case '2':
                             return Workout2Orchestrator(initialSection: section);
                           case '1':
