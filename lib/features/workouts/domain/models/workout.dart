@@ -46,7 +46,21 @@ class Workout {
       description: 'Separate evidence from the stories you tell yourself.',
       difficulty: 2,
       status: WorkoutStatus.notStarted,
-      sections: [],
+      sections: [
+        WorkoutSection(id: 'theory', title: 'THEORY', description: 'How stories form and distort perception.', duration: '3 min'),
+        WorkoutSection(id: 'drills', title: 'DRILLS', description: 'Practice separating facts from narrative.', duration: '4 min'),
+        WorkoutSection(
+          id: 'skill_reps',
+          title: 'SKILL REPS',
+          description: 'Train story detection movements.',
+          duration: '3 min',
+          subSections: [
+            WorkoutSection(id: 'sr1', title: 'ATTENTION LANE', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'CERTAINTY DIAL', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'CONCRETE SORT', description: '2 min reps', duration: ''),
+          ],
+        ),
+      ],
     ),
     Workout(
       id: 2,
@@ -54,7 +68,21 @@ class Workout {
       description: 'Spot the second alarm (the echo) in real time.',
       difficulty: 3,
       status: WorkoutStatus.notStarted,
-      sections: [],
+      sections: [
+        WorkoutSection(id: 'theory', title: 'THEORY', description: 'Understand the echo alarm mechanism.', duration: '3 min'),
+        WorkoutSection(id: 'drills', title: 'DRILLS', description: 'Spot and interrupt repeated alarms.', duration: '5 min'),
+        WorkoutSection(
+          id: 'skill_reps',
+          title: 'SKILL REPS',
+          description: 'Train alarm loop interruption.',
+          duration: '4 min',
+          subSections: [
+            WorkoutSection(id: 'sr1', title: 'FIRST ALARM', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'ECHO DETECT', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'LOOP BREAK', description: '2 min reps', duration: ''),
+          ],
+        ),
+      ],
     ),
     Workout(
       id: 3,
@@ -62,7 +90,21 @@ class Workout {
       description: 'Teaching the system when it is actually safe.',
       difficulty: 4,
       status: WorkoutStatus.notStarted,
-      sections: [],
+      sections: [
+        WorkoutSection(id: 'theory', title: 'THEORY', description: 'How safety signals are processed.', duration: '3 min'),
+        WorkoutSection(id: 'drills', title: 'DRILLS', description: 'Practice safety recalibration.', duration: '5 min'),
+        WorkoutSection(
+          id: 'skill_reps',
+          title: 'SKILL REPS',
+          description: 'Train safety signal recognition.',
+          duration: '4 min',
+          subSections: [
+            WorkoutSection(id: 'sr1', title: 'SAFETY SCAN', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'THREAT REFRAME', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'GROUND STATE', description: '2 min reps', duration: ''),
+          ],
+        ),
+      ],
     ),
     Workout(
       id: 4,

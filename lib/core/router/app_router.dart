@@ -4,6 +4,7 @@ import 'package:lmm_app/features/dashboard/presentation/screens/dashboard_screen
 import 'package:lmm_app/features/workouts/presentation/screens/workouts_screen.dart';
 import 'package:lmm_app/features/workouts/presentation/screens/workout_sections_screen.dart';
 import 'package:lmm_app/features/workouts/presentation/screens/workout0/workout0_orchestrator.dart';
+import 'package:lmm_app/features/workouts/presentation/screens/workout1/workout1_orchestrator.dart';
 import 'package:lmm_app/features/auth/presentation/screens/onboarding_flow.dart';
 import 'package:lmm_app/features/drift/presentation/screens/drift_screen.dart';
 import 'package:lmm_app/features/now/presentation/screens/rtn_orchestrator.dart';
@@ -63,8 +64,15 @@ final appRouter = GoRouter(
                       path: 'play',
                       parentNavigatorKey: _rootNavigatorKey,
                       builder: (context, state) {
+                        final id = state.pathParameters['id']!;
                         final section = state.uri.queryParameters['section'];
-                        return Workout0Orchestrator(initialSection: section);
+                        switch (id) {
+                          case '1':
+                            return Workout1Orchestrator(initialSection: section);
+                          case '0':
+                          default:
+                            return Workout0Orchestrator(initialSection: section);
+                        }
                       },
                     ),
                   ],

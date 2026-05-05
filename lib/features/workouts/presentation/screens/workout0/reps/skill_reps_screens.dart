@@ -15,7 +15,7 @@ class SkillRepsEntryScreen extends StatelessWidget {
     return WorkoutContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '🟢 Start Skill Reps',
+      nextButtonText: 'Start Skill Reps',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

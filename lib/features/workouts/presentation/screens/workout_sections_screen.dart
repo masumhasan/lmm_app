@@ -71,7 +71,7 @@ class WorkoutSectionsScreen extends StatelessWidget {
               separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemBuilder: (context, index) {
                 final section = workout.sections[index];
-                return _SectionTile(section: section);
+                return _SectionTile(section: section, workoutId: workoutId);
               },
             ),
           ],
@@ -131,7 +131,8 @@ class _IntrolHeader extends StatelessWidget {
 
 class _SectionTile extends StatefulWidget {
   final WorkoutSection section;
-  const _SectionTile({required this.section});
+  final String workoutId;
+  const _SectionTile({required this.section, required this.workoutId});
 
   @override
   State<_SectionTile> createState() => _SectionTileState();
@@ -151,7 +152,7 @@ class _SectionTileState extends State<_SectionTile> {
             if (hasSubSections) {
               setState(() => isExpanded = !isExpanded);
             } else {
-              context.push('/workouts/0/play?section=${widget.section.id}');
+              context.push('/workouts/${widget.workoutId}/play?section=${widget.section.id}');
             }
           },
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -206,7 +207,7 @@ class _SectionTileState extends State<_SectionTile> {
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Column(
-              children: widget.section.subSections!.map((s) => _SubSectionTile(section: s)).toList(),
+              children: widget.section.subSections!.map((s) => _SubSectionTile(section: s, workoutId: widget.workoutId)).toList(),
             ),
           ),
       ],
@@ -216,12 +217,13 @@ class _SectionTileState extends State<_SectionTile> {
 
 class _SubSectionTile extends StatelessWidget {
   final WorkoutSection section;
-  const _SubSectionTile({required this.section});
+  final String workoutId;
+  const _SubSectionTile({required this.section, required this.workoutId});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push('/workouts/0/play?section=${section.id}'),
+      onTap: () => context.push('/workouts/$workoutId/play?section=${section.id}'),
       child: Container(
         margin: const EdgeInsets.only(top: 4),
         padding: const EdgeInsets.all(20),
