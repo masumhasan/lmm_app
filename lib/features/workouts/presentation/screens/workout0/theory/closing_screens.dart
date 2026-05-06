@@ -3,6 +3,8 @@ import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 
 class ClosingIntroScreen extends StatelessWidget {
   final VoidCallback onNext;
@@ -18,6 +20,21 @@ class ClosingIntroScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(
+            height: 120,
+            width: 120,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/workout_complete.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
             'Workout Complete',
             style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32),

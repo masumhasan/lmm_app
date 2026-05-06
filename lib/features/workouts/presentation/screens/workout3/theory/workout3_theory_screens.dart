@@ -46,7 +46,7 @@ class _Workout3EntryScreenState extends State<Workout3EntryScreen> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(vertical: 16)),
                     onPressed: showCta ? widget.onNext : null,
-                    child: Text('▶ Begin Workout', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                    child: Text('  Begin Workout', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
                   ),
                 ),
               ),
@@ -175,7 +175,7 @@ class Workout3ExampleCheckingScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue',
+      nextButtonText: '  Continue',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -201,7 +201,7 @@ class Workout3CoreMessageScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Begin Training',
+      nextButtonText: '  Begin Training',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -223,7 +223,7 @@ class Workout3TransitionToDrillsScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Start Body Safety Training',
+      nextButtonText: '  Start Body Safety Training',
       child: Text('You are not fixing anything.\nYou are teaching a protective system a new response.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
     );
   }
@@ -238,7 +238,7 @@ class Workout3DrillsCompleteScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onHome,
-      nextButtonText: '▶ Continue to Muscle Summary',
+      nextButtonText: '  Continue to Muscle Summary',
       showHome: true,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -263,7 +263,7 @@ class Workout3MuscleSummaryScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue',
+      nextButtonText: '  Continue',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -351,7 +351,7 @@ class Workout3ClosingForwardLookScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue to Notice',
+      nextButtonText: '  Continue to Notice',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -368,7 +368,7 @@ class Workout3NoticeScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
   final String cta;
-  const Workout3NoticeScreen({required this.line1, required this.line2, required this.onNext, required this.onBack, this.cta = '▶ Continue', super.key});
+  const Workout3NoticeScreen({required this.line1, required this.line2, required this.onNext, required this.onBack, this.cta = '  Continue', super.key});
   @override
   Widget build(BuildContext context) {
     return Workout3ContentLayout(

@@ -154,7 +154,7 @@ class _Workout1TransitionToDrillsScreenState extends State<Workout1TransitionToD
     return Workout1ContentLayout(
       onNext: widget.onNext,
       onBack: widget.onBack,
-      nextButtonText: '▶ Continue Reps',
+      nextButtonText: '  Continue Reps',
       showHome: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,

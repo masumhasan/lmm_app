@@ -14,7 +14,7 @@ class Workout3Drill1EntryScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       showHome: false,
-      nextButtonText: '▶ Start Drill',
+      nextButtonText: '  Start Drill',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -111,7 +111,7 @@ class Workout3Drill2EntryScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       showHome: false,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -188,7 +188,7 @@ class Workout3Drill3EntryScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       showHome: false,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

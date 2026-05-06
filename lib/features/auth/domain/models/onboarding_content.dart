@@ -29,11 +29,11 @@ class OnboardingStepModel {
   static List<OnboardingStepModel> steps = [
     OnboardingStepModel(
       stepIndex: 0,
-      title: 'LearnMyMind',
-      subtitle: 'Train the mind you live in.',
+      title: '',
+      subtitle: 'See how your mind actually works. \nTrain it in real time',
       type: OnboardingStepType.welcome,
       welcomeIcon: LucideIcons.brain,
-      buttonLabel: 'Begin',
+      buttonLabel: 'Get Started',
     ),
     OnboardingStepModel(
       stepIndex: 1,

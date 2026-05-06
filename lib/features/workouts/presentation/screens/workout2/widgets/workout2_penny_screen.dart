@@ -97,7 +97,7 @@ class _Workout2PennyScreenState extends State<Workout2PennyScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: widget.onNext,
-                child: Text('▶ Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                child: Text('  Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
               ),
             ),
         ],

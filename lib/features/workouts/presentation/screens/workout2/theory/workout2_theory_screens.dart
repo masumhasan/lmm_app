@@ -101,7 +101,7 @@ class _Workout2EntryScreenState extends State<Workout2EntryScreen> with SingleTi
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
                         onPressed: _showCTA ? widget.onNext : null,
-                        child: Text('▶ Begin Workout', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                        child: Text('  Begin Workout', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
                       ),
                     ),
                   ),
@@ -226,7 +226,7 @@ class Workout2AlarmLoopExplanationScreen extends StatelessWidget {
     return Workout2ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ See Real-Life Examples',
+      nextButtonText: '  See Real-Life Examples',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -259,7 +259,7 @@ class Workout2ExampleScreen extends StatelessWidget {
     required this.microLine,
     required this.onNext,
     required this.onBack,
-    this.cta = '▶ Next Example',
+    this.cta = '  Next Example',
     super.key,
   });
 
@@ -363,7 +363,7 @@ class _Workout2LoopStepsScreenState extends State<Workout2LoopStepsScreen> {
     return Workout2ContentLayout(
       onBack: widget.onBack,
       onNext: _step < 3 ? () => setState(() => _step++) : widget.onNext,
-      nextButtonText: _step < 3 ? '▶ Next' : '▶ Continue',
+      nextButtonText: _step < 3 ? '  Next' : '  Continue',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -442,7 +442,7 @@ class Workout2FinalLockInScreen extends StatelessWidget {
     return Workout2ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue to Reps',
+      nextButtonText: '  Continue to Reps',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -465,7 +465,7 @@ class Workout2MuscleSummaryScreen extends StatelessWidget {
     return Workout2ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue to Closing',
+      nextButtonText: '  Continue to Closing',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -547,7 +547,7 @@ class _Workout2ClosingCoreScreenState extends State<Workout2ClosingCoreScreen> {
     return Workout2ContentLayout(
       onNext: widget.onNext,
       onBack: widget.onBack,
-      nextButtonText: '▶ Continue to Notice',
+      nextButtonText: '  Continue to Notice',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -578,7 +578,7 @@ class Workout2NoticeScreen extends StatelessWidget {
     required this.line2,
     required this.onNext,
     required this.onBack,
-    this.cta = '▶ Continue',
+    this.cta = '  Continue',
     super.key,
   });
 

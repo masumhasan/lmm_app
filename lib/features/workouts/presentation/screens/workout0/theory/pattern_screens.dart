@@ -16,7 +16,7 @@ class PatternExample1Screen extends StatelessWidget {
     return WorkoutContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Next Example',
+      nextButtonText: '  Next Example',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

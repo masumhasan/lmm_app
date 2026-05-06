@@ -15,7 +15,7 @@ class RTN01EntryScreen extends StatelessWidget {
     return RTNLayout(
       onBack: onBack,
       onNext: onNext,
-      nextButtonText: '▶ Begin',
+      nextButtonText: '  Begin',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

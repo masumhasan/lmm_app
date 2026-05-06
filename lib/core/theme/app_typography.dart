@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppTypography {
   AppTypography._();
 
-  static TextStyle get h1 => GoogleFonts.cormorantGaramond(
+  static TextStyle get h1 => const TextStyle(
+        fontFamily: 'CormorantGaramond',
         fontSize: 40,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.italic,
@@ -14,7 +14,8 @@ class AppTypography {
         height: 1.1,
       );
 
-  static TextStyle get h2 => GoogleFonts.cormorantGaramond(
+  static TextStyle get h2 => const TextStyle(
+        fontFamily: 'CormorantGaramond',
         fontSize: 28,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.italic,
@@ -23,34 +24,39 @@ class AppTypography {
         height: 1.2,
       );
 
-  static TextStyle get h3 => GoogleFonts.inter(
+  static TextStyle get h3 => TextStyle(
+        fontFamily: 'Inter',
         fontSize: 14,
         fontWeight: FontWeight.w600,
         letterSpacing: 1.5,
         color: AppColors.inkWithOpacity(0.8),
       );
 
-  static TextStyle get p => GoogleFonts.inter(
+  static TextStyle get p => TextStyle(
+        fontFamily: 'Inter',
         fontSize: 15,
         fontWeight: FontWeight.w400,
         color: AppColors.inkWithOpacity(0.7),
         height: 1.6,
       );
 
-  static TextStyle get mono => GoogleFonts.jetBrainsMono(
+  static TextStyle get mono => const TextStyle(
+        fontFamily: 'JetBrainsMono',
         fontSize: 12,
         fontWeight: FontWeight.w500,
         color: AppColors.neutral,
       );
 
-  static TextStyle get columnHeader => GoogleFonts.jetBrainsMono(
+  static TextStyle get columnHeader => TextStyle(
+        fontFamily: 'JetBrainsMono',
         fontSize: 9,
         fontWeight: FontWeight.w400,
         letterSpacing: 2.5,
         color: AppColors.inkWithOpacity(0.4),
       );
 
-  static TextStyle get btnText => GoogleFonts.inter(
+  static TextStyle get btnText => const TextStyle(
+        fontFamily: 'Inter',
         fontSize: 16,
         fontWeight: FontWeight.w500,
         letterSpacing: -0.1,

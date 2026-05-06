@@ -129,7 +129,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
       case 27:
         return Workout3NoticeScreen(line1: 'Nothing needs to change.', line2: 'This is where the body learns.', onNext: next, onBack: back);
       case 28:
-        return Workout3NoticeScreen(line1: 'You won’t need to stop it.', line2: 'You’ll see it.', cta: '▶ Continue to Journal', onNext: () => go(29), onBack: back);
+        return Workout3NoticeScreen(line1: 'You won’t need to stop it.', line2: 'You’ll see it.', cta: '  Continue to Journal', onNext: () => go(29), onBack: back);
 
       case 29:
         return Workout3TrainingLogScreen(onNext: next, onSkip: () => go(31), onBack: back);

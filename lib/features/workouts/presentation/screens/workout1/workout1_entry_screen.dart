@@ -127,7 +127,7 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
                         ),
                         onPressed: _showCTA ? widget.onNext : null,
                         child: Text(
-                          '▶  Begin Workout',
+                          '   Begin Workout',
                           style: AppTypography.btnText.copyWith(color: Colors.white),
                         ),
                       ),

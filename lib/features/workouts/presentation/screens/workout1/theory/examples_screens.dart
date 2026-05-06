@@ -15,7 +15,7 @@ class Workout1ExamplesIntroScreen extends StatelessWidget {
     return Workout1ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ See Examples',
+      nextButtonText: '  See Examples',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -165,7 +165,7 @@ class Workout1ExamplePartyScreen extends StatelessWidget {
       systemLine2: "Something's wrong.",
       realityLines: const ["They didn't see you."],
       microText: 'The story appeared instantly.',
-      ctaText: '▶ Next Example',
+      ctaText: '  Next Example',
       onNext: onNext,
       onBack: onBack,
     );
@@ -185,7 +185,7 @@ class Workout1ExampleHealthScreen extends StatelessWidget {
       systemLine2: 'What if this gets worse?',
       realityLines: const ['Stress.', 'Fatigue.', 'Posture.', 'Dehydration.'],
       microText: 'Meaning added before evidence.',
-      ctaText: '▶ Next Example',
+      ctaText: '  Next Example',
       onNext: onNext,
       onBack: onBack,
     );
@@ -205,7 +205,7 @@ class Workout1ExampleRelationshipScreen extends StatelessWidget {
       systemLine2: "They're losing interest.",
       realityLines: const ["They're tired.", "They're distracted."],
       microText: '',
-      ctaText: '▶ Next Example',
+      ctaText: '  Next Example',
       onNext: onNext,
       onBack: onBack,
     );
@@ -223,7 +223,7 @@ class Workout1ExamplePastTagScreen extends StatelessWidget {
     return Workout1ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue to Evidence',
+      nextButtonText: '  Continue to Evidence',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

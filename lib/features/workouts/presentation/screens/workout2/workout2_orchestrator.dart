@@ -101,7 +101,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
           rightLines: const ['“Don’t go back.”'],
           realityLine: 'Avoidance marks the situation as urgent and starts alarm earlier next time.',
           microLine: 'Training focus: see how “avoid” teaches urgency',
-          cta: '▶ Break It Down',
+          cta: '  Break It Down',
           onNext: _onNext,
           onBack: _onBack,
         );
@@ -200,7 +200,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2NoticeScreen(
           line1: 'You’ll feel the pull to check… to control… to make it stop.',
           line2: 'That’s what feeds it.',
-          cta: '▶ Continue',
+          cta: '  Continue',
           onNext: _onNext,
           onBack: _onBack,
         );
@@ -208,7 +208,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2NoticeScreen(
           line1: 'You’ll see it this time.',
           line2: '',
-          cta: '▶ Continue to Journal',
+          cta: '  Continue to Journal',
           onNext: () => _goStep(31),
           onBack: _onBack,
         );

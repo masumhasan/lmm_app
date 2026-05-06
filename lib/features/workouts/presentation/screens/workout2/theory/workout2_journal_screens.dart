@@ -56,17 +56,29 @@ class _Workout2JournalScreenState extends State<Workout2JournalScreen> {
             const SizedBox(height: 10),
             FadeIn(delay: const Duration(milliseconds: 500), child: Text('What was the first spark?', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.42)), textAlign: TextAlign.center)),
             const SizedBox(height: 34),
-            TextField(
-              controller: _controller,
-              maxLines: 5,
-              decoration: InputDecoration(
-                hintText: 'Type your reflection...',
-                hintStyle: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.2)),
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: AppColors.line.withOpacity(0.2))),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: AppColors.line.withOpacity(0.2))),
-                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: const BorderSide(color: AppColors.accent, width: 1.4)),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.04),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: TextField(
+                controller: _controller,
+                maxLines: 5,
+                decoration: InputDecoration(
+                  hintText: 'Type your reflection...',
+                  hintStyle: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.2)),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: AppColors.line.withOpacity(0.2))),
+                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: AppColors.line.withOpacity(0.2))),
+                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: const BorderSide(color: AppColors.accent, width: 1.4)),
+                ),
               ),
             ),
             const SizedBox(height: 34),

@@ -57,7 +57,7 @@ class Workout1CoachIntroScreen extends StatelessWidget {
     return Workout1ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ See How It Works',
+      nextButtonText: '  See How It Works',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

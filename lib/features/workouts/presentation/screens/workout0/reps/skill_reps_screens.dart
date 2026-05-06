@@ -67,7 +67,7 @@ class SRIntroScreen extends StatelessWidget {
     return WorkoutContentLayout(
       onNext: onStart,
       onBack: onBack,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

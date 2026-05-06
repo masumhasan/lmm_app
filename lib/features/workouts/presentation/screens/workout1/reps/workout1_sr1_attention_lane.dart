@@ -221,7 +221,7 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
                       setState(() => _isPaused = false);
                       _dotController.repeat(reverse: true);
                     },
-                    child: Text('▶ Resume', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                    child: Text('  Resume', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
                   ),
                 ),
               ),

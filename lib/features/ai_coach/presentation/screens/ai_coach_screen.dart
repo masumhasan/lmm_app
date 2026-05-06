@@ -5,6 +5,9 @@ import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/shared/widgets/premium_card.dart';
 
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
+
 class AICoachScreen extends StatelessWidget {
   const AICoachScreen({super.key});
 
@@ -40,21 +43,7 @@ class AICoachScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: AppColors.ink.withOpacity(0.03),
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(color: AppColors.ink.withOpacity(0.05)),
-                  ),
-                  child: Text(
-                    'BETA v1.2',
-                    style: AppTypography.columnHeader.copyWith(
-                      fontSize: 8,
-                      color: AppColors.ink.withOpacity(0.3),
-                    ),
-                  ),
-                ),
+                // BETA v1.2 Button Removed
               ],
             ),
             const SizedBox(height: 48),
@@ -79,7 +68,18 @@ class AICoachScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    child: const Icon(LucideIcons.bot, color: Colors.white, size: 32),
+                    child: DotLottieLoader.fromAsset(
+                      'assets/lotties/bot.lottie',
+                      frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
+                        if (dotlottie != null) {
+                          return Lottie.memory(
+                            dotlottie.animations.values.single,
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    ),
                   ),
                   const SizedBox(width: 20),
                   Expanded(
@@ -150,7 +150,22 @@ class AICoachScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: AppColors.ink.withOpacity(0.05)),
                   ),
-                  child: Icon(LucideIcons.bot, size: 16, color: AppColors.ink.withOpacity(0.2)),
+                  child: SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: DotLottieLoader.fromAsset(
+                      'assets/lotties/bot.lottie',
+                      frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
+                        if (dotlottie != null) {
+                          return Lottie.memory(
+                            dotlottie.animations.values.single,
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(

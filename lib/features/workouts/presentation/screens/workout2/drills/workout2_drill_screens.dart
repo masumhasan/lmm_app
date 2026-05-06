@@ -14,7 +14,7 @@ class Workout2D1EntryScreen extends StatelessWidget {
     return Workout2ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       showHome: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -91,7 +91,7 @@ class Workout2D2EntryScreen extends StatelessWidget {
     return Workout2ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       showHome: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -270,7 +270,7 @@ class Workout2D3EntryScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       showHome: false,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -360,7 +360,7 @@ class _Workout2D3PlayScreenState extends State<Workout2D3PlayScreen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99)), padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
                 onPressed: locked ? widget.onComplete : null,
-                child: Text('▶ Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                child: Text('  Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
               ),
             ],
           ),

@@ -235,7 +235,7 @@ class _Workout1SR3PlayScreenState extends State<Workout1SR3PlayScreen> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                     ),
                     onPressed: () => setState(() => _isPaused = false),
-                    child: Text('▶ Resume', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                    child: Text('  Resume', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
                   ),
                 ),
               ),

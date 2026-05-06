@@ -139,41 +139,53 @@ class _JournalScreenState extends State<JournalScreen> {
             const SizedBox(height: 64),
 
             // Text Field with Integrated Mic
-            Stack(
-              alignment: Alignment.centerRight,
-              children: [
-                TextField(
-                  controller: _controller,
-                  maxLines: 4,
-                  decoration: InputDecoration(
-                    hintText: 'Share your reflection...',
-                    hintStyle: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.2)),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.fromLTRB(20, 20, 64, 20),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.04),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: Stack(
+                alignment: Alignment.centerRight,
+                children: [
+                  TextField(
+                    controller: _controller,
+                    maxLines: 4,
+                    decoration: InputDecoration(
+                      hintText: 'Share your reflection...',
+                      hintStyle: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.2)),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding: const EdgeInsets.fromLTRB(20, 20, 64, 20),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  right: 12,
-                  bottom: 12,
-                  child: GestureDetector(
-                    onTap: _startListening,
-                    child: _MicButton(isListening: _isListening),
+                  Positioned(
+                    right: 12,
+                    bottom: 12,
+                    child: GestureDetector(
+                      onTap: _startListening,
+                      child: _MicButton(isListening: _isListening),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             
             if (_isListening)

@@ -123,7 +123,7 @@ class _Workout1PennyScreenState extends State<Workout1PennyScreen> {
                   ),
                   onPressed: widget.onNext,
                   child: Text(
-                    '▶ Continue',
+                    '  Continue',
                     style: AppTypography.btnText.copyWith(color: Colors.white),
                   ),
                 ),

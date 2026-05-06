@@ -49,15 +49,27 @@ class _Workout3TrainingLogScreenState extends State<Workout3TrainingLogScreen> {
             const SizedBox(height: 8),
             Text('No explanation needed.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45), fontStyle: FontStyle.italic)),
             const SizedBox(height: 28),
-            TextField(
-              controller: c,
-              maxLines: 5,
-              decoration: InputDecoration(
-                hintText: 'Type reflection',
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: AppColors.line.withOpacity(0.3))),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: AppColors.line.withOpacity(0.3))),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.04),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: TextField(
+                controller: c,
+                maxLines: 5,
+                decoration: InputDecoration(
+                  hintText: 'Type reflection',
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: AppColors.line.withOpacity(0.3))),
+                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: AppColors.line.withOpacity(0.3))),
+                ),
               ),
             ),
             const SizedBox(height: 24),

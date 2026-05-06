@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import '../widgets/workout1_content_layout.dart';
 
 /// Workout1_Closing_Intro
@@ -18,8 +20,23 @@ class Workout1ClosingIntroScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(
+            height: 120,
+            width: 120,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/workout_complete.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
-            '✨ Workout Complete',
+            'Workout Complete',
             style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32),
             textAlign: TextAlign.center,
           ),
@@ -88,7 +105,7 @@ class _Workout1ClosingMessageScreenState extends State<Workout1ClosingMessageScr
       onBack: widget.onBack,
       isDark: true,
       showNextButton: _showCTA,
-      nextButtonText: '▶ Continue to Notice',
+      nextButtonText: '  Continue to Notice',
       buttonDelayMs: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -215,7 +232,7 @@ class Workout1Notice3Screen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       isDark: true,
-      nextButtonText: '▶ Continue to Journal',
+      nextButtonText: '  Continue to Journal',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

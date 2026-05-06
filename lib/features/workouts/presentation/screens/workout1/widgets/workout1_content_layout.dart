@@ -19,7 +19,7 @@ class Workout1ContentLayout extends StatelessWidget {
     required this.child,
     required this.onNext,
     required this.onBack,
-    this.nextButtonText = '▶ Continue',
+    this.nextButtonText = '  Continue',
     this.isDark = false,
     this.showNextButton = true,
     this.showHome = true,

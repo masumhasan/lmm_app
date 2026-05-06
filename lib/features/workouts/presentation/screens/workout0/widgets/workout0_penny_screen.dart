@@ -138,7 +138,7 @@ class _Workout0PennyScreenState extends State<Workout0PennyScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '▶ Continue',
+                      '  Continue',
                       style: AppTypography.btnText.copyWith(color: Colors.white),
                     ),
                   ],

@@ -68,7 +68,7 @@ class Workout1SRIntroScreen extends StatelessWidget {
     return Workout1ContentLayout(
       onNext: onStart,
       onBack: onBack,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       showHome: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,

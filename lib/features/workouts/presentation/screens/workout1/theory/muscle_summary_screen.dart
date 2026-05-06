@@ -14,7 +14,7 @@ class Workout1MuscleSummaryScreen extends StatelessWidget {
     return Workout1ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Continue to Closing',
+      nextButtonText: '  Continue to Closing',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -16,7 +16,7 @@ class Drill3EntryScreen extends StatelessWidget {
     return WorkoutContentLayout(
       onNext: onNext,
       onBack: onBack,
-      nextButtonText: '▶ Start',
+      nextButtonText: '  Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
