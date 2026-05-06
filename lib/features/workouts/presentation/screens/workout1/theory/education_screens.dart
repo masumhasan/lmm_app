@@ -2,19 +2,58 @@ import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:just_audio/just_audio.dart';
 import '../widgets/workout1_content_layout.dart';
 
 /// Workout1_Education_Intro
-class Workout1EducationIntroScreen extends StatelessWidget {
+class Workout1EducationIntroScreen extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
   const Workout1EducationIntroScreen({required this.onNext, required this.onBack, super.key});
 
   @override
+  State<Workout1EducationIntroScreen> createState() => _Workout1EducationIntroScreenState();
+}
+
+class _Workout1EducationIntroScreenState extends State<Workout1EducationIntroScreen> {
+  late final AudioPlayer _audioPlayer;
+  bool _showCTA = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayer = AudioPlayer();
+    _initAudio();
+  }
+
+  Future<void> _initAudio() async {
+    try {
+      await _audioPlayer.setAsset('assets/audios/voiceovers/workout1/Workout1_Education_Intro.mp3');
+      _audioPlayer.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          if (mounted) setState(() => _showCTA = true);
+        }
+      });
+      await _audioPlayer.play();
+    } catch (e) {
+      debugPrint('Error playing audio: $e');
+      if (mounted) setState(() => _showCTA = true);
+    }
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Workout1ContentLayout(
-      onNext: onNext,
-      onBack: onBack,
+      onNext: widget.onNext,
+      onBack: widget.onBack,
+      showNextButton: _showCTA,
+      buttonDelayMs: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

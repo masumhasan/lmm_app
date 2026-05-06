@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import '../widgets/workout1_content_layout.dart';
 
 /// Workout1_Evidence_Title
@@ -18,9 +20,19 @@ class Workout1EvidenceTitleScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            '🔍',
-            style: const TextStyle(fontSize: 40),
+          SizedBox(
+            height: 250,
+            width: 250,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/Workout1_Evidence_Title.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
           ),
           const SizedBox(height: 24),
           Text(

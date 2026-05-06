@@ -72,6 +72,7 @@ flutter:
     - assets/images/logo/
     - assets/audios/ambient/
     - assets/audios/voiceovers/
+    - assets/audios/voiceovers/workout1/
     - assets/lotties/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,6 +5,8 @@ import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 
 class Drill2EntryScreen extends StatelessWidget {
   final VoidCallback onNext;
@@ -24,27 +26,46 @@ class Drill2EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            LucideIcons.zap,
-            size: 48,
-            color: AppColors.accent.withOpacity(0.2),
-          ),
-          const SizedBox(height: 32),
-          Text(
-            'The Urgency Bait',
-            style: AppTypography.h1.copyWith(
-              fontSize: 34,
-              fontStyle: FontStyle.italic,
+          Transform.translate(
+            offset: const Offset(0, 40),
+            child: SizedBox(
+              height: 300,
+              width: 300,
+              child: DotLottieLoader.fromAsset(
+                'assets/lotties/Workout0_Drill2_Entry.lottie',
+                frameBuilder: (BuildContext context, DotLottie? lottie) {
+                  if (lottie != null) {
+                    return Lottie.memory(lottie.animations.values.single);
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+              ),
             ),
-            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 16),
-          Text(
-            'Urgency feels real. Watch closely.',
-            style: AppTypography.p.copyWith(
-              color: AppColors.ink.withOpacity(0.4),
+          const SizedBox(height: 0),
+          Transform.translate(
+            offset: const Offset(0, -20),
+            child: Column(
+              children: [
+                Text(
+                  'The Urgency Bait',
+                  style: AppTypography.h1.copyWith(
+                    fontSize: 34,
+                    fontStyle: FontStyle.italic,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Urgency feels real. Watch closely.',
+                  style: AppTypography.p.copyWith(
+                    color: AppColors.ink.withOpacity(0.4),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
         ],
       ),

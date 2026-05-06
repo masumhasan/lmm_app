@@ -149,13 +149,15 @@ class _BeliefCard extends StatelessWidget {
                 color: isSelected ? AppColors.accent : AppColors.line.withOpacity(0.2),
                 width: isSelected ? 2 : 1,
               ),
-              boxShadow: isSelected ? [
+              boxShadow: [
                 BoxShadow(
-                  color: AppColors.accent.withOpacity(0.1),
-                  blurRadius: 20,
-                  offset: const Offset(0, 10),
-                )
-              ] : [],
+                  color: isSelected 
+                    ? AppColors.accent.withOpacity(0.1) 
+                    : Colors.black.withOpacity(0.04),
+                  blurRadius: isSelected ? 20 : 12,
+                  offset: isSelected ? const Offset(0, 10) : const Offset(0, 4),
+                ),
+              ],
             ),
             child: Text(
               text,

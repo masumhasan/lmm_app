@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:just_audio/just_audio.dart';
 
 class Workout1EntryScreen extends StatefulWidget {
   final VoidCallback onNext;
@@ -15,10 +16,14 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
   bool _showLine2 = false;
   bool _showLine3 = false;
   bool _showCTA = false;
+  late final AudioPlayer _audioPlayer;
 
   @override
   void initState() {
     super.initState();
+    _audioPlayer = AudioPlayer();
+    _initAudio();
+    
     Future.delayed(const Duration(milliseconds: 1200), () {
       if (mounted) setState(() => _showLine2 = true);
     });
@@ -28,6 +33,21 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
     Future.delayed(const Duration(milliseconds: 3400), () {
       if (mounted) setState(() => _showCTA = true);
     });
+  }
+
+  Future<void> _initAudio() async {
+    try {
+      await _audioPlayer.setAsset('assets/audios/ambient/Workout1_Entry.mp3');
+      await _audioPlayer.play();
+    } catch (e) {
+      debugPrint('Error playing audio: $e');
+    }
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
   }
 
   @override
