@@ -136,9 +136,13 @@ class _SelectionButton extends StatelessWidget {
             color: isSelected ? AppColors.accent : Colors.white,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: isSelected ? AppColors.accent : AppColors.line.withOpacity(0.2)),
-            boxShadow: isSelected ? [
-              BoxShadow(color: AppColors.accent.withOpacity(0.15), blurRadius: 15, offset: const Offset(0, 5))
-            ] : [],
+            boxShadow: [
+              BoxShadow(
+                color: isSelected ? AppColors.accent.withOpacity(0.15) : Colors.black.withOpacity(0.04),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           child: Text(
             label,

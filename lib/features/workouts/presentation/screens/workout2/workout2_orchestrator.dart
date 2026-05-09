@@ -161,7 +161,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
             'You found the growth point.',
             'The loop expands',
             'when fear is added to sensation.',
-            'Interrupt here—',
+            'Interrupt here,',
             'and escalation cannot multiply.',
           ],
           repLoggedText: 'Loop Disruption',
@@ -191,7 +191,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         );
       case 28:
         return Workout2NoticeScreen(
-          line1: 'The loop will try to grow here—',
+          line1: 'The loop will try to grow here',
           line2: 'when the reaction is treated as new.',
           onNext: _onNext,
           onBack: _onBack,
@@ -287,7 +287,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
           lines: const [
             'You were not trapped by the sensation.',
             'You were pulled by the need to escape it.',
-            'When escape is not answered—',
+            'When escape is not answered,',
             'the loop has nothing to build on.',
             'Reaction fuels alarms. Non-response weakens them.',
           ],

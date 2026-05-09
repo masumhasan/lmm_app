@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import '../widgets/workout1_content_layout.dart';
@@ -19,7 +21,20 @@ class Workout1SkillRepsEntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(LucideIcons.gamepad2, size: 48, color: AppColors.accent.withOpacity(0.2)),
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/game.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
           const SizedBox(height: 32),
           Text(
             'Skill Reps',

@@ -355,7 +355,7 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       // ── Final Completion ──────────────────────────────────
       case 40:
         return Workout1SRCompleteScreen(
-          onContinueToWorkout2: () => context.go('/'),
+          onContinueToWorkout2: () => context.go('/workouts/2/play'),
           onCoachPreview: () => setState(() {
             _inCoachFlow = true;
             _coachStep = 0;

@@ -173,7 +173,7 @@ class _Workout1SRCompleteScreenState extends State<Workout1SRCompleteScreen> {
                         label: 'TALK IT THROUGH',
                         icon: LucideIcons.messageSquare,
                         isBadge: true,
-                        onTap: widget.onCoachPreview,
+                        onTap: () => context.go('/ai-coach'),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -191,7 +191,7 @@ class _Workout1SRCompleteScreenState extends State<Workout1SRCompleteScreen> {
                       child: TextButton(
                         onPressed: widget.onHome,
                         child: Text(
-                          '🏠 RETURN HOME',
+                          'RETURN HOME',
                           style: AppTypography.columnHeader.copyWith(
                             fontSize: 9,
                             letterSpacing: 2.0,

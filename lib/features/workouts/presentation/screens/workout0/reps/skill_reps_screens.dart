@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class SkillRepsEntryScreen extends StatelessWidget {
@@ -19,7 +22,20 @@ class SkillRepsEntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(LucideIcons.gamepad2, size: 48, color: AppColors.accent.withOpacity(0.2)),
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/game.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
           const SizedBox(height: 32),
           Text(
             'Train Your Attention',
@@ -28,7 +44,7 @@ class SkillRepsEntryScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'These games reveal how attention gets captured — and how it changes.',
+            'These games reveal how attention gets captured and how it changes.',
             style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.4)),
             textAlign: TextAlign.center,
           ),
@@ -183,7 +199,7 @@ class WorkoutCompleteScreen extends StatelessWidget {
                       subLabel: 'Workout 1: Story Separation',
                       icon: LucideIcons.arrowRight,
                       isPrimary: true,
-                      onTap: onHome,
+                      onTap: () => context.push('/workouts/1/play'),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -194,7 +210,7 @@ class WorkoutCompleteScreen extends StatelessWidget {
                     child: _CompletionAction(
                       label: 'TOOLS HUB',
                       icon: LucideIcons.layoutGrid,
-                      onTap: onHome,
+                      onTap: () => context.go('/hub'),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -204,7 +220,7 @@ class WorkoutCompleteScreen extends StatelessWidget {
                       label: 'TALK IT THROUGH',
                       icon: LucideIcons.messageSquare,
                       isBadge: true,
-                      onTap: onHome,
+                      onTap: () => context.go('/ai-coach'),
                     ),
                   ),
                   const SizedBox(height: 48),

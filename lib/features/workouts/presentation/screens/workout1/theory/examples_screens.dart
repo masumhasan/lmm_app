@@ -247,7 +247,7 @@ class Workout1ExamplePastTagScreen extends StatelessWidget {
           FadeIn(
             delay: const Duration(milliseconds: 400),
             child: Text(
-              '"Your system tagged the place — not the moment."',
+              '"Your system tagged the place, not the moment."',
               style: AppTypography.h2.copyWith(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,

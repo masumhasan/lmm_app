@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import '../widgets/workout2_content_layout.dart';
 
 class Workout2EntryScreen extends StatefulWidget {
@@ -48,16 +50,16 @@ class _Workout2EntryScreenState extends State<Workout2EntryScreen> with SingleTi
                   return Transform.scale(
                     scale: scale,
                     child: Container(
-                      width: 220,
-                      height: 220,
+                      width: 440,
+                      height: 440,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.white.withOpacity(0.18), width: 2),
                       ),
                       child: Center(
                         child: Container(
-                          width: 190,
-                          height: 190,
+                          width: 380,
+                          height: 380,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white.withOpacity(0.08), width: 1),
@@ -79,7 +81,7 @@ class _Workout2EntryScreenState extends State<Workout2EntryScreen> with SingleTi
                   const Spacer(),
                   Text('Today you’ll see the loop.', style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 28), textAlign: TextAlign.center),
                   const SizedBox(height: 10),
-                  Text('Not as an idea—', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
+                  Text('Not as an idea,', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
                   const SizedBox(height: 6),
                   Text('as a pattern.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
                   const SizedBox(height: 14),
@@ -330,7 +332,22 @@ class Workout2LoopIntroScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('🧠 The Loop That Feels Like the Alarm', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
+          SizedBox(
+            height: 250,
+            width: 250,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/brain.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text('The Loop That Feels Like the Alarm', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('It’s the same signal being interpreted twice.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
           const SizedBox(height: 24),
@@ -401,7 +418,7 @@ class Workout2LoopPennyDropScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The loop grows here —\nnot at the first sensation,\nbut at the alarm about the sensation.', style: AppTypography.h2.copyWith(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
+          Text('The loop grows here\nnot at the first sensation,\nbut at the alarm about the sensation.', style: AppTypography.h2.copyWith(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
           const SizedBox(height: 22),
           Text('Nothing new happened.\nThe echo was treated as new.', style: AppTypography.p.copyWith(fontSize: 14, color: Colors.white.withOpacity(0.65)), textAlign: TextAlign.center),
         ],
@@ -499,7 +516,22 @@ class Workout2ClosingTransitionScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('✨ Workout 2 Complete', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32), textAlign: TextAlign.center),
+          SizedBox(
+            height: 120,
+            width: 120,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/workout_complete.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text('Workout 2 Complete', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('The alarm is not endless.\nIt is a loop.', style: AppTypography.h2.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 22), textAlign: TextAlign.center),
         ],

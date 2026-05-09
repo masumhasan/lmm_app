@@ -78,7 +78,7 @@ class _Workout1ClosingMessageScreenState extends State<Workout1ClosingMessageScr
   final _lines = [
     'Your system will still create stories.',
     'It will still guess.',
-    'But now you can notice the story—',
+    'But now you can notice the story',
     'instead of becoming it.',
   ];
 

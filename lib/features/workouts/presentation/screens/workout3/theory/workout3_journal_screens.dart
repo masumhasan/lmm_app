@@ -109,13 +109,13 @@ class Workout3TrainingLogConfirmScreen extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF10B981), padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
                 onPressed: onContinue,
-                child: Text('🎮 Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                child: Text('Continue to Skill Reps', style: AppTypography.btnText.copyWith(color: Colors.white)),
               ),
               const SizedBox(height: 10),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), side: BorderSide(color: AppColors.line), padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16)),
                 onPressed: onHome,
-                child: Text('🏠 Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.55))),
+                child: Text('Return Home', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.55))),
               ),
             ],
           ),

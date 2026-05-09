@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
@@ -18,9 +20,24 @@ class Workout3SkillRepsEntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/game.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 24),
           Text('You’ve trained the body.\nNow train the mislabel.', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('The body isn’t the problem — the prediction is.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('The body isn’t the problem, the prediction is.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -40,7 +57,7 @@ class Workout3SRIntroScreen extends StatelessWidget {
       onNext: onStart,
       onBack: onBack,
       showHome: false,
-      nextButtonText: '🟢 Start',
+      nextButtonText: 'Start',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -48,7 +65,7 @@ class Workout3SRIntroScreen extends StatelessWidget {
           const SizedBox(height: 12),
           Text(body, style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          TextButton(onPressed: onSkip, child: Text('⚪ Skip', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
+          TextButton(onPressed: onSkip, child: Text('Skip', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
         ],
       ),
     );
@@ -297,16 +314,16 @@ class Workout3SkillRepsCompleteScreen extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 15)),
                 onPressed: onContinueWorkout4,
-                child: Text('🟢 Continue to Workout 4', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                child: Text('Continue to Workout 4', style: AppTypography.btnText.copyWith(color: Colors.white)),
               ),
               const SizedBox(height: 10),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), side: BorderSide(color: AppColors.line.withOpacity(0.9)), padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 15)),
                 onPressed: () => context.go('/hub'),
-                child: Text('🔵 Explore Tools Hub', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.6))),
+                child: Text('Explore Tools Hub', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.6))),
               ),
               const SizedBox(height: 10),
-              TextButton(onPressed: onHome, child: Text('⚪ Return Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
+              TextButton(onPressed: onHome, child: Text('Return Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
             ],
           ),
         ),

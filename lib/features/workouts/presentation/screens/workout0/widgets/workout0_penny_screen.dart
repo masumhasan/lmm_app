@@ -97,25 +97,29 @@ class _Workout0PennyScreenState extends State<Workout0PennyScreen> {
             right: 0,
             child: FadeIn(
               delay: const Duration(milliseconds: 1200),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(LucideIcons.checkCircle2, size: 8, color: const Color(0xFF10B981).withOpacity(0.5)),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Rep Logged: ${widget.repLoggedText} +1'.toUpperCase(),
-                        style: AppTypography.columnHeader.copyWith(
-                          fontSize: 8,
-                          color: const Color(0xFF10B981).withOpacity(0.5),
-                          letterSpacing: 1.5,
+              child: FadeOut(
+                delay: const Duration(milliseconds: 3000),
+                duration: const Duration(seconds: 1),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(LucideIcons.checkCircle2, size: 8, color: const Color(0xFF10B981).withOpacity(0.5)),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Rep Logged: ${widget.repLoggedText} +1'.toUpperCase(),
+                          style: AppTypography.columnHeader.copyWith(
+                            fontSize: 8,
+                            color: const Color(0xFF10B981).withOpacity(0.5),
+                            letterSpacing: 1.5,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

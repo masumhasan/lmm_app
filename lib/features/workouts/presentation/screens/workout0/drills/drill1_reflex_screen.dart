@@ -21,7 +21,7 @@ class Drill1EntryScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Attention Control \u2014 Reflex Test',
+            'Attention Control | Reflex Test',
             style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),

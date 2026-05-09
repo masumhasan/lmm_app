@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
@@ -19,6 +21,21 @@ class Workout2SkillRepsEntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: DotLottieLoader.fromAsset(
+              'assets/lotties/game.lottie',
+              frameBuilder: (BuildContext context, DotLottie? lottie) {
+                if (lottie != null) {
+                  return Lottie.memory(lottie.animations.values.single);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 24),
           Text('Skill Reps', style: AppTypography.h1.copyWith(fontSize: 34)),
           const SizedBox(height: 10),
           Text('3 short reps. No scoring. No feedback. Just training.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
@@ -129,9 +146,10 @@ class Workout2SR2PlayScreen extends StatefulWidget {
 }
 
 class _Workout2SR2PlayScreenState extends State<Workout2SR2PlayScreen> {
-  double v = 60;
+  double v = 60.0;
   int rebounds = 0;
   bool passive = false;
+  bool _isRebounding = false;
   Timer? _idleTimer;
   Timer? _dropTimer;
 
@@ -194,12 +212,14 @@ class _Workout2SR2PlayScreenState extends State<Workout2SR2PlayScreen> {
                     : (val) {
                         setState(() => v = val);
                         _scheduleIdle();
-                        if (val < 40 && rebounds < 3) {
+                        if (val < 40 && rebounds < 3 && !_isRebounding) {
+                          _isRebounding = true;
                           Future.delayed(const Duration(milliseconds: 500), () {
                             if (!mounted) return;
                             setState(() {
                               rebounds++;
-                              v = 75 + (rebounds * 5);
+                              v = (75.0 + (rebounds * 5)).clamp(0.0, 100.0);
+                              _isRebounding = false;
                             });
                             if (rebounds >= 3) _scheduleIdle();
                           });

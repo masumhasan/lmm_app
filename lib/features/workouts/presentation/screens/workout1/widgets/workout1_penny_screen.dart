@@ -91,21 +91,25 @@ class _Workout1PennyScreenState extends State<Workout1PennyScreen> {
             right: 0,
             child: FadeIn(
               delay: Duration(milliseconds: 600 * widget.lines.length + 400),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(LucideIcons.checkCircle2, size: 8, color: const Color(0xFF10B981).withOpacity(0.5)),
-                  const SizedBox(width: 6),
-                  Text(
-                    'Rep Logged: ${widget.repLoggedText} +1'.toUpperCase(),
-                    style: AppTypography.columnHeader.copyWith(
-                      fontSize: 8,
-                      color: const Color(0xFF10B981).withOpacity(0.5),
-                      letterSpacing: 1.5,
+              child: FadeOut(
+                delay: Duration(milliseconds: 600 * widget.lines.length + 2400),
+                duration: const Duration(seconds: 1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(LucideIcons.checkCircle2, size: 8, color: const Color(0xFF10B981).withOpacity(0.5)),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Rep Logged: ${widget.repLoggedText} +1'.toUpperCase(),
+                      style: AppTypography.columnHeader.copyWith(
+                        fontSize: 8,
+                        color: const Color(0xFF10B981).withOpacity(0.5),
+                        letterSpacing: 1.5,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

@@ -11,8 +11,8 @@ class User {
 
   factory User.mock() => User(
         id: '1',
-        username: 'Alex',
-        email: 'alex@example.com',
+        username: 'Salman',
+        email: 'salman@lmm.com',
       );
 }
 

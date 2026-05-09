@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
@@ -61,13 +62,20 @@ class _Workout3PennyScreenState extends State<Workout3PennyScreen> {
             bottom: 128,
             left: 0,
             right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(LucideIcons.checkCircle2, size: 9, color: const Color(0xFF10B981).withOpacity(0.6)),
-                const SizedBox(width: 6),
-                Text('Rep Logged: ${widget.repLabel} +1', style: AppTypography.columnHeader.copyWith(fontSize: 8, color: const Color(0xFF10B981).withOpacity(0.6))),
-              ],
+            child: FadeIn(
+              delay: const Duration(milliseconds: 900),
+              child: FadeOut(
+                delay: const Duration(milliseconds: 2900),
+                duration: const Duration(seconds: 1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(LucideIcons.checkCircle2, size: 9, color: const Color(0xFF10B981).withOpacity(0.6)),
+                    const SizedBox(width: 6),
+                    Text('Rep Logged: ${widget.repLabel} +1', style: AppTypography.columnHeader.copyWith(fontSize: 8, color: const Color(0xFF10B981).withOpacity(0.6))),
+                  ],
+                ),
+              ),
             ),
           ),
           if (_showCta)

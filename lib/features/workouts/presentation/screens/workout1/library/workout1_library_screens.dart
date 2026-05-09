@@ -202,7 +202,7 @@ class Workout1LibraryMenuScreen extends StatelessWidget {
                   const SizedBox(width: 24),
                   TextButton(
                     onPressed: () => context.go('/'),
-                    child: Text('🏠 Exit to Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.3))),
+                    child: Text('Exit to Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.3))),
                   ),
                 ],
               ),
@@ -312,7 +312,7 @@ class Workout1LibraryDetailScreen extends StatelessWidget {
                   const SizedBox(width: 24),
                   TextButton(
                     onPressed: () => context.go('/'),
-                    child: Text('🏠 Exit to Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.3))),
+                    child: Text('Exit to Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.3))),
                   ),
                 ],
               ),

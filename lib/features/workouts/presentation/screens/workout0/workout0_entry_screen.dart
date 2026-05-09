@@ -62,21 +62,11 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFFF7F5F2),
-              Color(0xFFEDE9E3),
-            ],
-          ),
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              top: 60,
+      backgroundColor: AppColors.surface,
+      body: Stack(
+        children: [
+          Positioned(
+            top: 60,
               left: 24,
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
@@ -190,7 +180,6 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
               ),
           ],
         ),
-      ),
     );
   }
 }

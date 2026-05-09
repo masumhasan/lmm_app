@@ -68,20 +68,24 @@ class _Workout2PennyScreenState extends State<Workout2PennyScreen> {
             right: 0,
             child: FadeIn(
               delay: const Duration(milliseconds: 900),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(LucideIcons.checkCircle2, size: 9, color: const Color(0xFF10B981).withOpacity(0.6)),
-                  const SizedBox(width: 6),
-                  Text(
-                    'Rep Logged: ${widget.repLoggedText} +1',
-                    style: AppTypography.columnHeader.copyWith(
-                      fontSize: 9,
-                      color: const Color(0xFF10B981).withOpacity(0.6),
-                      letterSpacing: 1.2,
+              child: FadeOut(
+                delay: const Duration(milliseconds: 2900),
+                duration: const Duration(seconds: 1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(LucideIcons.checkCircle2, size: 9, color: const Color(0xFF10B981).withOpacity(0.6)),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Rep Logged: ${widget.repLoggedText} +1',
+                      style: AppTypography.columnHeader.copyWith(
+                        fontSize: 9,
+                        color: const Color(0xFF10B981).withOpacity(0.6),
+                        letterSpacing: 1.2,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

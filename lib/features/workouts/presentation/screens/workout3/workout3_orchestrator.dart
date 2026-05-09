@@ -123,9 +123,9 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
       case 24:
         return Workout3NoticeScreen(line1: 'A sensation will appear.', line2: 'Heat… tension… movement.', onNext: next, onBack: back);
       case 25:
-        return Workout3NoticeScreen(line1: 'Your system will treat it as important.', line2: 'Not because it is—but because it was felt.', onNext: next, onBack: back);
+        return Workout3NoticeScreen(line1: 'Your system will treat it as important.', line2: 'Not because it is, but because it was felt.', onNext: next, onBack: back);
       case 26:
-        return Workout3NoticeScreen(line1: 'The reaction will try to start here—', line2: 'checking… fixing… pulling away.', onNext: next, onBack: back);
+        return Workout3NoticeScreen(line1: 'The reaction will try to start here', line2: 'checking… fixing… pulling away.', onNext: next, onBack: back);
       case 27:
         return Workout3NoticeScreen(line1: 'Nothing needs to change.', line2: 'This is where the body learns.', onNext: next, onBack: back);
       case 28:

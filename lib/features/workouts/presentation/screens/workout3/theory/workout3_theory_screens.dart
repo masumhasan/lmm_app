@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import '../widgets/workout3_content_layout.dart';
@@ -24,7 +25,7 @@ class _Workout3EntryScreenState extends State<Workout3EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5A4A3B),
+      backgroundColor: const Color(0xFF1C1C35),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
@@ -68,7 +69,7 @@ class Workout3MainNarrationIntroScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      child: Text('Safety is felt — not thought.', style: AppTypography.h2.copyWith(fontSize: 30), textAlign: TextAlign.center),
+      child: Text('Safety is felt, not thought.', style: AppTypography.h2.copyWith(fontSize: 30), textAlign: TextAlign.center),
     );
   }
 }
@@ -132,10 +133,15 @@ class Workout3ModernTriggersScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final item in items)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 6),
-              child: Text(item, style: AppTypography.h2.copyWith(fontSize: 24)),
+          for (int i = 0; i < items.length; i++)
+            FadeInDown(
+              delay: Duration(milliseconds: 300 * i),
+              duration: const Duration(milliseconds: 800),
+              from: 10,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Text(items[i], style: AppTypography.h2.copyWith(fontSize: 24)),
+              ),
             ),
           const SizedBox(height: 14),
           Text('Often these are not danger.\nBut the body does not read context.\nIt reads sensation.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
@@ -207,7 +213,7 @@ class Workout3CoreMessageScreen extends StatelessWidget {
         children: [
           Text('My body is allowed to feel sensations.', style: AppTypography.h2.copyWith(fontSize: 27), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('Sensations are information — not proof.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
+          Text('Sensations are information, not proof.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -245,7 +251,7 @@ class Workout3DrillsCompleteScreen extends StatelessWidget {
         children: [
           Text('You trained three skills today:', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('• Separating sensation from meaning\n• Breaking collapse language\n• Holding without reacting', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
+          Text('Separating sensation from meaning\nBreaking collapse language\nHolding without reacting', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
           const SizedBox(height: 10),
           Text('That’s cognitive strength.', style: AppTypography.p.copyWith(fontSize: 13, fontStyle: FontStyle.italic)),
         ],
@@ -312,7 +318,7 @@ class Workout3ClosingCoreScreen extends StatelessWidget {
           const SizedBox(height: 10),
           Text('You taught it something new.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('A sensation can exist—', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
+          Text('A sensation can exist', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
           const SizedBox(height: 10),
           Text('without reaction following.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
         ],
@@ -355,7 +361,7 @@ class Workout3ClosingForwardLookScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You didn’t change the sensation.\nYou saw what followed it.\nThe body wasn’t the problem—\nthe reaction was.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('You didn’t change the sensation.\nYou saw what followed it.\nThe body wasn’t the problem\nthe reaction was.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
         ],
       ),
     );

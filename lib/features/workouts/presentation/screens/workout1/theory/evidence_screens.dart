@@ -92,7 +92,7 @@ class Workout1EvidenceRuleScreen extends StatelessWidget {
           FadeIn(
             duration: const Duration(milliseconds: 800),
             child: Text(
-              '"If you don\'t have proof —\nit\'s a story."',
+              '"If you don\'t have proof\nit\'s a story."',
               style: AppTypography.h1.copyWith(fontSize: 30, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
