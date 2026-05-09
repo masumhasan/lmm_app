@@ -213,6 +213,7 @@ class RTN05ExitScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return RTNLayout(
       onBack: onHome,
+      showLottieBackground: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
