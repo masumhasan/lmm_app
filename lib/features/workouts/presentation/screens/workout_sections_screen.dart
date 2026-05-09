@@ -228,7 +228,7 @@ class _SubSectionTile extends StatelessWidget {
         margin: const EdgeInsets.only(top: 4),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: AppColors.line.withOpacity(0.5)),
         ),
@@ -248,12 +248,19 @@ class _SubSectionTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    section.title,
-                    style: AppTypography.columnHeader.copyWith(fontSize: 11, color: AppColors.ink),
+                    section.title.toUpperCase(),
+                    style: AppTypography.columnHeader.copyWith(
+                      fontSize: 11,
+                      color: AppColors.ink,
+                      letterSpacing: 2.0,
+                    ),
                   ),
                   Text(
                     section.description,
-                    style: AppTypography.p.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.25)),
+                    style: AppTypography.p.copyWith(
+                      fontSize: 10,
+                      color: AppColors.ink.withOpacity(0.35),
+                    ),
                   ),
                 ],
               ),

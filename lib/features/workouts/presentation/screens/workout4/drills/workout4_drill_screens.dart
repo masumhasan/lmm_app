@@ -43,6 +43,8 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
   bool isHolding = false;
   double progress = 0;
   Timer? timer;
+  Timer? _buttonShowTimer;
+  bool showContinue = false;
   final List<String> thoughts = [
     'What if they meant...',
     'I should have said...',
@@ -59,6 +61,7 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
           progress += 0.025; // 4 seconds total (100ms * 40)
           if (progress >= 1.0) {
             progress = 1.0;
+            showContinue = true;
             t.cancel();
           }
         });
@@ -69,6 +72,7 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
   @override
   void dispose() {
     timer?.cancel();
+    _buttonShowTimer?.cancel();
     super.dispose();
   }
 
@@ -105,6 +109,7 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                 onLongPressStart: (_) {
                   setState(() {
                     isHolding = true;
+                    _buttonShowTimer?.cancel();
                     _startTimer();
                   });
                 },
@@ -113,6 +118,16 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                     isHolding = false;
                     progress = 0;
                     timer?.cancel();
+                    
+                    // If the button was shown, start a 5s countdown to hide it
+                    if (showContinue) {
+                      _buttonShowTimer?.cancel();
+                      _buttonShowTimer = Timer(const Duration(seconds: 5), () {
+                        if (mounted && !isHolding) {
+                          setState(() => showContinue = false);
+                        }
+                      });
+                    }
                   });
                 },
                 child: Container(
@@ -125,10 +140,10 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(isHolding ? 'HOLDING...' : 'HOLD HERE', style: AppTypography.columnHeader.copyWith(fontSize: 12, letterSpacing: 2)),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 12),
                         SizedBox(
-                          width: 4,
-                          height: 100,
+                          width: 140,
+                          height: 3,
                           child: LinearProgressIndicator(
                             value: progress,
                             backgroundColor: AppColors.line.withOpacity(0.1),
@@ -148,18 +163,19 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
             right: 0,
             child: Text('Hold the quiet zone.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
           ),
-          if (progress >= 1.0)
+          if (showContinue)
             Positioned(
               bottom: 64,
               left: 48,
               right: 48,
               child: FadeInUp(
+                duration: const Duration(milliseconds: 500),
                 child: Column(
                   children: [
                     Text('Noise runs when it’s fed.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45))),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16)),
+                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.ink, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16)),
                       onPressed: widget.onComplete,
                       child: Text('Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
                     ),

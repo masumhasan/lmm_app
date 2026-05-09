@@ -41,7 +41,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
   }
 
   int _getInitialStep() {
-    if (widget.initialSection == 'drills') return 5;
+    if (widget.initialSection == 'drills' || widget.initialSection == 'drills_entry') return 5;
+    if (widget.initialSection == 'drill2_entry') return 9;
+    if (widget.initialSection == 'drill3_entry') return 13;
     if (widget.initialSection == 'skill_reps' || widget.initialSection == 'skill-reps') return 28;
     if (widget.initialSection == 'sr1') return 26;
     if (widget.initialSection == 'sr2') return 32;

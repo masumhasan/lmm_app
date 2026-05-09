@@ -25,26 +25,34 @@ class Workout4PennyScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Floating Brain Lottie (The Penny character/mascot)
-            SizedBox(
-              height: 180,
-              width: 180,
-              child: DotLottieLoader.fromAsset(
-                'assets/lotties/bot.lottie',
-                frameBuilder: (context, dotlottie) {
-                  if (dotlottie != null) {
-                    return Lottie.memory(dotlottie.animations.values.single);
-                  }
-                  return const SizedBox();
-                },
+            const SizedBox(height: 80),
+            // Completion Star Lottie
+            FadeInDown(
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: AppColors.ink.withOpacity(0.04), shape: BoxShape.circle),
+                child: Center(
+                  child: DotLottieLoader.fromAsset(
+                    'assets/lotties/workout_complete.lottie',
+                    frameBuilder: (context, dotlottie) {
+                      if (dotlottie != null) {
+                        return Lottie.memory(dotlottie.animations.values.single);
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 24),
             for (int i = 0; i < lines.length; i++)
               FadeInUp(
                 delay: Duration(milliseconds: 600 * (i + 1)),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
                   child: Text(
                     lines[i],
                     style: AppTypography.h2.copyWith(fontSize: 22),
@@ -52,36 +60,13 @@ class Workout4PennyScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            const SizedBox(height: 60),
-            FadeInDown(
+            const SizedBox(height: 12),
+            FadeInUp(
               delay: Duration(milliseconds: 600 * (lines.length + 1)),
-              child: Column(
-                children: [
-                   Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: AppColors.line.withOpacity(0.5), 
-                      shape: BoxShape.circle
-                    ),
-                    child: Center(
-                      child: DotLottieLoader.fromAsset(
-                        'assets/lotties/workout_complete.lottie',
-                        frameBuilder: (context, dotlottie) {
-                          if (dotlottie != null) {
-                            return Lottie.memory(dotlottie.animations.values.single);
-                          }
-                          return const SizedBox();
-                        },
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    '+1 $repLabel Rep',
-                    style: AppTypography.columnHeader.copyWith(color: AppColors.ink.withOpacity(0.5)),
-                  ),
-                ],
+              child: Text(
+                '+1 $repLabel Rep',
+                style: AppTypography.columnHeader
+                    .copyWith(color: AppColors.ink.withOpacity(0.5)),
               ),
             ),
             const Spacer(),
@@ -93,8 +78,10 @@ class Workout4PennyScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.ink,
                     foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-                    padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 56, vertical: 20),
                   ),
                   onPressed: onNext,
                   child: const Text('Next'),
