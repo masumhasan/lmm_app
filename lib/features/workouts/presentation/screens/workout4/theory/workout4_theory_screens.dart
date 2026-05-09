@@ -82,9 +82,6 @@ class Workout4MainNarrationScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Overthinking isn’t intelligence.\nAnd it isn’t weakness.\nIt’s what happens when attention keeps returning\nbecause the system thinks something still matters.\nThis isn’t about fixing thoughts.\nIt’s about training where attention goes.', 
-            style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
-          const SizedBox(height: 24),
           Text('Noise is attention without direction.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
