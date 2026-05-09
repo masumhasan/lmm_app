@@ -112,7 +112,21 @@ class Workout {
       description: 'Internal noise & attention regulation.',
       difficulty: 5,
       status: WorkoutStatus.notStarted,
-      sections: [],
+      sections: [
+        WorkoutSection(id: 'theory', title: 'THEORY', description: 'Understanding the mechanics of internal noise.', duration: '4 min'),
+        WorkoutSection(id: 'drills', title: 'DRILLS', description: 'Training the attention control muscle.', duration: '6 min'),
+        WorkoutSection(
+          id: 'skill_reps',
+          title: 'SKILL REPS',
+          description: 'Applying control to real-time noise.',
+          duration: '5 min',
+          subSections: [
+            WorkoutSection(id: 'sr1', title: 'STATIC HOLD', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr2', title: 'MONITORING REFLEX', description: '2 min reps', duration: ''),
+            WorkoutSection(id: 'sr3', title: 'PREDICTION GAP', description: '2 min reps', duration: ''),
+          ],
+        ),
+      ],
     ),
   ];
 }
