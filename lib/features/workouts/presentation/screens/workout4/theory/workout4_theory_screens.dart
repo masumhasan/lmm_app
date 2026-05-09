@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
+import 'package:lottie/lottie.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import '../widgets/workout4_content_layout.dart';
@@ -16,7 +18,7 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       if (mounted) setState(() => showCta = true);
     });
   }
@@ -32,22 +34,50 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
+              FadeIn(
+                duration: const Duration(seconds: 2),
+                child: DotLottieLoader.fromAsset(
+                  'assets/lotties/clouds.lottie',
+                  frameBuilder: (BuildContext context, DotLottie? dotlottie) {
+                    if (dotlottie != null) {
+                      return Lottie.memory(
+                        dotlottie.animations.values.single,
+                        height: 200,
+                      );
+                    } else {
+                      return const SizedBox(height: 200);
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(height: 24),
               FadeInDown(
                 delay: const Duration(milliseconds: 300),
-                child: Text('The mind gets loud for a reason.', style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 28), textAlign: TextAlign.center),
+                child: Text('The mind gets loud for a reason.',
+                    style: AppTypography.h2
+                        .copyWith(color: Colors.white, fontSize: 28),
+                    textAlign: TextAlign.center),
               ),
               const SizedBox(height: 12),
               FadeInDown(
                 delay: const Duration(milliseconds: 1700),
-                child: Text('Attention stayed too long.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
+                child: Text('Attention stayed too long.',
+                    style: AppTypography.p
+                        .copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16),
+                    textAlign: TextAlign.center),
               ),
               const SizedBox(height: 12),
               FadeInDown(
                 delay: const Duration(milliseconds: 3100),
-                child: Text('Today you train the release.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
+                child: Text('Today you train the release.',
+                    style: AppTypography.p
+                        .copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16),
+                    textAlign: TextAlign.center),
               ),
               const Spacer(),
-              Text('Workout start — attention mechanics load in 2 seconds.', style: AppTypography.columnHeader.copyWith(fontSize: 8, color: Colors.white.withOpacity(0.3))),
+              Text('Workout start — muscles load in 2 seconds.',
+                  style: AppTypography.columnHeader
+                      .copyWith(fontSize: 8, color: Colors.white.withOpacity(0.3))),
               const SizedBox(height: 20),
               AnimatedOpacity(
                 opacity: showCta ? 1 : 0,
@@ -55,9 +85,15 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(vertical: 16)),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100)),
+                        padding: const EdgeInsets.symmetric(vertical: 16)),
                     onPressed: showCta ? widget.onNext : null,
-                    child: Text('  Begin Workout', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                    child: Text('  Begin Training',
+                        style: AppTypography.btnText
+                            .copyWith(color: const Color(0xFF1C1C35))),
                   ),
                 ),
               ),
@@ -73,17 +109,30 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
 class Workout4MainNarrationScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4MainNarrationScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4MainNarrationScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('Noise is attention without direction.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
-        ],
+      child: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          decoration: BoxDecoration(
+            color: const Color(0xFFE8F5E9), // Light green background
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(
+            'Noise is attention without direction.',
+            style: AppTypography.h2.copyWith(
+              color: const Color(0xFF2E7D32), // Dark green text
+              fontWeight: FontWeight.w600,
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }
@@ -92,7 +141,8 @@ class Workout4MainNarrationScreen extends StatelessWidget {
 class Workout4CoreDefinitionScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4CoreDefinitionScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4CoreDefinitionScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -101,11 +151,18 @@ class Workout4CoreDefinitionScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Overthinking is not too many thoughts.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text('Overthinking is not too many thoughts.',
+              style: AppTypography.h2.copyWith(fontSize: 26),
+              textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('It is the same thought pattern being revisited\nbecause attention never disengaged.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text(
+              'It is one pattern being revisited because attention never released.',
+              style: AppTypography.h2.copyWith(fontSize: 24),
+              textAlign: TextAlign.center),
           const SizedBox(height: 20),
-          Text('Attention locks', style: AppTypography.columnHeader.copyWith(fontSize: 10, letterSpacing: 1.4)),
+          Text('CORE DEFINITION',
+              style: AppTypography.columnHeader
+                  .copyWith(fontSize: 10, letterSpacing: 1.4)),
         ],
       ),
     );
@@ -115,7 +172,8 @@ class Workout4CoreDefinitionScreen extends StatelessWidget {
 class Workout4ProtectiveLogicScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ProtectiveLogicScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4ProtectiveLogicScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -124,11 +182,17 @@ class Workout4ProtectiveLogicScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Your system follows a simple rule:', style: AppTypography.p.copyWith(fontSize: 18), textAlign: TextAlign.center),
+          Text('The mind feels it MUST complete.',
+              style: AppTypography.h2.copyWith(fontSize: 26),
+              textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('“If attention keeps returning here,\nthis must matter.”', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('So it keeps producing noise\nto make sure nothing is missed.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('“If I don’t finish this\nI am not safe.”',
+              style: AppTypography.h1.copyWith(fontSize: 34),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 20),
+          Text('PROTECTIVE LOGIC',
+              style: AppTypography.columnHeader
+                  .copyWith(fontSize: 10, letterSpacing: 1.4)),
         ],
       ),
     );
@@ -138,7 +202,8 @@ class Workout4ProtectiveLogicScreen extends StatelessWidget {
 class Workout4AttentionMistakeScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4AttentionMistakeScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4AttentionMistakeScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -147,9 +212,14 @@ class Workout4AttentionMistakeScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The system confuses attention\nwith danger.', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
+          Text('The system confuses attention with urgency.',
+              style: AppTypography.h1.copyWith(fontSize: 34),
+              textAlign: TextAlign.center),
           const SizedBox(height: 16),
-          Text('Attention is fuel. Not proof.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('Attention is fuel. Not fact.',
+              style: AppTypography.p
+                  .copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)),
+              textAlign: TextAlign.center),
         ],
       ),
     );
@@ -159,7 +229,8 @@ class Workout4AttentionMistakeScreen extends StatelessWidget {
 class Workout4NoiseBuildScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4NoiseBuildScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4NoiseBuildScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -168,11 +239,25 @@ class Workout4NoiseBuildScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('When attention doesn’t release,\nthoughts don’t resolve.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          FadeInUp(
+            child: Text('When attention doesn’t release,\nthoughts don’t resolve.',
+                style: AppTypography.h2.copyWith(fontSize: 26),
+                textAlign: TextAlign.center),
+          ),
           const SizedBox(height: 12),
-          Text('They replay.', style: AppTypography.h1.copyWith(fontSize: 38), textAlign: TextAlign.center),
+          FadeIn(
+            delay: const Duration(milliseconds: 800),
+            child: Text('They replay.',
+                style: AppTypography.h1.copyWith(fontSize: 38),
+                textAlign: TextAlign.center),
+          ),
           const SizedBox(height: 12),
-          Text('Replay creates volume.\nVolume creates urgency.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          FadeInUp(
+            delay: const Duration(milliseconds: 1600),
+            child: Text('Replay creates volume.\nVolume creates urgency.',
+                style: AppTypography.h2.copyWith(fontSize: 24),
+                textAlign: TextAlign.center),
+          ),
         ],
       ),
     );
@@ -182,13 +267,26 @@ class Workout4NoiseBuildScreen extends StatelessWidget {
 class Workout4ExamplesIntroScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ExamplesIntroScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4ExamplesIntroScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      child: Text('How this looks in life:', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('How this looks in life:',
+              style: AppTypography.h1.copyWith(fontSize: 34),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 12),
+          Text('Attention looking for a target.',
+              style: AppTypography.p
+                  .copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)),
+              textAlign: TextAlign.center),
+        ],
+      ),
     );
   }
 }
@@ -252,7 +350,8 @@ class Workout4WhyThinkingFailsScreen extends StatelessWidget {
 class Workout4CoreShiftScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4CoreShiftScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4CoreShiftScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -261,11 +360,19 @@ class Workout4CoreShiftScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('THE SHIFT', style: AppTypography.columnHeader.copyWith(fontSize: 10, letterSpacing: 1.4)),
+          Text('THE SHIFT',
+              style: AppTypography.columnHeader
+                  .copyWith(fontSize: 10, letterSpacing: 1.4)),
           const SizedBox(height: 16),
-          Text('Attention is a choice.', style: AppTypography.h1.copyWith(fontSize: 40), textAlign: TextAlign.center),
+          Text('Attention is a choice.',
+              style: AppTypography.h1.copyWith(fontSize: 40),
+              textAlign: TextAlign.center),
           const SizedBox(height: 20),
-          Text('You don’t need to stop the thoughts.\nYou need to stop feeding them.', style: AppTypography.h2.copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)), textAlign: TextAlign.center),
+          Text(
+              'You don’t need to fix the thoughts.\nYou need to train who is in control.',
+              style: AppTypography.h2
+                  .copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)),
+              textAlign: TextAlign.center),
         ],
       ),
     );
@@ -371,7 +478,8 @@ class Workout4ClosingIntroScreen extends StatelessWidget {
 class Workout4ClosingMainScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ClosingMainScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4ClosingMainScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -380,13 +488,14 @@ class Workout4ClosingMainScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The mind was loud.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('You removed the fuel.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('The loop remains open.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('And you are still safe.', style: AppTypography.h2.copyWith(fontSize: 26, color: AppColors.accent), textAlign: TextAlign.center),
+          Text('“Where attention goes,\nnoise grows.”',
+              style: AppTypography.h1.copyWith(fontSize: 32),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 16),
+          Text('You are not your noise.',
+              style: AppTypography.h2
+                  .copyWith(fontSize: 18, color: AppColors.ink.withOpacity(0.5)),
+              textAlign: TextAlign.center),
         ],
       ),
     );
@@ -396,18 +505,29 @@ class Workout4ClosingMainScreen extends StatelessWidget {
 class Workout4ClosingInsightScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ClosingInsightScreen({required this.onNext, required this.onBack, super.key});
+  const Workout4ClosingInsightScreen(
+      {required this.onNext, required this.onBack, super.key});
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
       onNext: onNext,
       onBack: onBack,
+      nextButtonText: 'Finish Workout',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Fear survives on reaction.', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
+          Text('You are the direction.',
+              style: AppTypography.h1.copyWith(fontSize: 34),
+              textAlign: TextAlign.center),
           const SizedBox(height: 16),
-          Text('Safety appears when reaction reduces.', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.ink.withOpacity(0.6)), textAlign: TextAlign.center),
+          Text('Noise is just attention looking for a home.',
+              style: AppTypography.h2
+                  .copyWith(fontSize: 18, color: AppColors.ink.withOpacity(0.5)),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 12),
+          Text('Starve it.',
+              style: AppTypography.h2.copyWith(fontSize: 24, color: AppColors.accent),
+              textAlign: TextAlign.center),
         ],
       ),
     );

@@ -319,9 +319,12 @@ class _Workout4Drill2PlayScreenState extends State<Workout4Drill2PlayScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Wait.', style: AppTypography.h1.copyWith(fontSize: 44)),
+              FadeInDown(
+                child: Text('Wait.', style: AppTypography.h1.copyWith(fontSize: 44)),
+              ),
               const SizedBox(height: 20),
-              Text('$secondsRemaining', style: AppTypography.h2.copyWith(fontSize: 40, color: AppColors.accent)),
+              Text('$secondsRemaining',
+                  style: AppTypography.h2.copyWith(fontSize: 40, color: AppColors.ink)),
             ],
           ),
         ),
@@ -335,17 +338,26 @@ class _Workout4Drill2PlayScreenState extends State<Workout4Drill2PlayScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('This needs thinking about — now.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text('This needs thinking about — now.',
+              style: AppTypography.h2.copyWith(fontSize: 26),
+              textAlign: TextAlign.center),
           const SizedBox(height: 48),
-          Text('Set a delay: ${sliderVal.toInt()} seconds', style: AppTypography.columnHeader),
+          Text('Set a delay: ${sliderVal.toInt()} seconds',
+              style: AppTypography.columnHeader),
+          const SizedBox(height: 12),
           Slider(
             value: sliderVal,
             min: 0,
             max: 10,
             divisions: 10,
-            activeColor: AppColors.accent,
+            activeColor: AppColors.ink,
+            inactiveColor: AppColors.line,
             onChanged: (v) => setState(() => sliderVal = v),
           ),
+          const SizedBox(height: 12),
+          Text('Slide to 10 to force the wait.',
+              style: AppTypography.p
+                  .copyWith(fontSize: 12, color: AppColors.ink.withOpacity(0.3))),
         ],
       ),
     );
@@ -433,11 +445,17 @@ class _Workout4Drill3PlayScreenState extends State<Workout4Drill3PlayScreen> {
   String target = 'What if this means that I should have done something else and now...';
   bool isCut = false;
   Timer? timer;
+  bool isWaiting = true;
 
   @override
   void initState() {
     super.initState();
-    _startTyping();
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      if (mounted) {
+        setState(() => isWaiting = false);
+        _startTyping();
+      }
+    });
   }
 
   void _startTyping() {
@@ -475,17 +493,26 @@ class _Workout4Drill3PlayScreenState extends State<Workout4Drill3PlayScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(isCut ? 'Wait.' : 'Tap CUT before completion.', style: AppTypography.columnHeader),
+            Text(isWaiting ? 'Wait.' : (isCut ? 'Wait.' : 'Do not finish it.'),
+                style: AppTypography.columnHeader),
             const SizedBox(height: 48),
             Container(
               padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-              child: Text('$text|', style: AppTypography.h2.copyWith(fontSize: 22)),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(16)),
+              child: Text(text.isEmpty ? '…' : '$text|',
+                  style: AppTypography.h2.copyWith(fontSize: 22)),
             ),
             const SizedBox(height: 64),
-            if (!isCut)
+            if (!isCut && !isWaiting)
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.line, foregroundColor: AppColors.ink, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16)),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.ink,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 48, vertical: 16)),
                 onPressed: cut,
                 child: const Text('CUT HERE'),
               ),
