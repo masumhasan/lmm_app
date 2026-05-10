@@ -229,14 +229,17 @@ class _QuickResetCard extends StatelessWidget {
                         letterSpacing: -0.5,
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.08),
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white.withOpacity(0.05)),
+                    GestureDetector(
+                      onTap: () => context.push('/now?from=workout'),
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.08),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white.withOpacity(0.05)),
+                        ),
+                        child: const Icon(LucideIcons.play, color: Colors.white, size: 24),
                       ),
-                      child: const Icon(LucideIcons.play, color: Colors.white, size: 24),
                     ),
                   ],
                 ),
