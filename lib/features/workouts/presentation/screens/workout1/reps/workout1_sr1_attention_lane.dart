@@ -15,7 +15,8 @@ class Workout1SR1PlayScreen extends StatefulWidget {
   State<Workout1SR1PlayScreen> createState() => _Workout1SR1PlayScreenState();
 }
 
-class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with SingleTickerProviderStateMixin {
+class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen>
+    with SingleTickerProviderStateMixin {
   static const _distractions = [
     'This is a sign.',
     "They're pulling away.",
@@ -27,11 +28,20 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
   bool _isPaused = false;
   bool _isComplete = false;
   bool _thumbOnDot = false;
+  bool _laneFlashing = false;
   int _elapsedMs = 0;
   String? _currentDistraction;
   Timer? _gameTimer;
   Timer? _distractionTimer;
+  Timer? _flashTimer;
   int _distractionIndex = 0;
+
+  // Captured sine offset when thumb lands on dot
+  double _frozenOffset = 0.0;
+
+  // Animation duration in ms — shortened to speed up drift
+  int _dotDurationMs = 3000;
+  static const _minDurationMs = 1000;
 
   static const _gameDurationMs = 20000;
   static const _laneWidth = 80.0;
@@ -62,13 +72,63 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
     final delay = 4000 + Random().nextInt(1000);
     _distractionTimer = Timer(Duration(milliseconds: delay), () {
       if (!mounted || _isComplete) return;
-      setState(() => _currentDistraction = _distractions[_distractionIndex % _distractions.length]);
+      setState(() =>
+          _currentDistraction = _distractions[_distractionIndex % _distractions.length]);
       _distractionIndex++;
       Timer(const Duration(seconds: 2), () {
         if (mounted) setState(() => _currentDistraction = null);
       });
       if (!_isComplete) _scheduleDistraction();
     });
+  }
+
+  // Thumb lands on dot → freeze dot at current position
+  void _onThumbDown(double screenWidth) {
+    final currentOffset =
+        sin(_dotController.value * pi * 2) * (screenWidth * 0.25);
+    _dotController.stop();
+    setState(() {
+      _thumbOnDot = true;
+      _frozenOffset = currentOffset;
+    });
+  }
+
+  // Thumb lifts → dot becomes unstable, drifts faster
+  void _onThumbUp() {
+    _increaseDotSpeed(delta: 400);
+    setState(() => _thumbOnDot = false);
+    if (!_isPaused && !_isComplete) {
+      _dotController.repeat(reverse: true);
+    }
+  }
+
+  // Thumb drifts outside lane boundary → soft flash + slight speed increase
+  void _onThumbUpdate(DragUpdateDetails details, double laneCenter) {
+    final x = details.globalPosition.dx;
+    final outside =
+        x < laneCenter - _laneWidth / 2 || x > laneCenter + _laneWidth / 2;
+    if (outside && !_laneFlashing) {
+      _triggerLaneFlash();
+      _increaseDotSpeed(delta: 200);
+    }
+  }
+
+  // Soft lane brightening — no red, just a brief white pulse
+  void _triggerLaneFlash() {
+    setState(() => _laneFlashing = true);
+    _flashTimer?.cancel();
+    _flashTimer = Timer(const Duration(milliseconds: 400), () {
+      if (mounted) setState(() => _laneFlashing = false);
+    });
+  }
+
+  // Shorten controller duration to increase drift speed
+  void _increaseDotSpeed({required int delta}) {
+    final next = (_dotDurationMs - delta).clamp(_minDurationMs, 3000);
+    if (next != _dotDurationMs) {
+      _dotDurationMs = next;
+      _dotController.duration = Duration(milliseconds: _dotDurationMs);
+    }
   }
 
   void _endGame() {
@@ -84,6 +144,7 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
     _dotController.dispose();
     _gameTimer?.cancel();
     _distractionTimer?.cancel();
+    _flashTimer?.cancel();
     super.dispose();
   }
 
@@ -135,23 +196,31 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
                 const SizedBox(height: 8),
                 Text(
                   'Keep your thumb on the dot.\nKeep it inside the lane.',
-                  style: AppTypography.p.copyWith(fontSize: 13, color: AppColors.ink.withOpacity(0.3)),
+                  style: AppTypography.p
+                      .copyWith(fontSize: 13, color: AppColors.ink.withOpacity(0.3)),
                   textAlign: TextAlign.center,
                 ),
               ],
             ),
           ),
-          // Lane
+          // Lane — flashes softly when thumb exits boundary
           Positioned(
             top: 180,
             bottom: 100,
             left: laneCenter - _laneWidth / 2,
-            child: Container(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
               width: _laneWidth,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.6),
+                color: _laneFlashing
+                    ? Colors.white.withOpacity(0.88)
+                    : Colors.white.withOpacity(0.6),
                 borderRadius: BorderRadius.circular(40),
-                border: Border.all(color: AppColors.line.withOpacity(0.3)),
+                border: Border.all(
+                  color: _laneFlashing
+                      ? AppColors.accent.withOpacity(0.28)
+                      : AppColors.line.withOpacity(0.3),
+                ),
               ),
             ),
           ),
@@ -159,19 +228,24 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
           AnimatedBuilder(
             animation: _dotController,
             builder: (context, child) {
-              final offset = sin(_dotController.value * pi * 2) * (screenWidth * 0.25);
+              final offset = _thumbOnDot
+                  ? _frozenOffset
+                  : sin(_dotController.value * pi * 2) * (screenWidth * 0.25);
               return Positioned(
                 top: MediaQuery.of(context).size.height * 0.45,
                 left: laneCenter - 16 + offset,
                 child: GestureDetector(
-                  onPanStart: (_) => setState(() => _thumbOnDot = true),
-                  onPanEnd: (_) => setState(() => _thumbOnDot = false),
-                  onPanCancel: () => setState(() => _thumbOnDot = false),
+                  onPanStart: (_) => _onThumbDown(screenWidth),
+                  onPanUpdate: (details) => _onThumbUpdate(details, laneCenter),
+                  onPanEnd: (_) => _onThumbUp(),
+                  onPanCancel: () => _onThumbUp(),
                   child: Container(
                     width: 32,
                     height: 32,
                     decoration: BoxDecoration(
-                      color: _thumbOnDot ? AppColors.accent : AppColors.accent.withOpacity(0.6),
+                      color: _thumbOnDot
+                          ? AppColors.accent
+                          : AppColors.accent.withOpacity(0.6),
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
@@ -205,7 +279,7 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
                 ),
               ),
             ),
-          // Pause modal
+          // Pause overlay
           if (_isPaused)
             Positioned.fill(
               child: Container(
@@ -214,14 +288,18 @@ class _Workout1SR1PlayScreenState extends State<Workout1SR1PlayScreen> with Sing
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100)),
                     ),
                     onPressed: () {
                       setState(() => _isPaused = false);
                       _dotController.repeat(reverse: true);
                     },
-                    child: Text('  Resume', style: AppTypography.btnText.copyWith(color: AppColors.accent)),
+                    child: Text('  Resume',
+                        style:
+                            AppTypography.btnText.copyWith(color: AppColors.accent)),
                   ),
                 ),
               ),

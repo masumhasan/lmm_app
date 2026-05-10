@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Head -30)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\" | Where-Object {$_.PSIsContainer})"
+    ]
+  }
+}
