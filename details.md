@@ -1,5 +1,7 @@
 # Project Technical Details
 
+**Last Updated**: 2026-05-09
+
 This document lists the SDKs, packages, and 3rd party components used in the **lmm_app** project.
 
 ## Core SDKs
