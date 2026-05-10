@@ -70,6 +70,7 @@ class _SystemDetailedDefinitionScreenState
       showNextButton: showCTA,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FadeInDown(
             duration: const Duration(milliseconds: 1000),
@@ -91,6 +92,33 @@ class _SystemDetailedDefinitionScreenState
                   color: AppColors.accent.withOpacity(0.12),
                 ),
               ),
+            ),
+          ),
+          const SizedBox(height: 48),
+          FadeInDown(
+            delay: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 500),
+            child: Text(
+              'Your system reacts fast.',
+              style: AppTypography.columnHeader.copyWith(fontSize: 18),
+            ),
+          ),
+          const SizedBox(height: 16),
+          FadeInDown(
+            delay: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
+            child: Text(
+              'Its job is protection.',
+              style: AppTypography.columnHeader.copyWith(fontSize: 18),
+            ),
+          ),
+          const SizedBox(height: 16),
+          FadeInDown(
+            delay: const Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 500),
+            child: Text(
+              'Not truth.',
+              style: AppTypography.columnHeader.copyWith(fontSize: 18),
             ),
           ),
           const SizedBox(height: 48),
