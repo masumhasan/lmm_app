@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:lottie/lottie.dart';
@@ -40,11 +41,14 @@ class Workout4Drill1PlayScreen extends StatefulWidget {
 }
 
 class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
+  // Shared hold progress (0.0 → 1.0) — drives thought slowdown and fade
+  final ValueNotifier<double> _holdNotifier = ValueNotifier(0.0);
+
   bool isHolding = false;
-  double progress = 0;
-  Timer? timer;
-  Timer? _buttonShowTimer;
   bool showContinue = false;
+  Timer? _holdTimer;
+  Timer? _buttonShowTimer;
+
   final List<String> thoughts = [
     'What if they meant...',
     'I should have said...',
@@ -54,25 +58,44 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
     'This won\'t work',
   ];
 
-  void _startTimer() {
-    timer = Timer.periodic(const Duration(milliseconds: 100), (t) {
-      if (isHolding) {
-        setState(() {
-          progress += 0.025; // 4 seconds total (100ms * 40)
-          if (progress >= 1.0) {
-            progress = 1.0;
-            showContinue = true;
-            t.cancel();
-          }
-        });
+  void _startHold() {
+    setState(() => isHolding = true);
+    _holdTimer?.cancel();
+    // Fill to 1.0 over 3 s (100ms × 30 steps)
+    _holdTimer = Timer.periodic(const Duration(milliseconds: 100), (t) {
+      if (!isHolding || !mounted) { t.cancel(); return; }
+      final next = (_holdNotifier.value + 1 / 30).clamp(0.0, 1.0);
+      _holdNotifier.value = next;
+      if (next >= 1.0) {
+        t.cancel();
+        if (mounted) setState(() => showContinue = true);
       }
     });
   }
 
+  void _releaseHold() {
+    setState(() => isHolding = false);
+    _holdTimer?.cancel();
+    if (!showContinue) {
+      // Released before completing — thoughts resume at full speed
+      _holdNotifier.value = 0.0;
+    } else {
+      // Already completed — hide button after 5 s if not re-held
+      _buttonShowTimer?.cancel();
+      _buttonShowTimer = Timer(const Duration(seconds: 5), () {
+        if (mounted && !isHolding) {
+          setState(() => showContinue = false);
+          _holdNotifier.value = 0.0;
+        }
+      });
+    }
+  }
+
   @override
   void dispose() {
-    timer?.cancel();
+    _holdTimer?.cancel();
     _buttonShowTimer?.cancel();
+    _holdNotifier.dispose();
     super.dispose();
   }
 
@@ -93,7 +116,8 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                     for (int i = 0; i < thoughts.length; i++)
                       _DriftingThought(
                         text: thoughts[i],
-                        delay: Duration(seconds: i * 2),
+                        initialProgress: i / thoughts.length,
+                        holdNotifier: _holdNotifier,
                       ),
                   ],
                 ),
@@ -106,30 +130,8 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
               alignment: Alignment.centerRight,
               widthFactor: 0.5,
               child: GestureDetector(
-                onLongPressStart: (_) {
-                  setState(() {
-                    isHolding = true;
-                    _buttonShowTimer?.cancel();
-                    _startTimer();
-                  });
-                },
-                onLongPressEnd: (_) {
-                  setState(() {
-                    isHolding = false;
-                    progress = 0;
-                    timer?.cancel();
-                    
-                    // If the button was shown, start a 5s countdown to hide it
-                    if (showContinue) {
-                      _buttonShowTimer?.cancel();
-                      _buttonShowTimer = Timer(const Duration(seconds: 5), () {
-                        if (mounted && !isHolding) {
-                          setState(() => showContinue = false);
-                        }
-                      });
-                    }
-                  });
-                },
+                onLongPressStart: (_) => _startHold(),
+                onLongPressEnd: (_) => _releaseHold(),
                 child: Container(
                   decoration: BoxDecoration(
                     color: isHolding ? AppColors.accent.withOpacity(0.05) : Colors.transparent,
@@ -139,15 +141,21 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(isHolding ? 'HOLDING...' : 'HOLD HERE', style: AppTypography.columnHeader.copyWith(fontSize: 12, letterSpacing: 2)),
+                        Text(
+                          isHolding ? 'HOLDING...' : 'HOLD HERE',
+                          style: AppTypography.columnHeader.copyWith(fontSize: 12, letterSpacing: 2),
+                        ),
                         const SizedBox(height: 12),
-                        SizedBox(
-                          width: 140,
-                          height: 3,
-                          child: LinearProgressIndicator(
-                            value: progress,
-                            backgroundColor: AppColors.line.withOpacity(0.1),
-                            valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent),
+                        ValueListenableBuilder<double>(
+                          valueListenable: _holdNotifier,
+                          builder: (context, progress, _) => SizedBox(
+                            width: 140,
+                            height: 3,
+                            child: LinearProgressIndicator(
+                              value: progress,
+                              backgroundColor: AppColors.line.withOpacity(0.1),
+                              valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent),
+                            ),
                           ),
                         ),
                       ],
@@ -172,10 +180,14 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                 duration: const Duration(milliseconds: 500),
                 child: Column(
                   children: [
-                    Text('Noise runs when it’s fed.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45))),
+                    Text('Noise runs when it\'s fed.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45))),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.ink, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.ink,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                        padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+                      ),
                       onPressed: widget.onComplete,
                       child: Text('Continue', style: AppTypography.btnText.copyWith(color: Colors.white)),
                     ),
@@ -191,41 +203,65 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
 
 class _DriftingThought extends StatefulWidget {
   final String text;
-  final Duration delay;
-  const _DriftingThought({required this.text, required this.delay});
+  final double initialProgress;
+  final ValueNotifier<double> holdNotifier;
+  const _DriftingThought({required this.text, required this.initialProgress, required this.holdNotifier});
   @override
   _DriftingThoughtState createState() => _DriftingThoughtState();
 }
 
 class _DriftingThoughtState extends State<_DriftingThought> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
+  late Ticker _ticker;
+  late double _progress;
+  int _lastMs = 0;
+  bool _tickerStarted = false;
+  static const double _cycleDurationMs = 14000.0;
+
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 14));
-    _animation = Tween<double>(begin: -1.0, end: 1.2).animate(_controller);
-    Future.delayed(widget.delay, () {
-      if (mounted) _controller.repeat();
+    _progress = widget.initialProgress;
+    _ticker = createTicker(_onTick);
+    _ticker.start();
+  }
+
+  void _onTick(Duration elapsed) {
+    if (!_tickerStarted) {
+      _tickerStarted = true;
+      _lastMs = elapsed.inMilliseconds;
+      return;
+    }
+    final dt = elapsed.inMilliseconds - _lastMs;
+    _lastMs = elapsed.inMilliseconds;
+    // Speed scales down to zero as holdProgress reaches 1.0
+    final speedFactor = (1.0 - widget.holdNotifier.value).clamp(0.0, 1.0);
+    if (speedFactor < 0.001) return;
+    setState(() {
+      _progress += (dt / _cycleDurationMs) * speedFactor;
+      if (_progress >= 1.0) _progress -= 1.0;
     });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _ticker.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
+    // Map _progress (0→1) to the original range (-1.0→1.2)
+    final animValue = -1.0 + _progress * 2.2;
+    final baseOpacity = (1 - (animValue - 0.5).abs() * 2).clamp(0.0, 0.4);
+    return ValueListenableBuilder<double>(
+      valueListenable: widget.holdNotifier,
+      builder: (context, holdProgress, _) {
+        final opacity = (baseOpacity * (1.0 - holdProgress * 0.9)).clamp(0.0, 1.0);
         return Positioned(
-          top: 200 + (100 * (widget.text.length % 5)), // Vary top position
-          left: _animation.value * 200,
+          top: 200 + (100.0 * (widget.text.length % 5)),
+          left: animValue * 200,
           child: Opacity(
-            opacity: (1 - (_animation.value - 0.5).abs() * 2).clamp(0, 0.4),
+            opacity: opacity,
             child: Text(widget.text, style: AppTypography.p.copyWith(fontSize: 16)),
           ),
         );
@@ -246,7 +282,7 @@ class Workout4Drill1LockInScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You didn’t stop thoughts.', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
+          Text("You didn't stop thoughts.", style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('You stopped feeding them.', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
         ],
@@ -380,7 +416,7 @@ class Workout4Drill2ResultScreen extends StatelessWidget {
           const SizedBox(height: 12),
           Text('Nothing arrived.', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
           const SizedBox(height: 24),
-          Text('That’s attention control under pressure.', style: AppTypography.p.copyWith(fontSize: 16), textAlign: TextAlign.center),
+          Text("That's attention control under pressure.", style: AppTypography.p.copyWith(fontSize: 16), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -401,7 +437,7 @@ class Workout4Drill2LockInScreen extends StatelessWidget {
         children: [
           Text('Urgency is not intelligence.', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('It’s pressure.', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
+          Text("It's pressure.", style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -566,7 +602,7 @@ class Workout4Drill3ResultScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The thought didn’t finish.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text("The thought didn't finish.", style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('Nothing bad happened.', style: AppTypography.h2.copyWith(fontSize: 26, color: AppColors.accent), textAlign: TextAlign.center),
           const SizedBox(height: 24),
@@ -589,7 +625,7 @@ class Workout4Drill3LockInScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Thoughts don’t need endings', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
+          Text("Thoughts don't need endings", style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('They need less authority', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
         ],
