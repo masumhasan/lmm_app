@@ -190,7 +190,10 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         );
 
       case 41:
-        return Workout3SkillRepsCompleteScreen(onContinueWorkout4: () => context.go('/'), onHome: () => context.go('/'));
+        return Workout3SkillRepsCompleteScreen(
+          onContinueWorkout4: () => context.go('/workouts/4/play'),
+          onHome: () => context.go('/'),
+        );
       default:
         return Scaffold(body: Center(child: Text('Step $step')));
     }

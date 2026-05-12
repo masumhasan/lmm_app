@@ -360,7 +360,7 @@ class _Workout4Drill2PlayScreenState extends State<Workout4Drill2PlayScreen> {
               ),
               const SizedBox(height: 20),
               Text('$secondsRemaining',
-                  style: AppTypography.h2.copyWith(fontSize: 40, color: AppColors.ink)),
+                  style: AppTypography.h2.copyWith(fontSize: 200, color: AppColors.ink)),
             ],
           ),
         ),

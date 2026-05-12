@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:lottie/lottie.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import '../widgets/workout2_content_layout.dart';
@@ -305,40 +307,223 @@ class _Workout2SR3PlayScreenState extends State<Workout2SR3PlayScreen> {
 class Workout2SkillRepsCompleteScreen extends StatelessWidget {
   final VoidCallback onContinueWorkout3;
   final VoidCallback onHome;
-  const Workout2SkillRepsCompleteScreen({required this.onContinueWorkout3, required this.onHome, super.key});
+  const Workout2SkillRepsCompleteScreen(
+      {required this.onContinueWorkout3, required this.onHome, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 80),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'The alarm felt endless\nbecause you could not see the loop.\n\nYou saw checking.\nYou saw control.\nYou saw the escape reflex.\n\nThe loop does not grow from sensation.\nIt grows from reaction to sensation.',
-                style: AppTypography.h2.copyWith(fontSize: 24),
-                textAlign: TextAlign.center,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: const Alignment(0, -0.2),
+                  radius: 1.2,
+                  colors: [
+                    AppColors.accent.withOpacity(0.03),
+                    Colors.transparent
+                  ],
+                ),
               ),
-              const SizedBox(height: 20),
-              Text('Set Complete: Skill Reps\nYou trained: no checking · no forcing · no escape', style: AppTypography.p.copyWith(fontSize: 13, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
-              const SizedBox(height: 28),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 15)),
-                onPressed: onContinueWorkout3,
-                child: Text('Continue to Workout 3', style: AppTypography.btnText.copyWith(color: Colors.white)),
-              ),
-              const SizedBox(height: 10),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), side: BorderSide(color: AppColors.line.withOpacity(0.8)), padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 15)),
-                onPressed: () => context.go('/hub'),
-                child: Text('Explore Tools Hub', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.6))),
-              ),
-              const SizedBox(height: 10),
-              TextButton(onPressed: onHome, child: Text('Return to Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
-            ],
+            ),
           ),
+          Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FadeInUp(
+                    child: Column(
+                      children: [
+                        Text(
+                          'WORKOUT 2',
+                          style: AppTypography.columnHeader.copyWith(
+                            fontSize: 10,
+                            letterSpacing: 4.0,
+                            color: AppColors.ink.withOpacity(0.25),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Training Complete',
+                          style: AppTypography.h1.copyWith(
+                              fontSize: 34,
+                              fontStyle: FontStyle.italic,
+                              height: 1.1),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeIn(
+                    delay: const Duration(milliseconds: 400),
+                    child: Column(
+                      children: [
+                        Text(
+                          'The alarm felt endless\nbecause you could not see the loop.',
+                          style: AppTypography.p.copyWith(
+                            fontSize: 16,
+                            color: AppColors.ink.withOpacity(0.6),
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'You saw checking.\nYou saw control.\nYou saw the escape reflex.',
+                          style: AppTypography.p.copyWith(
+                            fontSize: 16,
+                            color: AppColors.ink.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'The loop does not grow from sensation.\nIt grows from reaction to sensation.',
+                          style: AppTypography.h2.copyWith(
+                            fontSize: 20,
+                            fontStyle: FontStyle.italic,
+                            color: AppColors.ink.withOpacity(0.8),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 600),
+                    child: Text(
+                      'Set Complete: Skill Reps\nYou trained: no checking · no forcing · no escape',
+                      style: AppTypography.columnHeader.copyWith(
+                        fontSize: 9,
+                        color: AppColors.ink.withOpacity(0.3),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 800),
+                    child: _CompletionAction(
+                      label: 'CONTINUE TRAINING',
+                      subLabel: 'Workout 3',
+                      icon: LucideIcons.arrowRight,
+                      isPrimary: true,
+                      onTap: onContinueWorkout3,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 900),
+                    child: _CompletionAction(
+                      label: 'TOOLS HUB',
+                      icon: LucideIcons.layoutGrid,
+                      onTap: () => context.go('/hub'),
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeIn(
+                    delay: const Duration(milliseconds: 1400),
+                    child: TextButton(
+                      onPressed: onHome,
+                      child: Text(
+                        'RETURN HOME',
+                        style: AppTypography.columnHeader.copyWith(
+                          fontSize: 9,
+                          letterSpacing: 2.0,
+                          color: AppColors.ink.withOpacity(0.35),
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CompletionAction extends StatelessWidget {
+  final String label;
+  final String? subLabel;
+  final IconData icon;
+  final bool isPrimary;
+  final VoidCallback onTap;
+
+  const _CompletionAction({
+    required this.label,
+    this.subLabel,
+    required this.icon,
+    this.isPrimary = false,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+        decoration: BoxDecoration(
+          color: isPrimary ? AppColors.accent : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+              color: isPrimary ? AppColors.accent : AppColors.line.withOpacity(0.3)),
+          boxShadow: isPrimary
+              ? [
+                  BoxShadow(
+                      color: AppColors.accent.withOpacity(0.15),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10))
+                ]
+              : [],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: AppTypography.columnHeader.copyWith(
+                      fontSize: 11,
+                      letterSpacing: 1.2,
+                      color: isPrimary ? Colors.white : AppColors.ink,
+                    ),
+                  ),
+                  if (subLabel != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      subLabel!,
+                      style: AppTypography.p.copyWith(
+                        fontSize: 13,
+                        color: isPrimary
+                            ? Colors.white.withOpacity(0.7)
+                            : AppColors.ink.withOpacity(0.5),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            Icon(
+              icon,
+              size: 18,
+              color: isPrimary ? Colors.white : AppColors.ink.withOpacity(0.3),
+            ),
+          ],
         ),
       ),
     );

@@ -263,16 +263,54 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
             children: [
               Text(round == 1 ? 'Stay with a mild sensation.' : 'Stay again.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
               const SizedBox(height: 10),
-              Text('$secs', style: AppTypography.h1.copyWith(fontSize: 54, color: AppColors.ink.withOpacity(0.25))),
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  Expanded(child: OutlinedButton(onPressed: () => _tapAction('fix'), child: const Text('Fix'))),
-                  const SizedBox(width: 8),
-                  Expanded(child: OutlinedButton(onPressed: () => _tapAction('check'), child: const Text('Check'))),
-                  const SizedBox(width: 8),
-                  Expanded(child: ElevatedButton(onPressed: () => setState(() => micro = 'That’s instruction.'), child: const Text('Leave It'))),
-                ],
+              Text('$secs', style: AppTypography.h1.copyWith(fontSize: 270, color: AppColors.ink.withOpacity(0.25))),
+              const SizedBox(height: 34),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: OutlinedButton(
+                        onPressed: () => _tapAction('fix'),
+                        style: OutlinedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: const Size(0, 75),
+                        ),
+                        child: const Text('Fix', style: TextStyle(fontSize: 13)),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      flex: 3,
+                      child: OutlinedButton(
+                        onPressed: () => _tapAction('check'),
+                        style: OutlinedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: const Size(0, 75),
+                        ),
+                        child:
+                            const Text('Check', style: TextStyle(fontSize: 13)),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      flex: 4,
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            setState(() => micro = 'That’s instruction.'),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: const Size(0, 75),
+                        ),
+                        child: const Text('Leave It',
+                            maxLines: 1,
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(fontSize: 13)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               if (micro != null) ...[
                 const SizedBox(height: 12),

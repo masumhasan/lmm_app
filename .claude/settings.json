@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\" -Directory)",
+      "Bash(Select-Object -ExpandProperty Name)"
     ]
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:lottie/lottie.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import '../widgets/workout3_content_layout.dart';
@@ -126,7 +128,7 @@ class _Workout3SR1PlayScreenState extends State<Workout3SR1PlayScreen> {
           children: [
             if (phase == 0) ...[
               Text('Go.', style: AppTypography.h1.copyWith(fontSize: 44)),
-              Text('$sec', style: AppTypography.h2.copyWith(fontSize: 40)),
+              Text('$sec', style: AppTypography.h2.copyWith(fontSize: 200)),
             ] else if (phase == 1) ...[
               Text('Now Stop.', style: AppTypography.h1.copyWith(fontSize: 36)),
               const SizedBox(height: 8),
@@ -141,7 +143,7 @@ class _Workout3SR1PlayScreenState extends State<Workout3SR1PlayScreen> {
               const SizedBox(height: 8),
               Text('Do nothing.', style: AppTypography.h2.copyWith(fontSize: 28)),
               const SizedBox(height: 10),
-              Text('$sec', style: AppTypography.h2.copyWith(fontSize: 34)),
+              Text('$sec', style: AppTypography.h2.copyWith(fontSize: 170)),
             ],
           ],
         ),
@@ -197,7 +199,7 @@ class _Workout3SR2PlayScreenState extends State<Workout3SR2PlayScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('$sec', style: AppTypography.h1.copyWith(fontSize: 54)),
+              Text('$sec', style: AppTypography.h1.copyWith(fontSize: 270)),
               const SizedBox(height: 8),
               Text('Let your body exist without checking it.', style: AppTypography.p.copyWith(fontSize: 15)),
               if (prompt.isNotEmpty) ...[
@@ -296,36 +298,224 @@ class _Workout3SR3PlayScreenState extends State<Workout3SR3PlayScreen> {
 class Workout3SkillRepsCompleteScreen extends StatelessWidget {
   final VoidCallback onContinueWorkout4;
   final VoidCallback onHome;
-  const Workout3SkillRepsCompleteScreen({required this.onContinueWorkout4, required this.onHome, super.key});
+  const Workout3SkillRepsCompleteScreen(
+      {required this.onContinueWorkout4, required this.onHome, super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 80),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Nothing dangerous happened.\nYour mind predicted it would.\nYou saw the gap.\nThat gap is power.\nThis is how fear weakens.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
-              const SizedBox(height: 14),
-              Text('Workout completion logs on button tap.', style: AppTypography.columnHeader.copyWith(fontSize: 8, color: AppColors.ink.withOpacity(0.22))),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 15)),
-                onPressed: onContinueWorkout4,
-                child: Text('Continue to Workout 4', style: AppTypography.btnText.copyWith(color: Colors.white)),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: const Alignment(0, -0.2),
+                  radius: 1.2,
+                  colors: [
+                    AppColors.accent.withOpacity(0.03),
+                    Colors.transparent
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)), side: BorderSide(color: AppColors.line.withOpacity(0.9)), padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 15)),
-                onPressed: () => context.go('/hub'),
-                child: Text('Explore Tools Hub', style: AppTypography.btnText.copyWith(color: AppColors.ink.withOpacity(0.6))),
-              ),
-              const SizedBox(height: 10),
-              TextButton(onPressed: onHome, child: Text('Return Home', style: AppTypography.columnHeader.copyWith(fontSize: 10, color: AppColors.ink.withOpacity(0.35)))),
-            ],
+            ),
           ),
+          Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FadeInUp(
+                    child: Column(
+                      children: [
+                        Text(
+                          'WORKOUT 3',
+                          style: AppTypography.columnHeader.copyWith(
+                            fontSize: 10,
+                            letterSpacing: 4.0,
+                            color: AppColors.ink.withOpacity(0.25),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Training Complete',
+                          style: AppTypography.h1.copyWith(
+                              fontSize: 34,
+                              fontStyle: FontStyle.italic,
+                              height: 1.1),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeIn(
+                    delay: const Duration(milliseconds: 400),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Nothing dangerous happened.\nYour mind predicted it would.',
+                          style: AppTypography.h2.copyWith(
+                            fontSize: 22,
+                            fontStyle: FontStyle.italic,
+                            color: AppColors.ink.withOpacity(0.8),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'You saw the gap.\nThat gap is power.',
+                          style: AppTypography.p.copyWith(
+                            fontSize: 18,
+                            color: AppColors.ink.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'This is how fear weakens.',
+                          style: AppTypography.h2.copyWith(
+                            fontSize: 22,
+                            fontStyle: FontStyle.italic,
+                            color: AppColors.ink.withOpacity(0.8),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 600),
+                    child: Text(
+                      'Workout completion logs on button tap.',
+                      style: AppTypography.columnHeader.copyWith(
+                        fontSize: 9,
+                        color: AppColors.ink.withOpacity(0.3),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 800),
+                    child: _CompletionAction(
+                      label: 'CONTINUE TRAINING',
+                      subLabel: 'Workout 4',
+                      icon: LucideIcons.arrowRight,
+                      isPrimary: true,
+                      onTap: onContinueWorkout4,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 900),
+                    child: _CompletionAction(
+                      label: 'TOOLS HUB',
+                      icon: LucideIcons.layoutGrid,
+                      onTap: () => context.go('/hub'),
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  FadeIn(
+                    delay: const Duration(milliseconds: 1400),
+                    child: TextButton(
+                      onPressed: onHome,
+                      child: Text(
+                        'RETURN HOME',
+                        style: AppTypography.columnHeader.copyWith(
+                          fontSize: 9,
+                          letterSpacing: 2.0,
+                          color: AppColors.ink.withOpacity(0.35),
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CompletionAction extends StatelessWidget {
+  final String label;
+  final String? subLabel;
+  final IconData icon;
+  final bool isPrimary;
+  final VoidCallback onTap;
+
+  const _CompletionAction({
+    required this.label,
+    this.subLabel,
+    required this.icon,
+    this.isPrimary = false,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+        decoration: BoxDecoration(
+          color: isPrimary ? AppColors.accent : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+              color: isPrimary
+                  ? AppColors.accent
+                  : AppColors.line.withOpacity(0.3)),
+          boxShadow: isPrimary
+              ? [
+                  BoxShadow(
+                      color: AppColors.accent.withOpacity(0.15),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10))
+                ]
+              : [],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: AppTypography.columnHeader.copyWith(
+                      fontSize: 11,
+                      letterSpacing: 1.2,
+                      color: isPrimary ? Colors.white : AppColors.ink,
+                    ),
+                  ),
+                  if (subLabel != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      subLabel!,
+                      style: AppTypography.p.copyWith(
+                        fontSize: 13,
+                        color: isPrimary
+                            ? Colors.white.withOpacity(0.7)
+                            : AppColors.ink.withOpacity(0.5),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            Icon(
+              icon,
+              size: 18,
+              color: isPrimary ? Colors.white : AppColors.ink.withOpacity(0.3),
+            ),
+          ],
         ),
       ),
     );

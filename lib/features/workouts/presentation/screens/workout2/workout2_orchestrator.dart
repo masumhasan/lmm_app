@@ -298,7 +298,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
 
       case 43:
         return Workout2SkillRepsCompleteScreen(
-          onContinueWorkout3: () => context.go('/'),
+          onContinueWorkout3: () => context.go('/workouts/3/play'),
           onHome: () => context.go('/'),
         );
 

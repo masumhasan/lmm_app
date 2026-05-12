@@ -19,9 +19,14 @@ class Workout1JournalScreen extends StatefulWidget {
 class _Workout1JournalScreenState extends State<Workout1JournalScreen> {
   final TextEditingController _controller = TextEditingController();
   final Set<String> _selectedTags = {};
-  final List<String> _tags = ['Work', 'Family', 'Self', 'Body', 'Social', 'Unknown'];
-  bool _isListening = false;
-  Timer? _typeTimer;
+  final List<String> _tags = [
+    'Work',
+    'Family',
+    'Self',
+    'Body',
+    'Social',
+    'Unknown'
+  ];
 
   void _toggleTag(String tag) {
     setState(() {
@@ -33,39 +38,9 @@ class _Workout1JournalScreenState extends State<Workout1JournalScreen> {
     });
   }
 
-  void _startListening() {
-    if (_isListening) {
-      _stopListening();
-      return;
-    }
-    setState(() => _isListening = true);
-
-    const simulatedText = " I noticed my system creating a story about a conversation — meaning was added before I had evidence.";
-    int charIndex = 0;
-    _typeTimer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      if (charIndex < simulatedText.length) {
-        if (mounted) {
-          setState(() {
-            _controller.text += simulatedText[charIndex];
-            _controller.selection = TextSelection.fromPosition(TextPosition(offset: _controller.text.length));
-          });
-        }
-        charIndex++;
-      } else {
-        _stopListening();
-      }
-    });
-  }
-
-  void _stopListening() {
-    _typeTimer?.cancel();
-    setState(() => _isListening = false);
-  }
-
   @override
   void dispose() {
     _controller.dispose();
-    _typeTimer?.cancel();
     super.dispose();
   }
 
@@ -129,64 +104,34 @@ class _Workout1JournalScreenState extends State<Workout1JournalScreen> {
                   ),
                 ],
               ),
-              child: Stack(
-                alignment: Alignment.centerRight,
-                children: [
-                  TextField(
-                    controller: _controller,
-                    maxLines: 4,
-                    decoration: InputDecoration(
-                      hintText: 'Share your reflection...',
-                      hintStyle: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.2)),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.fromLTRB(20, 20, 64, 20),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: AppColors.line.withOpacity(0.2)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
-                      ),
-                    ),
+              child: TextField(
+                controller: _controller,
+                maxLines: 4,
+                decoration: InputDecoration(
+                  hintText: 'Share your reflection...',
+                  hintStyle: AppTypography.p
+                      .copyWith(color: AppColors.ink.withOpacity(0.2)),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide:
+                        BorderSide(color: AppColors.line.withOpacity(0.2)),
                   ),
-                  Positioned(
-                    right: 12,
-                    bottom: 12,
-                    child: GestureDetector(
-                    onTap: _startListening,
-                    child: _MicButton(isListening: _isListening),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide:
+                        BorderSide(color: AppColors.line.withOpacity(0.2)),
                   ),
-                ),
-              ],
-            ),
-          ),
-          if (_isListening)
-            Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: FadeIn(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _PulseDot(),
-                      const SizedBox(width: 8),
-                      Text(
-                        'System Listening...',
-                        style: AppTypography.columnHeader.copyWith(
-                          fontSize: 10,
-                          color: const Color(0xFF10B981),
-                          letterSpacing: 1.0,
-                        ),
-                      ),
-                    ],
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide:
+                        const BorderSide(color: AppColors.accent, width: 1.5),
                   ),
                 ),
               ),
+            ),
             const SizedBox(height: 24),
             Text(
               'Tag this if it helps you remember.',
@@ -230,53 +175,6 @@ class _Workout1JournalScreenState extends State<Workout1JournalScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _MicButton extends StatelessWidget {
-  final bool isListening;
-  const _MicButton({required this.isListening});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: isListening ? const Color(0xFF10B981).withOpacity(0.1) : AppColors.surface,
-        shape: BoxShape.circle,
-        border: Border.all(color: isListening ? const Color(0xFF10B981) : AppColors.line.withOpacity(0.2)),
-      ),
-      child: Icon(LucideIcons.mic, size: 20, color: isListening ? const Color(0xFF10B981) : AppColors.ink.withOpacity(0.4)),
-    );
-  }
-}
-
-class _PulseDot extends StatefulWidget {
-  @override
-  State<_PulseDot> createState() => _PulseDotState();
-}
-
-class _PulseDotState extends State<_PulseDot> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000))..repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _controller,
-      child: Container(width: 8, height: 8, decoration: const BoxDecoration(color: Color(0xFF10B981), shape: BoxShape.circle)),
     );
   }
 }
