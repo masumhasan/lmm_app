@@ -421,8 +421,8 @@ class Workout4DrillsCompleteScreen extends StatelessWidget {
 class Workout4MuscleSummaryScreen extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4MuscleSummaryScreen(
-      {required this.onNext, required this.onBack, super.key});
+  const Workout4MuscleSummaryScreen({required this.onNext, required this.onBack, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
@@ -438,23 +438,21 @@ class Workout4MuscleSummaryScreen extends StatelessWidget {
             children: [
               Text(
                 'Muscles Activated',
-                style: AppTypography.h1
-                    .copyWith(fontSize: 34, fontStyle: FontStyle.italic),
+                style: AppTypography.h1.copyWith(fontSize: 34, fontStyle: FontStyle.italic),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
           const SizedBox(height: 48),
-          const _MuscleRow(label: 'Cognitive Distance', isActivated: true),
           const _MuscleRow(label: 'Attention Control', isActivated: true),
           const _MuscleRow(label: 'Urgency Resistance', isActivated: true),
           const _MuscleRow(label: 'Completion Tolerance', isActivated: true),
+          const _MuscleRow(label: 'Cognitive Distance', isActivated: true),
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '"Repetition builds automatic strength."',
-              style: AppTypography.p
-                  .copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
+              '“Repetition builds automatic strength.”',
+              style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
             ),
           ),

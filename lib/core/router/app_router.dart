@@ -14,6 +14,9 @@ import 'package:lmm_app/features/now/presentation/screens/rtn_orchestrator.dart'
 import 'package:lmm_app/core/router/scaffold_with_navbar.dart';
 import 'package:lmm_app/features/tools_hub/presentation/screens/tools_hub_screen.dart';
 import 'package:lmm_app/features/ai_coach/presentation/screens/ai_coach_screen.dart';
+import 'package:lmm_app/features/muscle_dashboard/presentation/screens/muscle_dashboard_main.dart';
+import 'package:lmm_app/features/library/presentation/screens/library_screen.dart';
+import 'package:lmm_app/features/profile/presentation/screens/profile_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
@@ -129,7 +132,15 @@ final appRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'profile',
-                  builder: (context, state) => const PlaceholderScreen(title: 'Profile'),
+                  builder: (context, state) => const ProfileScreen(),
+                ),
+                GoRoute(
+                  path: 'muscle-dashboard',
+                  builder: (context, state) => const MuscleDashboardMain(),
+                ),
+                GoRoute(
+                  path: 'library',
+                  builder: (context, state) => const LibraryScreen(),
                 ),
               ],
             ),

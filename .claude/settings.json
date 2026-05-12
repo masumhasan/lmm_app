@@ -6,7 +6,9 @@
       "Bash(Select-Object -ExpandProperty Name)",
       "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\\\\features\\\\workouts\\\\presentation\\\\screens\" -Directory)",
       "Bash(Select-Object Name)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\" -Recurse -Directory)",
+      "Bash(Sort-Object)"
     ]
   }
 }

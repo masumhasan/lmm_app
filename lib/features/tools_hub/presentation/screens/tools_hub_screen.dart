@@ -60,6 +60,16 @@ class ToolsHubScreen extends StatelessWidget {
                   onTap: () => context.go('/drift'),
                 ),
                 _ToolCard(
+                  icon: LucideIcons.bookOpen,
+                  label: 'Library',
+                  onTap: () => context.push('/hub/library'),
+                ),
+                _ToolCard(
+                  icon: LucideIcons.barChart2,
+                  label: 'Muscle Dashboard',
+                  onTap: () => context.push('/hub/muscle-dashboard'),
+                ),
+                _ToolCard(
                   icon: LucideIcons.zap,
                   label: 'Return To Now',
                   onTap: () => context.go('/now'),

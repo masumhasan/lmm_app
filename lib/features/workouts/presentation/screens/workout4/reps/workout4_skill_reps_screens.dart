@@ -781,11 +781,33 @@ class _Workout4SR3PlayScreenState extends State<Workout4SR3PlayScreen>
 //  Skill Reps Complete
 // ─────────────────────────────────────────────
 
-class Workout4SkillRepsCompleteScreen extends StatelessWidget {
+class Workout4SkillRepsCompleteScreen extends StatefulWidget {
   final VoidCallback onHub;
   final VoidCallback onHome;
   const Workout4SkillRepsCompleteScreen(
       {required this.onHub, required this.onHome, super.key});
+
+  @override
+  State<Workout4SkillRepsCompleteScreen> createState() => _Workout4SkillRepsCompleteScreenState();
+}
+
+class _Workout4SkillRepsCompleteScreenState extends State<Workout4SkillRepsCompleteScreen> {
+  int _phase = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _revealPhases();
+  }
+
+  void _revealPhases() async {
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _phase = 1);
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _phase = 2);
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _phase = 3);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -801,8 +823,8 @@ class Workout4SkillRepsCompleteScreen extends StatelessWidget {
             ),
           ),
           Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -828,7 +850,17 @@ class Workout4SkillRepsCompleteScreen extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 24),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+
+                  // Phase 1 — Insight
+                  AnimatedOpacity(
+                    opacity: _phase >= 1 ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 600),
+                    child: Column(
+                      children: [
                         Text(
                           "“Overthinking didn't stop because you solved it.\nIt stopped because you stopped obeying it.”",
                           style: AppTypography.p.copyWith(
@@ -848,45 +880,30 @@ class Workout4SkillRepsCompleteScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   const SizedBox(height: 70),
                   
-                  // Action 1: Hub
-                  FadeInUp(
-                    delay: const Duration(milliseconds: 400),
-                    child: _CompletionAction4(
-                      label: 'EXPLORE TOOLS HUB',
-                      icon: LucideIcons.layoutGrid,
-                      onTap: onHub,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  
-                  // Action 2: Home
-                  FadeInUp(
-                    delay: const Duration(milliseconds: 600),
-                    child: _CompletionAction4(
-                      label: 'RETURN HOME',
-                      icon: LucideIcons.home,
-                      onTap: onHome,
-                    ),
-                  ),
-                  const SizedBox(height: 48),
-                  
-                  FadeIn(
-                    delay: const Duration(milliseconds: 1200),
-                    child: TextButton(
-                      onPressed: onHome,
-                      child: Text(
-                        'RETURN TO DASHBOARD',
-                        style: AppTypography.columnHeader.copyWith(
-                          fontSize: 9,
-                          letterSpacing: 2.0,
-                          color: AppColors.ink.withOpacity(0.35),
-                          decoration: TextDecoration.underline,
-                        ),
+                  // Phase 2 — Actions
+                  if (_phase >= 2) ...[
+                    FadeInUp(
+                      delay: const Duration(milliseconds: 400),
+                      child: _CompletionAction4(
+                        label: 'EXPLORE TOOLS HUB',
+                        icon: LucideIcons.layoutGrid,
+                        onTap: widget.onHub,
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 16),
+                    
+                    FadeInUp(
+                      delay: const Duration(milliseconds: 600),
+                      child: _CompletionAction4(
+                        label: 'RETURN HOME',
+                        icon: LucideIcons.home,
+                        onTap: widget.onHome,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
