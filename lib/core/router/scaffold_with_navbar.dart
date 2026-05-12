@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
+import 'package:lmm_app/core/providers/nav_reset_providers.dart';
 
-class ScaffoldWithNavbar extends StatelessWidget {
+class ScaffoldWithNavbar extends ConsumerWidget {
   const ScaffoldWithNavbar({
     required this.navigationShell,
     Key? key,
@@ -12,7 +14,7 @@ class ScaffoldWithNavbar extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: Container(
@@ -39,37 +41,37 @@ class ScaffoldWithNavbar extends StatelessWidget {
                   icon: LucideIcons.home,
                   label: 'Home',
                   isSelected: navigationShell.currentIndex == 0,
-                  onTap: () => _onTap(context, 0),
+                  onTap: () => _onTap(context, ref, 0),
                 ),
                 _NavBarItem(
                   icon: LucideIcons.activity,
                   label: 'Workouts',
                   isSelected: navigationShell.currentIndex == 1,
-                  onTap: () => _onTap(context, 1),
+                  onTap: () => _onTap(context, ref, 1),
                 ),
                 _NavBarItem(
                   icon: LucideIcons.wind,
                   label: 'Drift',
                   isSelected: navigationShell.currentIndex == 2,
-                  onTap: () => _onTap(context, 2),
+                  onTap: () => _onTap(context, ref, 2),
                 ),
                 _NavBarItem(
                   icon: LucideIcons.zap,
                   label: 'Now',
                   isSelected: navigationShell.currentIndex == 3,
-                  onTap: () => _onTap(context, 3),
+                  onTap: () => _onTap(context, ref, 3),
                 ),
                 _NavBarItem(
                   icon: LucideIcons.messageSquare,
                   label: 'AI Coach',
                   isSelected: navigationShell.currentIndex == 4,
-                  onTap: () => _onTap(context, 4),
+                  onTap: () => _onTap(context, ref, 4),
                 ),
                 _NavBarItem(
                   icon: LucideIcons.layoutGrid,
                   label: 'Tools Hub',
                   isSelected: navigationShell.currentIndex == 5,
-                  onTap: () => _onTap(context, 5),
+                  onTap: () => _onTap(context, ref, 5),
                 ),
               ],
             ),
@@ -79,11 +81,11 @@ class ScaffoldWithNavbar extends StatelessWidget {
     );
   }
 
-  void _onTap(BuildContext context, int index) {
-    navigationShell.goBranch(
-      index,
-      initialLocation: index == navigationShell.currentIndex,
-    );
+  void _onTap(BuildContext context, WidgetRef ref, int index) {
+    if (index == 3) {
+      ref.read(nowResetProvider.notifier).update((s) => s + 1);
+    }
+    navigationShell.goBranch(index, initialLocation: true);
   }
 }
 

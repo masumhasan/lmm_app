@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lmm_app/core/providers/nav_reset_providers.dart';
 import 'rtn_screens.dart';
 
-class RTNOrchestrator extends StatefulWidget {
+class RTNOrchestrator extends ConsumerStatefulWidget {
   final bool accessedFromWorkout;
   const RTNOrchestrator({this.accessedFromWorkout = false, super.key});
 
   @override
-  State<RTNOrchestrator> createState() => _RTNOrchestratorState();
+  ConsumerState<RTNOrchestrator> createState() => _RTNOrchestratorState();
 }
 
-class _RTNOrchestratorState extends State<RTNOrchestrator> {
+class _RTNOrchestratorState extends ConsumerState<RTNOrchestrator> {
   int currentStep = 0;
 
   void _onNext() {
@@ -26,17 +28,22 @@ class _RTNOrchestratorState extends State<RTNOrchestrator> {
   }
 
   void _onHome() {
+    setState(() => currentStep = 0);
     context.go('/');
   }
 
   void _onBackToWorkout() {
-    // If not from workout, this button won't show.
-    // If it was from workout, we just pop back twice or go back to /workouts
     context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<int>(nowResetProvider, (prev, next) {
+      if (prev != null && prev != next) {
+        setState(() => currentStep = 0);
+      }
+    });
+
     switch (currentStep) {
       case 0:
         return RTN01EntryScreen(onNext: _onNext, onBack: _onBack);
