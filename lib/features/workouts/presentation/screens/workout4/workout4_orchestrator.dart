@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'closing/workout4_journal_screens.dart';
+import 'closing/workout4_notice_screens.dart';
 import 'drills/workout4_drill_screens.dart';
 import 'reps/workout4_skill_reps_screens.dart';
 import 'theory/workout4_theory_screens.dart';
@@ -23,7 +25,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
 
   int _initialStep() {
     if (widget.initialSection == 'drills') return 13;
-    if (widget.initialSection == 'skill_reps') return 27;
+    if (widget.initialSection == 'skill_reps') return 41;
     return 0;
   }
 
@@ -151,7 +153,77 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
       case 31:
         return Workout4ClosingMainScreen(onNext: next, onBack: back);
       case 32:
-        return Workout4ClosingInsightScreen(onNext: () => context.go('/hub'), onBack: back);
+        return Workout4ClosingInsightScreen(onNext: next, onBack: back);
+
+      // Notice Layer
+      case 33:
+        return Workout4Notice1Screen(onNext: next, onBack: back);
+      case 34:
+        return Workout4Notice2Screen(onNext: next, onBack: back);
+      case 35:
+        return Workout4Notice3Screen(onNext: next, onBack: back);
+      case 36:
+        return Workout4Notice4Screen(onNext: next, onBack: back);
+      case 37:
+        return Workout4Notice5Screen(onNext: next, onBack: back);
+
+      // Journal
+      case 38:
+        return Workout4JournalIntroScreen(onNext: next, onBack: back);
+      case 39:
+        return Workout4JournalPromptScreen(onNext: next, onSkip: next, onBack: back);
+      case 40:
+        return Workout4JournalConfirmScreen(onContinue: next, onHome: () => context.go('/'));
+
+      // Skill Reps Entry
+      case 41:
+        return Workout4SkillRepsEntryScreen(
+          onNext: next, onBack: back, onSkip: () => context.go('/hub'));
+
+      // SR1 — Noise or Signal?
+      case 42:
+        return Workout4SR1IntroScreen(onNext: next, onBack: back);
+      case 43:
+        return Workout4SR1PlayScreen(onComplete: next);
+      case 44:
+        return Workout4SR1InsightScreen(onNext: next, onBack: back);
+      case 45:
+        return Workout4PennyScreen(
+          lines: const ['Noise pushes.', 'Signal informs.', 'You can tell the difference.'],
+          repLabel: 'Noise or Signal',
+          onNext: next,
+        );
+
+      // SR2 — Interrupt Without Solving
+      case 46:
+        return Workout4SR2IntroScreen(onNext: next, onBack: back);
+      case 47:
+        return Workout4SR2PlayScreen(onComplete: next);
+      case 48:
+        return Workout4PennyScreen(
+          lines: const ["You didn't solve it.", 'You interrupted it.', 'That is the skill.'],
+          repLabel: 'Interrupt Without Solving',
+          onNext: next,
+        );
+
+      // SR3 — Step Back
+      case 49:
+        return Workout4SR3IntroScreen(onNext: next, onBack: back);
+      case 50:
+        return Workout4SR3PlayScreen(onComplete: next);
+      case 51:
+        return Workout4PennyScreen(
+          lines: const ['Distance breaks the loop.', 'You are not your thoughts.', 'You observe them.'],
+          repLabel: 'Step Back',
+          onNext: next,
+        );
+
+      // Skill Reps Complete
+      case 52:
+        return Workout4SkillRepsCompleteScreen(
+          onHub: () => context.go('/hub'),
+          onHome: () => context.go('/'),
+        );
 
       default:
         return const Center(child: Text('Workout 4 End'));

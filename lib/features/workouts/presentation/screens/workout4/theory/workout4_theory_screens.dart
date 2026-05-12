@@ -178,7 +178,7 @@ class Workout4ProtectiveLogicScreen extends StatelessWidget {
               style: AppTypography.h2.copyWith(fontSize: 26),
               textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('“If I don’t finish this\nI am not safe.”',
+          Text("“If I don't finish this\nI am not safe.”",
               style: AppTypography.h1.copyWith(fontSize: 34),
               textAlign: TextAlign.center),
           const SizedBox(height: 20),
@@ -232,7 +232,8 @@ class Workout4NoiseBuildScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           FadeInUp(
-            child: Text('When attention doesn’t release,\nthoughts don’t resolve.',
+            child: Text(
+                "When attention doesn't release,\nthoughts don't resolve.",
                 style: AppTypography.h2.copyWith(fontSize: 26),
                 textAlign: TextAlign.center),
           ),
@@ -361,7 +362,7 @@ class Workout4CoreShiftScreen extends StatelessWidget {
               textAlign: TextAlign.center),
           const SizedBox(height: 20),
           Text(
-              'You don’t need to fix the thoughts.\nYou need to train who is in control.',
+              "You don't need to fix the thoughts.\nYou need to train who is in control.",
               style: AppTypography.h2
                   .copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)),
               textAlign: TextAlign.center),
@@ -521,72 +522,140 @@ class Workout4ClosingIntroScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       isDark: true,
-      nextButtonText: '  See the Insight',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('✨ What Just Changed', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 34), textAlign: TextAlign.center),
+          FadeIn(
+            child: Text('What Just Changed',
+                style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 34),
+                textAlign: TextAlign.center),
+          ),
           const SizedBox(height: 16),
-          Text('You didn’t fix a problem.\nYou changed a mechanic.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
+          FadeIn(
+            delay: const Duration(milliseconds: 700),
+            child: Text('The system no longer runs attention automatically.',
+                style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.65), fontSize: 16),
+                textAlign: TextAlign.center),
+          ),
         ],
       ),
     );
   }
 }
 
-class Workout4ClosingMainScreen extends StatelessWidget {
+class Workout4ClosingMainScreen extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ClosingMainScreen(
-      {required this.onNext, required this.onBack, super.key});
+  const Workout4ClosingMainScreen({required this.onNext, required this.onBack, super.key});
+  @override
+  State<Workout4ClosingMainScreen> createState() => _Workout4ClosingMainScreenState();
+}
+
+class _Workout4ClosingMainScreenState extends State<Workout4ClosingMainScreen> {
+  bool _showCta = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 3400), () {
+      if (mounted) setState(() => _showCta = true);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
-      onNext: onNext,
-      onBack: onBack,
+      onNext: widget.onNext,
+      onBack: widget.onBack,
+      showNextButton: _showCta,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('“Where attention goes,\nnoise grows.”',
-              style: AppTypography.h1.copyWith(fontSize: 32),
-              textAlign: TextAlign.center),
-          const SizedBox(height: 16),
-          Text('You are not your noise.',
-              style: AppTypography.h2
-                  .copyWith(fontSize: 18, color: AppColors.ink.withOpacity(0.5)),
-              textAlign: TextAlign.center),
+          FadeInDown(
+            duration: const Duration(milliseconds: 500),
+            child: Text('You didn\'t stop thoughts today.',
+                style: AppTypography.h2.copyWith(fontSize: 24)),
+          ),
+          const SizedBox(height: 10),
+          FadeInDown(
+            delay: const Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 500),
+            child: Text('You stopped obeying them.',
+                style: AppTypography.h2.copyWith(fontSize: 24)),
+          ),
+          const SizedBox(height: 20),
+          FadeInDown(
+            delay: const Duration(milliseconds: 1200),
+            duration: const Duration(milliseconds: 500),
+            child: Text('You noticed the moment\nyour system tried to take control.',
+                style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.6))),
+          ),
+          const SizedBox(height: 10),
+          FadeInDown(
+            delay: const Duration(milliseconds: 1800),
+            duration: const Duration(milliseconds: 500),
+            child: Text('And you interrupted it\nbefore it turned into noise.',
+                style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.6))),
+          ),
+          const SizedBox(height: 20),
+          FadeInDown(
+            delay: const Duration(milliseconds: 2600),
+            duration: const Duration(milliseconds: 500),
+            child: Text('That is how overthinking weakens.',
+                style: AppTypography.h2.copyWith(fontSize: 22, color: AppColors.accent)),
+          ),
         ],
       ),
     );
   }
 }
 
-class Workout4ClosingInsightScreen extends StatelessWidget {
+class Workout4ClosingInsightScreen extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
-  const Workout4ClosingInsightScreen(
-      {required this.onNext, required this.onBack, super.key});
+  const Workout4ClosingInsightScreen({required this.onNext, required this.onBack, super.key});
+  @override
+  State<Workout4ClosingInsightScreen> createState() => _Workout4ClosingInsightScreenState();
+}
+
+class _Workout4ClosingInsightScreenState extends State<Workout4ClosingInsightScreen> {
+  bool _showLine2 = false;
+  bool _showCta = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      if (mounted) setState(() => _showLine2 = true);
+    });
+    Future.delayed(const Duration(milliseconds: 2800), () {
+      if (mounted) setState(() => _showCta = true);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Workout4ContentLayout(
-      onNext: onNext,
-      onBack: onBack,
-      nextButtonText: 'Finish Workout',
+      onNext: widget.onNext,
+      onBack: widget.onBack,
+      showNextButton: _showCta,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You are the direction.',
-              style: AppTypography.h1.copyWith(fontSize: 34),
-              textAlign: TextAlign.center),
-          const SizedBox(height: 16),
-          Text('Noise is just attention looking for a home.',
-              style: AppTypography.h2
-                  .copyWith(fontSize: 18, color: AppColors.ink.withOpacity(0.5)),
-              textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('Starve it.',
-              style: AppTypography.h2.copyWith(fontSize: 24, color: AppColors.accent),
-              textAlign: TextAlign.center),
+          FadeIn(
+            child: Text('Thoughts only control you',
+                style: AppTypography.h1.copyWith(fontSize: 32),
+                textAlign: TextAlign.center),
+          ),
+          const SizedBox(height: 8),
+          AnimatedOpacity(
+            opacity: _showLine2 ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            child: Text('when you treat them as instructions.',
+                style: AppTypography.h1.copyWith(fontSize: 32),
+                textAlign: TextAlign.center),
+          ),
         ],
       ),
     );

@@ -3,7 +3,10 @@
     "allow": [
       "Bash(python -c ' *)",
       "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\" -Directory)",
-      "Bash(Select-Object -ExpandProperty Name)"
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(Get-ChildItem -Path \"c:\\\\20300\\\\github\\\\salman\\\\lmm_app\\\\lib\\\\features\\\\workouts\\\\presentation\\\\screens\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
