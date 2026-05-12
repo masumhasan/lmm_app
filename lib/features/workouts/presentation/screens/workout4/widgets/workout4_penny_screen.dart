@@ -21,59 +21,71 @@ class Workout4PennyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 80),
-            // Completion Star Lottie
-            FadeInDown(
-              child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    color: AppColors.ink.withOpacity(0.04), shape: BoxShape.circle),
-                child: Center(
-                  child: DotLottieLoader.fromAsset(
-                    'assets/lotties/workout_complete.lottie',
-                    frameBuilder: (context, dotlottie) {
-                      if (dotlottie != null) {
-                        return Lottie.memory(dotlottie.animations.values.single);
-                      }
-                      return const SizedBox();
-                    },
+      body: Stack(
+        children: [
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 60),
+                  // Completion Star Lottie
+                  FadeInDown(
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: AppColors.ink.withOpacity(0.04),
+                          shape: BoxShape.circle),
+                      child: Center(
+                        child: DotLottieLoader.fromAsset(
+                          'assets/lotties/workout_complete.lottie',
+                          frameBuilder: (context, dotlottie) {
+                            if (dotlottie != null) {
+                              return Lottie.memory(
+                                  dotlottie.animations.values.single);
+                            }
+                            return const SizedBox();
+                          },
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 24),
+                  for (int i = 0; i < lines.length; i++)
+                    FadeInUp(
+                      delay: Duration(milliseconds: 600 * (i + 1)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 8),
+                        child: Text(
+                          lines[i],
+                          style: AppTypography.h2.copyWith(fontSize: 22),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 12),
+                  FadeInUp(
+                    delay: Duration(milliseconds: 600 * (lines.length + 1)),
+                    child: Text(
+                      '+1 $repLabel Rep',
+                      style: AppTypography.columnHeader
+                          .copyWith(color: AppColors.ink.withOpacity(0.5)),
+                    ),
+                  ),
+                  const SizedBox(height: 120), // Space for bottom button
+                ],
               ),
             ),
-            const SizedBox(height: 24),
-            for (int i = 0; i < lines.length; i++)
-              FadeInUp(
-                delay: Duration(milliseconds: 600 * (i + 1)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
-                  child: Text(
-                    lines[i],
-                    style: AppTypography.h2.copyWith(fontSize: 22),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            const SizedBox(height: 12),
-            FadeInUp(
-              delay: Duration(milliseconds: 600 * (lines.length + 1)),
-              child: Text(
-                '+1 $repLabel Rep',
-                style: AppTypography.columnHeader
-                    .copyWith(color: AppColors.ink.withOpacity(0.5)),
-              ),
-            ),
-            const Spacer(),
-            FadeIn(
-              delay: const Duration(seconds: 3),
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 64),
+          ),
+          Positioned(
+            bottom: 64,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: FadeIn(
+                delay: const Duration(seconds: 3),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.ink,
@@ -88,8 +100,8 @@ class Workout4PennyScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

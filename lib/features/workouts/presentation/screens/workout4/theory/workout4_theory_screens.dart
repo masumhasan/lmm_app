@@ -523,6 +523,26 @@ class Workout4ClosingIntroScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          FadeInDown(
+            child: SizedBox(
+              height: 140,
+              width: 140,
+              child: DotLottieLoader.fromAsset(
+                "assets/lotties/e.lottie",
+                frameBuilder: (BuildContext context, DotLottie? dotlottie) {
+                  if (dotlottie != null) {
+                    return Lottie.memory(
+                      dotlottie.animations.values.single,
+                      fit: BoxFit.contain,
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
           FadeIn(
             child: Text('What Just Changed',
                 style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 34),
