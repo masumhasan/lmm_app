@@ -18,11 +18,11 @@ class Workout3Drill1EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Name the Stack', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
+          Text('Split the Stack', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('Sensation.\nMeaning.\nIdentity.\nThey fire fast.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('Sensation.\nMeaning.\nIdentity.\nThey feel instant.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('It feels instant.\nIt isn’t.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('They are not.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -38,22 +38,33 @@ class Workout3Drill1PlayScreen extends StatefulWidget {
 
 class _Workout3Drill1PlayScreenState extends State<Workout3Drill1PlayScreen> {
   int q = 0;
+  bool _showClose = false;
   final questions = const [
-    ('Your heart rate jumps.\nWhat appears next automatically?', ['That’s a sensation', 'Something is wrong', 'I’m going backwards'], 1),
+    ('Your heart rate jumps.\nWhat appears next automatically?', ['That is a sensation', 'Something is wrong', 'I am going backwards'], 1),
     ('Chest tightness.\nWhat fires first?', ['Danger', 'Pressure', 'This is happening again'], 0),
-    ('Warm face.\nWhat fires first?', ['Embarrassment', 'Heat', 'I’m losing control'], 0),
-    ('Shallow breath.\nWhat fires first?', ['Danger', 'Air moving', 'It’s happening again'], 0),
+    ('Warm face.\nWhat fires first?', ['Embarrassment', 'Heat', 'I am losing control'], 0),
+    ('Shallow breath.\nWhat fires first?', ['Danger', 'Air moving', 'It is happening again'], 0),
   ];
   String? feedback;
+
+  static const _correctFeedback = [
+    'That is where meaning enters.',
+    'Meaning fires fast.',
+    'Interpretation arrives before identity.',
+    'The stack builds one layer at a time.',
+  ];
 
   void answer(int i) {
     final correct = questions[q].$3;
     if (i == correct) {
-      setState(() => feedback = 'Correct');
-      Future.delayed(const Duration(milliseconds: 550), () {
+      setState(() => feedback = _correctFeedback[q]);
+      Future.delayed(const Duration(milliseconds: 800), () {
         if (!mounted) return;
         if (q == questions.length - 1) {
-          widget.onComplete();
+          setState(() => _showClose = true);
+          Future.delayed(const Duration(milliseconds: 2200), () {
+            if (mounted) widget.onComplete();
+          });
         } else {
           setState(() {
             q++;
@@ -69,6 +80,26 @@ class _Workout3Drill1PlayScreenState extends State<Workout3Drill1PlayScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_showClose) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('You split the stack.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('Sensation was one event.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('What followed was added.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     final qq = questions[q];
     return Scaffold(
       backgroundColor: Colors.white,
@@ -115,9 +146,9 @@ class Workout3Drill2EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Break the Regression Illusion', style: AppTypography.h1.copyWith(fontSize: 33), textAlign: TextAlign.center),
+          Text('Break the Collapse', style: AppTypography.h1.copyWith(fontSize: 33), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('Patterns firing ≠ progress erased.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45))),
+          Text('Patterns firing does not erase progress.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45))),
         ],
       ),
     );
@@ -133,13 +164,35 @@ class Workout3Drill2PlayScreen extends StatefulWidget {
 
 class _Workout3Drill2PlayScreenState extends State<Workout3Drill2PlayScreen> {
   int step = 0;
+  bool _showClose = false;
+
   @override
   Widget build(BuildContext context) {
+    if (_showClose) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Progress did not collapse.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('A pattern fired.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('Those are not the same.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     final prompts = [
       ('You felt steady.\nThen a strong sensation appeared.\nWhat does the mind say?', ['The past reactivated', 'A body signal appeared', 'I failed'], 1),
       ('Sensation appears after calm week.', ['Pattern firing', 'Progress erased'], 0),
       ('Strong sensation after a good month.', ['Regression', 'Temporary activation'], 1),
-      ('Old memory triggered by body signal.', ['I’m back', 'Association activated'], 1),
+      ('Old memory triggered by body signal.', ['I am back', 'Association activated'], 1),
       ('Unexpected intensity during rest.', ['Something broke', 'Body fluctuation'], 1),
     ];
     final p = prompts[step];
@@ -161,7 +214,10 @@ class _Workout3Drill2PlayScreenState extends State<Workout3Drill2PlayScreen> {
                     onPressed: () {
                       if (i == p.$3) {
                         if (step == prompts.length - 1) {
-                          widget.onComplete();
+                          setState(() => _showClose = true);
+                          Future.delayed(const Duration(milliseconds: 2200), () {
+                            if (mounted) widget.onComplete();
+                          });
                         } else {
                           setState(() => step++);
                         }
@@ -192,7 +248,7 @@ class Workout3Drill3EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Hold Position', style: AppTypography.h1.copyWith(fontSize: 34)),
+          Text('Hold the Signal', style: AppTypography.h1.copyWith(fontSize: 34)),
           const SizedBox(height: 10),
           Text('When sensation appears, the body waits for instruction.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
@@ -213,6 +269,8 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
   int secs = 10;
   Timer? t;
   String? micro;
+  bool _showClose = false;
+
   @override
   void initState() {
     super.initState();
@@ -234,7 +292,10 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
           });
           Future.delayed(const Duration(milliseconds: 700), () => mounted ? _start() : null);
         } else {
-          widget.onComplete();
+          setState(() => _showClose = true);
+          Future.delayed(const Duration(milliseconds: 2200), () {
+            if (mounted) widget.onComplete();
+          });
         }
       }
     });
@@ -253,6 +314,26 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_showClose) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('The sensation stayed.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('Reaction did not.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+                const SizedBox(height: 10),
+                Text('That is where safety is learned.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -261,7 +342,18 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(round == 1 ? 'Stay with a mild sensation.' : 'Stay again.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+              if (round == 1)
+                Text('Stay with a mild sensation.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center)
+              else
+                Column(
+                  children: [
+                    Text('Stay again.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+                    const SizedBox(height: 6),
+                    Text('Do not help it.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
+                    const SizedBox(height: 4),
+                    Text('Do not fix it.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
+                  ],
+                ),
               const SizedBox(height: 10),
               Text('$secs', style: AppTypography.h1.copyWith(fontSize: 270, color: AppColors.ink.withOpacity(0.25))),
               const SizedBox(height: 34),
@@ -289,16 +381,14 @@ class _Workout3Drill3PlayScreenState extends State<Workout3Drill3PlayScreen> {
                           padding: EdgeInsets.zero,
                           minimumSize: const Size(0, 75),
                         ),
-                        child:
-                            const Text('Check', style: TextStyle(fontSize: 13)),
+                        child: const Text('Check', style: TextStyle(fontSize: 13)),
                       ),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
                       flex: 4,
                       child: ElevatedButton(
-                        onPressed: () =>
-                            setState(() => micro = 'That’s instruction.'),
+                        onPressed: () => setState(() => micro = 'That is instruction.'),
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,
                           minimumSize: const Size(0, 75),

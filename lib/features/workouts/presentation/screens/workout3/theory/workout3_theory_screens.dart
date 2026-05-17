@@ -35,9 +35,9 @@ class _Workout3EntryScreenState extends State<Workout3EntryScreen> {
               const Spacer(),
               Text('The body reacts first.', style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 28), textAlign: TextAlign.center),
               const SizedBox(height: 10),
-              Text('The mind follows.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
+              Text('Meaning arrives after.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
               const SizedBox(height: 10),
-              Text('Today you train that gap.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
+              Text('Today you catch the split.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16), textAlign: TextAlign.center),
               const Spacer(),
               AnimatedOpacity(
                 opacity: showCta ? 1 : 0,
@@ -69,7 +69,7 @@ class Workout3MainNarrationIntroScreen extends StatelessWidget {
     return Workout3ContentLayout(
       onNext: onNext,
       onBack: onBack,
-      child: Text('Safety is felt, not thought.', style: AppTypography.h2.copyWith(fontSize: 30), textAlign: TextAlign.center),
+      child: Text('Safety is felt — not thought.', style: AppTypography.h2.copyWith(fontSize: 30), textAlign: TextAlign.center),
     );
   }
 }
@@ -144,7 +144,7 @@ class Workout3ModernTriggersScreen extends StatelessWidget {
               ),
             ),
           const SizedBox(height: 14),
-          Text('Often these are not danger.\nBut the body does not read context.\nIt reads sensation.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('Often these are not dangerous.\nBut the body does not care about explanation first.\nIt responds to sensation.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -165,7 +165,7 @@ class Workout3MisinterpretationLoopScreen extends StatelessWidget {
         children: [
           Text('Misinterpretation keeps the alarm alive.', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('The body sends a signal.\nThe mind reads it as important.\nThe body prepares.\nThe mind reads that preparation as proof.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('A signal appears.\nThe mind marks it.\nThe body prepares.\nThe preparation gets misread as proof.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -191,7 +191,7 @@ class Workout3ExampleCheckingScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text('Checking sends one message:', style: AppTypography.h2.copyWith(fontSize: 24)),
           const SizedBox(height: 8),
-          Text('Not safe yet.', style: AppTypography.h2.copyWith(fontSize: 28)),
+          Text('Still not safe.', style: AppTypography.h2.copyWith(fontSize: 28)),
         ],
       ),
     );
@@ -213,7 +213,7 @@ class Workout3CoreMessageScreen extends StatelessWidget {
         children: [
           Text('My body is allowed to feel sensations.', style: AppTypography.h2.copyWith(fontSize: 27), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('Sensations are information, not proof.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
+          Text('Sensations are information — not proof.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -230,7 +230,7 @@ class Workout3TransitionToDrillsScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       nextButtonText: '  Start Body Safety Training',
-      child: Text('You are not fixing anything.\nYou are teaching a protective system a new response.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+      child: Text('You are not removing sensation.\nYou are removing automatic reaction.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
     );
   }
 }
@@ -251,9 +251,9 @@ class Workout3DrillsCompleteScreen extends StatelessWidget {
         children: [
           Text('You trained three skills today:', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('Separating sensation from meaning\nBreaking collapse language\nHolding without reacting', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
+          Text('Splitting sensation from meaning\nBreaking collapse language\nHolding without reaction', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('That’s cognitive strength.', style: AppTypography.p.copyWith(fontSize: 13, fontStyle: FontStyle.italic)),
+          Text('That is body learning under pressure.', style: AppTypography.p.copyWith(fontSize: 13, fontStyle: FontStyle.italic)),
         ],
       ),
     );
@@ -292,7 +292,7 @@ class Workout3MuscleSummaryScreen extends StatelessWidget {
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '"Repetition builds automatic strength."',
+              'Automatic safety is built through repetition.',
               style: AppTypography.p
                   .copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
@@ -362,7 +362,16 @@ class Workout3ClosingTransitionScreen extends StatelessWidget {
       onNext: onNext,
       onBack: onBack,
       isDark: true,
-      child: Text('✨ What Just Changed', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 34), textAlign: TextAlign.center),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('✨ What Just Changed', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 34), textAlign: TextAlign.center),
+          const SizedBox(height: 20),
+          Text('The body was not the problem.', style: AppTypography.h2.copyWith(color: Colors.white.withOpacity(0.75), fontSize: 22), textAlign: TextAlign.center),
+          const SizedBox(height: 8),
+          Text('Reaction was.', style: AppTypography.h2.copyWith(color: Colors.white.withOpacity(0.75), fontSize: 22), textAlign: TextAlign.center),
+        ],
+      ),
     );
   }
 }
@@ -379,11 +388,11 @@ class Workout3ClosingCoreScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You didn’t calm your body.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text('You did not calm your body.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 10),
           Text('You taught it something new.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 10),
-          Text('A sensation can exist', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
+          Text('A sensation can exist—', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
           const SizedBox(height: 10),
           Text('without reaction following.', style: AppTypography.h2.copyWith(fontSize: 25), textAlign: TextAlign.center),
         ],
@@ -426,7 +435,7 @@ class Workout3ClosingForwardLookScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You didn’t change the sensation.\nYou saw what followed it.\nThe body wasn’t the problem\nthe reaction was.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('Next, you will train\nhow thought restarts the loop.\nAnd how to interrupt it earlier.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
         ],
       ),
     );

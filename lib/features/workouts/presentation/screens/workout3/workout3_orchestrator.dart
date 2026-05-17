@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'drills/workout3_drill_screens.dart';
@@ -91,7 +91,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3Drill2PlayScreen(onComplete: next);
       case 14:
         return Workout3PennyScreen(
-          lines: const ['A pattern fired.', 'Progress did not disappear.', 'Activation is not identity.'],
+          lines: const ['A pattern fired.', 'You did not become it.', 'Activation is not identity.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
@@ -129,7 +129,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
       case 27:
         return Workout3NoticeScreen(line1: 'Nothing needs to change.', line2: 'This is where the body learns.', onNext: next, onBack: back);
       case 28:
-        return Workout3NoticeScreen(line1: 'You won’t need to stop it.', line2: 'You’ll see it.', cta: '  Continue to Journal', onNext: () => go(29), onBack: back);
+        return Workout3NoticeScreen(line1: 'You won\'t need to stop it.', line2: 'You\'ll see it.', cta: '  Continue to Journal', onNext: () => go(29), onBack: back);
 
       case 29:
         return Workout3TrainingLogScreen(onNext: next, onSkip: () => go(31), onBack: back);
@@ -157,7 +157,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
 
       case 35:
         return Workout3SRIntroScreen(
-          title: 'Don’t Check',
+          title: 'Don\'t Check',
           body: 'The loop grows when you monitor for danger.\nFor the next minute, do not check your body.',
           onStart: next,
           onSkip: () => go(38),
