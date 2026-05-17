@@ -21,13 +21,13 @@ class Drill1EntryScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Attention Control | Reflex Test',
+            'Catch the Pull',
             style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
-            'You are training impulse resistance.',
+            'Attention will try to move before you decide.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.4)),
             textAlign: TextAlign.center,
           ),
@@ -132,7 +132,9 @@ class _Drill1ReflexScreenState extends State<Drill1ReflexScreen> {
         behavior: HitTestBehavior.opaque,
         onTap: _onUserTapped,
         child: Scaffold(
-          backgroundColor: AppColors.surface,
+          backgroundColor: notifications.isEmpty
+              ? AppColors.surface
+              : Color.lerp(AppColors.surface, Colors.black, 0.025)!,
           body: Stack(
             children: [
               Center(
@@ -311,7 +313,7 @@ class _Drill1RevealScreenState extends State<Drill1RevealScreen> {
             opacity: showLine1 ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 600),
             child: Text(
-              'Your attention moved automatically.',
+              'The pull happened first.',
               style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
@@ -321,7 +323,7 @@ class _Drill1RevealScreenState extends State<Drill1RevealScreen> {
             opacity: showLine2 ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 600),
             child: Text(
-              'That wasn\u2019t a conscious choice.',
+              'Choice came after.',
               style: AppTypography.p.copyWith(
                 fontSize: 18,
                 color: AppColors.ink.withOpacity(0.5),
@@ -334,7 +336,7 @@ class _Drill1RevealScreenState extends State<Drill1RevealScreen> {
             opacity: showLine3 ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 600),
             child: Text(
-              'That was automatic conditioning.',
+              'You just saw the gap.',
               style: AppTypography.h2.copyWith(fontSize: 22),
               textAlign: TextAlign.center,
             ),

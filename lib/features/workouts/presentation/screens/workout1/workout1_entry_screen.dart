@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:animate_do/animate_do.dart';
@@ -81,7 +81,7 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
                   FadeIn(
                     duration: const Duration(milliseconds: 800),
                     child: Text(
-                      'Stress often begins as a sentence.',
+                      'The story forms fast.',
                       style: AppTypography.h2.copyWith(fontSize: 26, fontStyle: FontStyle.italic),
                       textAlign: TextAlign.center,
                     ),
@@ -91,7 +91,7 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
                     opacity: _showLine2 ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 800),
                     child: Text(
-                      'Before the body joins in.',
+                      'Usually before it is questioned.',
                       style: AppTypography.p.copyWith(
                         fontSize: 16,
                         color: AppColors.ink.withOpacity(0.4),
@@ -104,7 +104,7 @@ class _Workout1EntryScreenState extends State<Workout1EntryScreen> {
                     opacity: _showLine3 ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 800),
                     child: Text(
-                      'Today you catch the story.',
+                      'Today you catch it forming.',
                       style: AppTypography.p.copyWith(
                         fontSize: 16,
                         color: AppColors.ink.withOpacity(0.5),

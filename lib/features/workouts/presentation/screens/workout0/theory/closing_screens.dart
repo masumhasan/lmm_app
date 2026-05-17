@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
@@ -49,7 +49,7 @@ class ClosingIntroScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            '“Your system isn’t the enemy.”',
+            'You caught what usually runs ahead of you.',
             style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.4), fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),
@@ -117,13 +117,13 @@ class _ClosingMainScreenState extends State<ClosingMainScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _PacedText(text: 'You didn’t control your attention.', delayMs: 0),
+          _PacedText(text: 'You did not control attention.', delayMs: 0),
           const SizedBox(height: 24),
-          _PacedText(text: 'You saw where it moves.', delayMs: 1400),
+          _PacedText(text: 'You caught it moving.', delayMs: 1400),
           const SizedBox(height: 24),
-          _PacedText(text: 'It was already happening', delayMs: 2800),
+          _PacedText(text: 'That movement was already there.', delayMs: 2800),
           const SizedBox(height: 24),
-          _PacedText(text: 'Now it’s visible.', delayMs: 4200),
+          _PacedText(text: 'Now it is visible.', delayMs: 4200),
         ],
       ),
     );

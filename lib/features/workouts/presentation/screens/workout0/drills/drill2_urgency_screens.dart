@@ -49,7 +49,7 @@ class Drill2EntryScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'The Urgency Bait',
+                  'Break the Pressure',
                   style: AppTypography.h1.copyWith(
                     fontSize: 34,
                     fontStyle: FontStyle.italic,
@@ -58,7 +58,7 @@ class Drill2EntryScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Urgency feels real. Watch closely.',
+                  'Pressure will appear. Your job is not to obey it.',
                   style: AppTypography.p.copyWith(
                     color: AppColors.ink.withOpacity(0.4),
                   ),
@@ -252,7 +252,7 @@ class Drill2RevealScreen extends StatelessWidget {
         children: [
           FadeInDown(
             child: Text(
-              'Nothing required action.',
+              'Pressure was there.',
               style: AppTypography.h2.copyWith(
                 fontSize: 24,
                 fontStyle: FontStyle.italic,
@@ -264,7 +264,7 @@ class Drill2RevealScreen extends StatelessWidget {
           FadeInDown(
             delay: const Duration(milliseconds: 800),
             child: Text(
-              'The pressure was artificial.',
+              'Requirement was not.',
               style: AppTypography.h2.copyWith(
                 fontSize: 24,
                 fontStyle: FontStyle.italic,
@@ -276,7 +276,7 @@ class Drill2RevealScreen extends StatelessWidget {
           FadeIn(
             delay: const Duration(milliseconds: 1600),
             child: Text(
-              'Urgency trained your attention.',
+              'That difference is the rep.',
               style: AppTypography.p.copyWith(
                 fontSize: 14,
                 color: AppColors.ink.withOpacity(0.5),

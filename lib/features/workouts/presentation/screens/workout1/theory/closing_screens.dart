@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:dotlottie_loader/dotlottie_loader.dart';
@@ -48,7 +48,7 @@ class Workout1ClosingIntroScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            '"Stories feel real. Separation changes position."',
+            'You no longer have to become the first story.',
             style: AppTypography.p.copyWith(
               color: Colors.white.withOpacity(0.4),
               fontStyle: FontStyle.italic,
@@ -78,8 +78,8 @@ class _Workout1ClosingMessageScreenState extends State<Workout1ClosingMessageScr
   final _lines = [
     'Your system will still create stories.',
     'It will still guess.',
-    'But now you can notice the story',
-    'instead of becoming it.',
+    'But now you can catch the story—',
+    'before it becomes your reality.',
   ];
 
   @override

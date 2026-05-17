@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../widgets/workout_content_layout.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
@@ -36,16 +36,12 @@ class PatternExample1Screen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
-          _PatternLine(text: '“Your phone lights up.”', delay: 0),
-          _PatternLine(text: '“It’s not the person you hoped it was.”', delay: 1200),
+          _PatternLine(text: '”Your phone lights up.”', delay: 0),
+          _PatternLine(text: '”It is not who you hoped.”', delay: 1200),
           const SizedBox(height: 32),
-          _PatternLine(text: 'System: “Something’s changed. I should check.”', delay: 2400, color: AppColors.ink.withOpacity(0.35)),
+          _PatternLine(text: 'Attention moves.', delay: 2400, color: AppColors.ink.withOpacity(0.55)),
           const SizedBox(height: 32),
-          Divider(color: AppColors.line.withOpacity(0.1)),
-          const SizedBox(height: 32),
-          _PatternLine(text: 'Truth: “They’re busy. Nothing changed. The system guessed danger.”', delay: 3600),
-          const SizedBox(height: 24),
-          _PatternLine(text: '“A guess can feel real — without being evidence.”', delay: 4800, isSmall: true),
+          _PatternLine(text: 'The pull has already started.', delay: 3600, isSmall: true),
         ],
       ),
     );

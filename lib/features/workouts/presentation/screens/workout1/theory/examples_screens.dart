@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
@@ -22,7 +22,7 @@ class Workout1ExamplesIntroScreen extends StatelessWidget {
           FadeIn(
             duration: const Duration(milliseconds: 800),
             child: Text(
-              '"Stories do not arrive as stories."',
+              '"Stories never introduce themselves."',
               style: AppTypography.h2.copyWith(fontSize: 26, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
@@ -164,7 +164,7 @@ class Workout1ExamplePartyScreen extends StatelessWidget {
       systemLine1: "They didn't greet you.",
       systemLine2: "Something's wrong.",
       realityLines: const ["They didn't see you."],
-      microText: 'The story appeared instantly.',
+      microText: 'Meaning landed before proof.',
       ctaText: '  Next Example',
       onNext: onNext,
       onBack: onBack,
@@ -184,7 +184,7 @@ class Workout1ExampleHealthScreen extends StatelessWidget {
       systemLine1: 'Something feels off.',
       systemLine2: 'What if this gets worse?',
       realityLines: const ['Stress.', 'Fatigue.', 'Posture.', 'Dehydration.'],
-      microText: 'Meaning added before evidence.',
+      microText: 'The sentence formed before the evidence.',
       ctaText: '  Next Example',
       onNext: onNext,
       onBack: onBack,
@@ -203,7 +203,7 @@ class Workout1ExampleRelationshipScreen extends StatelessWidget {
     return _ExampleScreen(
       systemLine1: "They're being short.",
       systemLine2: "They're losing interest.",
-      realityLines: const ["They're tired.", "They're distracted."],
+      realityLines: const ["They may be tired.", "They may be elsewhere.", "The story arrived first."],
       microText: '',
       ctaText: '  Next Example',
       onNext: onNext,

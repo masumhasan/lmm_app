@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:animate_do/animate_do.dart';
@@ -42,7 +42,7 @@ class Workout1EvidenceTitleScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            '"One question breaks spirals."',
+            '"One question cuts the spiral."',
             style: AppTypography.p.copyWith(
               fontSize: 16,
               color: AppColors.ink.withOpacity(0.4),

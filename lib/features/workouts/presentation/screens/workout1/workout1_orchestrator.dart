@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -200,7 +200,7 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
           lines: const [
             'Intensity came from added meaning.',
             'You interrupted the build.',
-            'That is story control under pressure.',
+            'That is control under pressure.',
           ],
           repLoggedText: 'Story Separation',
           onNext: _onNext,
@@ -217,8 +217,8 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case 21:
         return Workout1PennyScreen(
           lines: const [
-            'The sentence did not change.',
-            'Your position did.',
+            'The sentence stayed the same.',
+            'Your position changed.',
             'That is how stories lose authority.',
           ],
           repLoggedText: 'Story Separation',
@@ -371,8 +371,8 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case D1TapResult.earlyInterpretation:
         return [
           'Meaning entered there.',
-          'You caught the sentence turning.',
-          'That is separation.',
+          'You caught the turn.',
+          'That is story separation.',
         ];
       case D1TapResult.strongInterpretation:
         return [

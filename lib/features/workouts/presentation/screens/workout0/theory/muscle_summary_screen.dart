@@ -36,7 +36,7 @@ class MuscleSummaryScreen extends StatelessWidget {
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '“Repetition builds automatic strength.”',
+              'Automatic strength is built through repetition.',
               style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
             ),

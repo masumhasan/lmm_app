@@ -22,13 +22,13 @@ class Drill3EntryScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 32),
           Text(
-            'Completion Tolerance Open Loop Test',
+            'Leave It Open',
             style: AppTypography.h1.copyWith(fontSize: 34, fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
-            'You are training discomfort tolerance.',
+            'The mind wants closure. You are training without it.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.4)),
             textAlign: TextAlign.center,
           ),
@@ -199,7 +199,7 @@ class Drill3ReleaseScreen extends StatelessWidget {
         children: [
           FadeInDown(
             child: Text(
-              'Your system demanded closure.',
+              'The thought stayed unfinished.',
               style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
@@ -208,7 +208,7 @@ class Drill3ReleaseScreen extends StatelessWidget {
           FadeInDown(
             delay: const Duration(milliseconds: 800),
             child: Text(
-              'You held the loop open.',
+              'Nothing collapsed.',
               style: AppTypography.h2.copyWith(fontSize: 24, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
@@ -217,7 +217,7 @@ class Drill3ReleaseScreen extends StatelessWidget {
           FadeIn(
             delay: const Duration(milliseconds: 1600),
             child: Text(
-              'That builds tolerance.',
+              'The ending was never required.',
               style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.5)),
               textAlign: TextAlign.center,
             ),

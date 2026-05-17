@@ -49,11 +49,21 @@ class _TrainingSystemRuleScreenState extends State<TrainingSystemRuleScreen> {
       showNextButton: showCTA,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Your training system doesn\u2019t follow what is true.\nIt follows what is repeated.',
-            style: AppTypography.h1.copyWith(fontSize: 28, fontStyle: FontStyle.italic),
-            textAlign: TextAlign.center,
+            'Your system follows repetition.',
+            style: AppTypography.columnHeader.copyWith(fontSize: 18),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Not reality.',
+            style: AppTypography.columnHeader.copyWith(fontSize: 18),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'That is why training works.',
+            style: AppTypography.columnHeader.copyWith(fontSize: 18),
           ),
         ],
       ),

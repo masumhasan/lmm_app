@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
@@ -38,13 +38,13 @@ class Workout1D2IntroScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Stories intensify fast.',
+            'A small meaning can become a full story.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.5)),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 6),
           Text(
-            "You're training interruption under pressure.",
+            'You are training interruption before the spiral hardens.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.5)),
             textAlign: TextAlign.center,
           ),

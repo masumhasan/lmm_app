@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import '../widgets/workout1_content_layout.dart';
@@ -35,7 +35,7 @@ class Workout1MuscleSummaryScreen extends StatelessWidget {
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '"Repetition builds automatic strength."',
+              'Automatic separation is built through repetition.',
               style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
             ),

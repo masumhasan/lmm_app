@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import '../widgets/workout1_content_layout.dart';
@@ -36,13 +36,13 @@ class Workout1D1IntroScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Stories form in fragments.',
+            'Stories do not appear all at once.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.5)),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 6),
           Text(
-            "You're training the moment meaning begins.",
+            'You are training the exact moment meaning enters.',
             style: AppTypography.p.copyWith(color: AppColors.ink.withOpacity(0.5)),
             textAlign: TextAlign.center,
           ),

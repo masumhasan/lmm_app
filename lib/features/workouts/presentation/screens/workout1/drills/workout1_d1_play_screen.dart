@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
@@ -98,6 +98,51 @@ class _Workout1D1PlayScreenState extends State<Workout1D1PlayScreen> {
     super.dispose();
   }
 
+  Widget _buildFragmentWidget() {
+    final idx = _currentFragment;
+    final text = _fragments[idx];
+    final isInterpretation = _interpretationFragments.contains(idx);
+
+    if (!isInterpretation || idx == 0) {
+      return Text(
+        text,
+        key: ValueKey(idx),
+        style: AppTypography.h2.copyWith(
+          fontSize: 22,
+          color: Colors.black,
+          fontStyle: FontStyle.normal,
+          height: 1.5,
+        ),
+        textAlign: TextAlign.center,
+      );
+    }
+
+    final prevText = _fragments[idx - 1];
+    final newWords = text.substring(prevText.length);
+
+    return RichText(
+      key: ValueKey(idx),
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        style: AppTypography.h2.copyWith(
+          fontSize: 22,
+          fontStyle: FontStyle.normal,
+          height: 1.5,
+        ),
+        children: [
+          TextSpan(
+            text: prevText,
+            style: const TextStyle(color: Color(0x99000000)),
+          ),
+          TextSpan(
+            text: newWords,
+            style: const TextStyle(color: Color(0xEA000000)),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -126,17 +171,7 @@ class _Workout1D1PlayScreenState extends State<Workout1D1PlayScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 400),
-                  child: Text(
-                    _fragments[_currentFragment],
-                    key: ValueKey(_currentFragment),
-                    style: AppTypography.h2.copyWith(
-                      fontSize: 22,
-                      color: Colors.black,
-                      fontStyle: FontStyle.normal,
-                      height: 1.5,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: _buildFragmentWidget(),
                 ),
               ),
             ),

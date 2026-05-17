@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
@@ -237,7 +237,7 @@ class _Workout1D3Play2ScreenState extends State<Workout1D3Play2Screen> {
                     ),
                     const SizedBox(height: 32),
                     Text(
-                      'Say it this way.',
+                      'Say it from distance.',
                       style: AppTypography.p.copyWith(
                         fontSize: 14,
                         color: AppColors.ink.withOpacity(0.4),

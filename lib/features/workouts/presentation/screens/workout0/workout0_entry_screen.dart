@@ -109,7 +109,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                       opacity: showLine1 ? 1.0 : 0.0,
                       duration: const Duration(milliseconds: 400),
                       child: Text(
-                        'Your attention moves fast.',
+                        'Attention moves before choice.',
                         style: AppTypography.h1.copyWith(
                           fontSize: 28,
                           fontStyle: FontStyle.italic,
@@ -122,7 +122,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                       opacity: showLine2 ? 1.0 : 0.0,
                       duration: const Duration(milliseconds: 400),
                       child: Text(
-                        'Usually before you notice.',
+                        'Most people never see that happen.',
                         style: AppTypography.p.copyWith(
                           fontSize: 18,
                           color: AppColors.ink.withOpacity(0.45),
@@ -135,7 +135,7 @@ class _Workout0EntryScreenState extends State<Workout0EntryScreen> {
                       opacity: showLine3 ? 1.0 : 0.0,
                       duration: const Duration(milliseconds: 400),
                       child: Text(
-                        'Today you\u2019ll catch it.',
+                        'Today you will.',
                         style: AppTypography.h2.copyWith(
                           fontSize: 22,
                         ),
