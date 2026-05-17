@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:animate_do/animate_do.dart';
@@ -20,13 +20,13 @@ class Workout4Drill1EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Starve the Noise', style: AppTypography.h1.copyWith(fontSize: 34)),
+          Text('Remove the Fuel', style: AppTypography.h1.copyWith(fontSize: 34)),
           const SizedBox(height: 12),
-          Text('Overthinking only runs while you feed it.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
+          Text('Noise only runs while attention feeds it.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
           const SizedBox(height: 32),
-          Text('“This drill trains one skill.”', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('This drill trains one thing.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
           const SizedBox(height: 8),
-          Text('“Where attention goes — noise grows.”', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('Attention is fuel.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -107,29 +107,34 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
         children: [
           // Left side: Drifting thoughts
           Positioned.fill(
-            child: FractionallySizedBox(
-              alignment: Alignment.centerLeft,
-              widthFactor: 0.5,
-              child: ClipRect(
-                child: Stack(
-                  children: [
-                    for (int i = 0; i < thoughts.length; i++)
-                      _DriftingThought(
-                        text: thoughts[i],
-                        initialProgress: i / thoughts.length,
-                        holdNotifier: _holdNotifier,
-                      ),
-                  ],
+            child: ValueListenableBuilder<double>(
+              valueListenable: _holdNotifier,
+              builder: (context, holdProgress, _) => FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: (0.5 - holdProgress * 0.05).clamp(0.45, 0.5),
+                child: ClipRect(
+                  child: Stack(
+                    children: [
+                      for (int i = 0; i < thoughts.length; i++)
+                        _DriftingThought(
+                          text: thoughts[i],
+                          initialProgress: i / thoughts.length,
+                          holdNotifier: _holdNotifier,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
           // Right side: Quiet zone
           Positioned.fill(
-            child: FractionallySizedBox(
-              alignment: Alignment.centerRight,
-              widthFactor: 0.5,
-              child: GestureDetector(
+            child: ValueListenableBuilder<double>(
+              valueListenable: _holdNotifier,
+              builder: (context, holdProgress, _) => FractionallySizedBox(
+                alignment: Alignment.centerRight,
+                widthFactor: (0.5 + holdProgress * 0.05).clamp(0.5, 0.55),
+                child: GestureDetector(
                 onLongPressStart: (_) => _startHold(),
                 onLongPressEnd: (_) => _releaseHold(),
                 child: Container(
@@ -164,6 +169,7 @@ class _Workout4Drill1PlayScreenState extends State<Workout4Drill1PlayScreen> {
                 ),
               ),
             ),
+          ),
           ),
           Positioned(
             top: 100,
@@ -282,9 +288,9 @@ class Workout4Drill1LockInScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("You didn't stop thoughts.", style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
+          Text('You did not stop the thought.', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('You stopped feeding them.', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
+          Text('You stopped feeding it.', style: AppTypography.h2.copyWith(fontSize: 28, color: AppColors.accent), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -305,7 +311,7 @@ class Workout4Drill2EntryScreen extends StatelessWidget {
         children: [
           Text('Break Urgency', style: AppTypography.h1.copyWith(fontSize: 34)),
           const SizedBox(height: 12),
-          Text('Urgency is a feeling — not a fact.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
+          Text('Urgency is a feeling.\nNot a command.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
         ],
       ),
     );
@@ -412,11 +418,11 @@ class Workout4Drill2ResultScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The urgency promised something.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text('Urgency made a promise.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 12),
           Text('Nothing arrived.', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
           const SizedBox(height: 24),
-          Text("That's attention control under pressure.", style: AppTypography.p.copyWith(fontSize: 16), textAlign: TextAlign.center),
+          Text('That was pressure without proof.', style: AppTypography.p.copyWith(fontSize: 16), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -458,11 +464,11 @@ class Workout4Drill3EntryScreen extends StatelessWidget {
         children: [
           Text('Cut the Loop', style: AppTypography.h1.copyWith(fontSize: 34)),
           const SizedBox(height: 12),
-          Text('Overthinking survives by finishing thoughts.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
+          Text('Overthinking survives by finishing itself.', style: AppTypography.p.copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.5))),
           const SizedBox(height: 32),
-          Text('“This drill trains one thing.”', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('This drill trains one thing.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
           const SizedBox(height: 8),
-          Text('“Leaving thoughts unfinished.”', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('Leaving thoughts unfinished.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -602,9 +608,9 @@ class Workout4Drill3ResultScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("The thought didn't finish.", style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
+          Text('The thought did not finish.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('Nothing bad happened.', style: AppTypography.h2.copyWith(fontSize: 26, color: AppColors.accent), textAlign: TextAlign.center),
+          Text('Nothing happened.', style: AppTypography.h2.copyWith(fontSize: 26, color: AppColors.accent), textAlign: TextAlign.center),
           const SizedBox(height: 24),
           Text('Completion was never required.', style: AppTypography.p.copyWith(fontSize: 16), textAlign: TextAlign.center),
         ],

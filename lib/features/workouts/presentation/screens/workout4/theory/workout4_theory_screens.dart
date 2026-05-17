@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:lottie/lottie.dart';
@@ -61,7 +61,7 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
               const SizedBox(height: 12),
               FadeInDown(
                 delay: const Duration(milliseconds: 1700),
-                child: Text('Attention stayed too long.',
+                child: Text('Attention stayed.',
                     style: AppTypography.p
                         .copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16),
                     textAlign: TextAlign.center),
@@ -69,13 +69,13 @@ class _Workout4EntryScreenState extends State<Workout4EntryScreen> {
               const SizedBox(height: 12),
               FadeInDown(
                 delay: const Duration(milliseconds: 3100),
-                child: Text('Today you train the release.',
+                child: Text('Noise followed.',
                     style: AppTypography.p
                         .copyWith(color: Colors.white.withOpacity(0.8), fontSize: 16),
                     textAlign: TextAlign.center),
               ),
               const Spacer(),
-              Text('Workout start — muscles load in 2 seconds.',
+              Text('Workout start — attention mechanics load in 2 seconds.',
                   style: AppTypography.columnHeader
                       .copyWith(fontSize: 8, color: Colors.white.withOpacity(0.3))),
               const SizedBox(height: 20),
@@ -178,7 +178,7 @@ class Workout4ProtectiveLogicScreen extends StatelessWidget {
               style: AppTypography.h2.copyWith(fontSize: 26),
               textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text("“If I don't finish this\nI am not safe.”",
+          Text("If I don't finish this\nI am not safe.",
               style: AppTypography.h1.copyWith(fontSize: 34),
               textAlign: TextAlign.center),
           const SizedBox(height: 20),
@@ -204,11 +204,11 @@ class Workout4AttentionMistakeScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The system confuses attention with urgency.',
+          Text('Attention ≠ Danger',
               style: AppTypography.h1.copyWith(fontSize: 34),
               textAlign: TextAlign.center),
           const SizedBox(height: 16),
-          Text('Attention is fuel. Not fact.',
+          Text('Attention does not prove threat.',
               style: AppTypography.p
                   .copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)),
               textAlign: TextAlign.center),
@@ -270,13 +270,8 @@ class Workout4ExamplesIntroScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('How this looks in life:',
+          Text('This is how noise starts in ordinary moments.',
               style: AppTypography.h1.copyWith(fontSize: 34),
-              textAlign: TextAlign.center),
-          const SizedBox(height: 12),
-          Text('Attention looking for a target.',
-              style: AppTypography.p
-                  .copyWith(fontSize: 16, color: AppColors.ink.withOpacity(0.45)),
               textAlign: TextAlign.center),
         ],
       ),
@@ -331,9 +326,7 @@ class Workout4WhyThinkingFailsScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Trying to think your way out of noise\nkeeps attention exactly where the loop wants it.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
-          const SizedBox(height: 20),
-          Text('More thinking = More fuel', style: AppTypography.columnHeader.copyWith(fontSize: 10, letterSpacing: 1.4)),
+          Text('More thinking feeds the loop.', style: AppTypography.h2.copyWith(fontSize: 26), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -357,12 +350,21 @@ class Workout4CoreShiftScreen extends StatelessWidget {
               style: AppTypography.columnHeader
                   .copyWith(fontSize: 10, letterSpacing: 1.4)),
           const SizedBox(height: 16),
-          Text('Attention is a choice.',
-              style: AppTypography.h1.copyWith(fontSize: 40),
+          Text('Noise fades when attention disengages.',
+              style: AppTypography.h1.copyWith(fontSize: 34),
               textAlign: TextAlign.center),
           const SizedBox(height: 20),
-          Text(
-              "You don't need to fix the thoughts.\nYou need to train who is in control.",
+          Text('Not by force.',
+              style: AppTypography.h2
+                  .copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 8),
+          Text('Not by answers.',
+              style: AppTypography.h2
+                  .copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 8),
+          Text('By removing fuel.',
               style: AppTypography.h2
                   .copyWith(fontSize: 24, color: AppColors.ink.withOpacity(0.6)),
               textAlign: TextAlign.center),
@@ -409,9 +411,9 @@ class Workout4DrillsCompleteScreen extends StatelessWidget {
         children: [
           Text('You trained three skills today:', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 24),
-          Text('• You starved attention.\n• You broke urgency.\n• You denied completion.', style: AppTypography.p.copyWith(fontSize: 16, height: 1.6), textAlign: TextAlign.center),
+          Text('• You removed fuel.\n• You broke urgency.\n• You denied completion.', style: AppTypography.p.copyWith(fontSize: 16, height: 1.6), textAlign: TextAlign.center),
           const SizedBox(height: 32),
-          Text('Overthinking runs on habits.', style: AppTypography.p.copyWith(fontSize: 14, fontStyle: FontStyle.italic, color: AppColors.ink.withOpacity(0.45))),
+          Text('Overthinking runs on repetition.\nYou interrupted all three.', style: AppTypography.p.copyWith(fontSize: 14, fontStyle: FontStyle.italic, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -451,7 +453,7 @@ class Workout4MuscleSummaryScreen extends StatelessWidget {
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '“Repetition builds automatic strength.”',
+              'Automatic control is built through repetition.',
               style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
             ),
@@ -551,7 +553,7 @@ class Workout4ClosingIntroScreen extends StatelessWidget {
           const SizedBox(height: 16),
           FadeIn(
             delay: const Duration(milliseconds: 700),
-            child: Text('The system no longer runs attention automatically.',
+            child: Text('Attention no longer obeyed automatically.',
                 style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.65), fontSize: 16),
                 textAlign: TextAlign.center),
           ),
@@ -592,7 +594,7 @@ class _Workout4ClosingMainScreenState extends State<Workout4ClosingMainScreen> {
         children: [
           FadeInDown(
             duration: const Duration(milliseconds: 500),
-            child: Text('You didn\'t stop thoughts today.',
+            child: Text('You did not stop thoughts today.',
                 style: AppTypography.h2.copyWith(fontSize: 24)),
           ),
           const SizedBox(height: 10),

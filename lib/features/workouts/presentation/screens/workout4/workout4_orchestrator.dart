@@ -68,24 +68,24 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
       case 7:
         return Workout4ExampleScreen(
           title: 'TEXT MESSAGE',
-          lines: const ['“We need to talk.”', '“Call me later.”'],
-          neutralClose: 'The mind creates 10 scenarios.\nNone have happened yet.',
+          lines: const ['"We need to talk."', '"Call me later."'],
+          neutralClose: 'Nothing required action.',
           onNext: next,
           onBack: back,
         );
       case 8:
         return Workout4ExampleScreen(
           title: 'THE REPLAY',
-          lines: const ['“I shouldn’t have said that.”', '“They must think I’m...”'],
-          neutralClose: 'Revisiting the past\nwon’t change the outcome.',
+          lines: const ["I shouldn't have said that.", "They must think I'm..."],
+          neutralClose: 'The moment ended. Attention did not.',
           onNext: next,
           onBack: back,
         );
       case 9:
         return Workout4ExampleScreen(
           title: 'FUTURE SCANNING',
-          lines: const ['“What if everything goes wrong?”', '“I need to be ready for...”'],
-          neutralClose: 'Scanning for ghosts\nmakes them feel real.',
+          lines: const ['"What if everything goes wrong?"', '"I need to be ready for..."'],
+          neutralClose: 'No outcome had arrived. Attention had.',
           onNext: next,
           onBack: back,
         );
@@ -121,7 +121,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4Drill2LockInScreen(onNext: next);
       case 21:
         return Workout4PennyScreen(
-          lines: const ['Urgency made a promise.', 'Nothing arrived.', 'Delay broke its authority.'],
+          lines: const ['Urgency promised consequences.', 'Nothing arrived.', 'Delay broke its authority.'],
           repLabel: 'Urgency Resistance',
           onNext: next,
         );
