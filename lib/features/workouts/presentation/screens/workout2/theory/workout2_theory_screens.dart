@@ -79,14 +79,14 @@ class _Workout2EntryScreenState extends State<Workout2EntryScreen> with SingleTi
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  Text('Today you’ll see the loop.', style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 28), textAlign: TextAlign.center),
+                  Text('The alarm feels bigger than it is.', style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 28), textAlign: TextAlign.center),
                   const SizedBox(height: 10),
-                  Text('Not as an idea,', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
+                  Text('The loop makes it grow.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
                   const SizedBox(height: 6),
-                  Text('as a pattern.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
+                  Text('Today you will see where.', style: AppTypography.p.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 16), textAlign: TextAlign.center),
                   const SizedBox(height: 14),
                   Text(
-                    'Training focus: spot where fuel gets added.',
+                    'Training focus: catch the second alarm.',
                     style: AppTypography.columnHeader.copyWith(color: Colors.white.withOpacity(0.45), fontSize: 8),
                     textAlign: TextAlign.center,
                   ),
@@ -349,7 +349,7 @@ class Workout2LoopIntroScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text('The Loop That Feels Like the Alarm', style: AppTypography.h2.copyWith(fontSize: 28), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('It’s the same signal being interpreted twice.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('The same signal gets interpreted twice.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
           const SizedBox(height: 24),
           Text('Mind → Body → Mind → Body', style: AppTypography.columnHeader.copyWith(fontSize: 10, letterSpacing: 1.4)),
         ],
@@ -373,9 +373,9 @@ class _Workout2LoopStepsScreenState extends State<Workout2LoopStepsScreen> {
   Widget build(BuildContext context) {
     final steps = [
       'Something neutral appears.\n(A fast heartbeat, a tight chest, a thought, a memory, a situation)',
-      'The system responds with protection:\n“This could be dangerous.”',
+      'The system responds with protection:\n"This could be dangerous."',
       'The body prepares:\nHeart speeds up · Muscles tighten · Breath changes',
-      'The second alarm (echo):\n“See? That confirms it.”',
+      'The second alarm (echo):\n"See? That confirms it."',
     ];
     return Workout2ContentLayout(
       onBack: widget.onBack,
@@ -390,11 +390,12 @@ class _Workout2LoopStepsScreenState extends State<Workout2LoopStepsScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
               child: FadeIn(
+                duration: i == 3 ? const Duration(milliseconds: 900) : const Duration(milliseconds: 500),
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.line.withOpacity(0.4))),
-                  child: Text(steps[i], style: AppTypography.p.copyWith(fontSize: 13, color: AppColors.ink.withOpacity(0.6))),
+                  child: Text(steps[i], style: AppTypography.p.copyWith(fontSize: i == 3 ? 13.5 : 13, color: AppColors.ink.withOpacity(i == 3 ? 0.75 : 0.6))),
                 ),
               ),
             ),
@@ -418,7 +419,7 @@ class Workout2LoopPennyDropScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('The loop grows here\nnot at the first sensation,\nbut at the alarm about the sensation.', style: AppTypography.h2.copyWith(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
+          Text('The loop does not grow at the first signal.\nIt grows when reaction becomes proof.\nThat is the second alarm.', style: AppTypography.h2.copyWith(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
           const SizedBox(height: 22),
           Text('Nothing new happened.\nThe echo was treated as new.', style: AppTypography.p.copyWith(fontSize: 14, color: Colors.white.withOpacity(0.65)), textAlign: TextAlign.center),
         ],
@@ -440,9 +441,9 @@ class Workout2ControlReturnsScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('You do not need to stop the first sensation.\nYou do not need to change the body.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
+          Text('You do not stop the first signal.\nYou do not change the body.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
           const SizedBox(height: 18),
-          Text('Training focus: don’t answer the second alarm.', style: AppTypography.p.copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4), fontStyle: FontStyle.italic)),
+          Text('You stop answering the echo.', style: AppTypography.h2.copyWith(fontSize: 24), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -463,7 +464,7 @@ class Workout2FinalLockInScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('When the body reacts,\nnothing new has happened.\nIt is the same alarm echoing.\nEchoes fade when they are not treated as new information.', style: AppTypography.h2.copyWith(fontSize: 23), textAlign: TextAlign.center),
+          Text('When the body reacts,\nnothing new has happened.\nThe same alarm is echoing.\nThe loop fades when the echo is not answered.', style: AppTypography.h2.copyWith(fontSize: 23), textAlign: TextAlign.center),
           const SizedBox(height: 18),
           Text('Next: 3 drills. No scoring. Just reps.', style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.28))),
         ],
@@ -505,7 +506,7 @@ class Workout2MuscleSummaryScreen extends StatelessWidget {
           const SizedBox(height: 48),
           Center(
             child: Text(
-              '"Repetition builds automatic strength."',
+              'Automatic interruption is built through repetition.',
               style: AppTypography.p
                   .copyWith(fontSize: 14, color: AppColors.ink.withOpacity(0.4)),
               textAlign: TextAlign.center,
@@ -595,7 +596,7 @@ class Workout2ClosingTransitionScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text('Workout 2 Complete', style: AppTypography.h1.copyWith(color: Colors.white, fontSize: 32), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('The alarm is not endless.\nIt is a loop.', style: AppTypography.h2.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 22), textAlign: TextAlign.center),
+          Text('The alarm was not endless.\nThe loop made it feel that way.', style: AppTypography.h2.copyWith(color: Colors.white.withOpacity(0.7), fontSize: 22), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -620,7 +621,7 @@ class _Workout2ClosingCoreScreenState extends State<Workout2ClosingCoreScreen> {
     '',
     'That second reaction is the echo.',
     'The loop grows',
-    'when the echo is treated as new information.',
+    'when the echo is treated as new.',
   ];
   @override
   void initState() {

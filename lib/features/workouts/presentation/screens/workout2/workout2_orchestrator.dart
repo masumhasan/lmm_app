@@ -68,8 +68,8 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2ExampleScreen(
           title: 'The Heartbeat Loop',
           leftLines: const ['A sudden fast heartbeat.', 'Your body tenses.', 'Heart rate increases.'],
-          rightLines: const ['“Something is wrong.”', '“See? It’s getting worse.”'],
-          realityLine: 'Then the system treated that change as new information.',
+          rightLines: const ['"Something is wrong."', '"See? It\'s getting worse."'],
+          realityLine: 'The heartbeat changed.\nThe system treated the change as proof.\nThat second interpretation fed the loop.',
           microLine: 'Training focus: separate sensation from the echo',
           onNext: _onNext,
           onBack: _onBack,
@@ -78,9 +78,9 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2ExampleScreen(
           title: 'The Breath Loop',
           leftLines: const ['You notice your breathing.', 'Chest tightens.', 'Breath shortens.'],
-          rightLines: const ['“Why is my breathing different?”', '“This is escalating.”'],
-          realityLine: 'The loop strengthened when reaction was treated as proof.',
-          microLine: 'Training focus: spot the “proof” moment',
+          rightLines: const ['"Why is my breathing different?"', '"This is escalating."'],
+          realityLine: 'Breath changed.\nThe reaction became evidence.\nThat is how the loop strengthened.',
+          microLine: 'Training focus: spot the "proof" moment',
           onNext: _onNext,
           onBack: _onBack,
         );
@@ -88,8 +88,8 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2ExampleScreen(
           title: 'The Social Loop',
           leftLines: const ['You feel nervous before speaking.', 'Hands sweat.', 'Sensations increase.'],
-          rightLines: const ['“You’ll embarrass yourself.”', '“You’re losing control.”'],
-          realityLine: 'That second alarm is what amplified the loop.',
+          rightLines: const ['"You\'ll embarrass yourself."', '"You\'re losing control."'],
+          realityLine: 'Nervousness appeared.\nThen the system sounded a second alarm about it.\nThat second alarm amplified the loop.',
           microLine: 'Training focus: catch the second alarm in real time',
           onNext: _onNext,
           onBack: _onBack,
@@ -98,9 +98,9 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2ExampleScreen(
           title: 'The Avoidance Loop',
           leftLines: const ['You once felt alarm in a supermarket.', 'Your body tenses before entering.', 'The loop restarts.'],
-          rightLines: const ['“Don’t go back.”'],
-          realityLine: 'Avoidance marks the situation as urgent and starts alarm earlier next time.',
-          microLine: 'Training focus: see how “avoid” teaches urgency',
+          rightLines: const ['"Don\'t go back."'],
+          realityLine: 'Avoidance marks the signal as important.\nNext time the alarm starts earlier.\nEarlier alarm means stronger loop.',
+          microLine: 'Training focus: see how "avoid" teaches urgency',
           cta: '  Break It Down',
           onNext: _onNext,
           onBack: _onBack,
@@ -141,7 +141,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
       case 19:
         return Workout2PennyScreen(
           lines: const [
-            'The second alarm asked for an answer.',
+            'The echo asked for fuel.',
             'You did not feed it.',
             'That is loop restraint.',
           ],
@@ -157,7 +157,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2PennyScreen(
           lines: const [
             'You found the growth point.',
-            'Fear of the sensation expands the loop.',
+            'Fear of sensation expands the loop.',
             'Interrupt there.',
           ],
           repLoggedText: 'Loop Disruption',
@@ -180,7 +180,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         );
       case 27:
         return Workout2NoticeScreen(
-          line1: 'It will feel like it’s getting worse.',
+          line1: 'It will feel like it\'s getting worse.',
           line2: 'Nothing new actually happened.',
           onNext: _onNext,
           onBack: _onBack,
@@ -194,15 +194,15 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         );
       case 29:
         return Workout2NoticeScreen(
-          line1: 'You’ll feel the pull to check… to control… to make it stop.',
-          line2: 'That’s what feeds it.',
+          line1: 'You\'ll feel the pull to check… to control… to make it stop.',
+          line2: 'That\'s what feeds it.',
           cta: '  Continue',
           onNext: _onNext,
           onBack: _onBack,
         );
       case 30:
         return Workout2NoticeScreen(
-          line1: 'You’ll see it this time.',
+          line1: 'You\'ll see it this time.',
           line2: '',
           cta: '  Continue to Journal',
           onNext: () => _goStep(31),
@@ -226,7 +226,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
       case 34:
         return Workout2SRIntroScreen(
           title: 'The Checking Trap',
-          body: 'The loop survives because you keep checking if it’s gone.\nDo not check the signal. Just watch it.',
+          body: 'The loop survives because you keep checking if it\'s gone.\nDo not check the signal. Just watch it.',
           onStart: _onNext,
           onSkip: () => _goStep(37),
           onBack: _onBack,

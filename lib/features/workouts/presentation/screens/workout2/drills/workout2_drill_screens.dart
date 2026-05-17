@@ -21,9 +21,9 @@ class Workout2D1EntryScreen extends StatelessWidget {
         children: [
           Text('Watch It Multiply', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
           const SizedBox(height: 14),
-          Text('Loops do not grow from new danger.\nThey grow from repeated meaning.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('The signal does not multiply.\nMeaning does.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
           const SizedBox(height: 8),
-          Text('Watch what multiplies.', style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.3))),
+          Text('Watch what repeats.', style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.3))),
         ],
       ),
     );
@@ -69,7 +69,7 @@ class _Workout2D1PlayScreenState extends State<Workout2D1PlayScreen> {
               Text('Sensation', style: AppTypography.h1.copyWith(fontSize: 30, color: AppColors.ink.withOpacity(0.2))),
               const SizedBox(height: 18),
               for (int i = 0; i < count; i++)
-                Text('What if this is bad?', style: AppTypography.h2.copyWith(fontSize: 18 + (_level * 1.2), color: AppColors.accent)),
+                Text('What if this is bad?', style: AppTypography.h2.copyWith(fontSize: 18 + (_level * 1.2), color: AppColors.accent.withOpacity(count <= 1 ? 1.0 : 0.7 + (i / (count - 1)) * 0.3))),
               if (_level >= 4) ...[
                 const SizedBox(height: 14),
                 Text('Do nothing.', style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.3))),
@@ -96,9 +96,9 @@ class Workout2D2EntryScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Do Not Answer the Second Alarm', style: AppTypography.h1.copyWith(fontSize: 32), textAlign: TextAlign.center),
+          Text('Do Not Feed the Echo', style: AppTypography.h1.copyWith(fontSize: 32), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('The loop grows when the system answers its own echo.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('The loop grows when the echo gets answered.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -129,7 +129,7 @@ class _Workout2D2PlayIntroScreenState extends State<Workout2D2PlayIntroScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Text(
-            'A sensation appears.\nThen the system adds a second alarm.\n\nYou will see the echo.\nDo not answer it.',
+            'A signal appears.\nThen the echo arrives.\nDo not feed it.',
             style: AppTypography.h2.copyWith(fontSize: 25),
             textAlign: TextAlign.center,
           ),
@@ -240,7 +240,7 @@ class _Workout2D2PlayLoopScreenState extends State<Workout2D2PlayLoopScreen> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF6557FF), padding: const EdgeInsets.symmetric(vertical: 15), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99))),
                     onPressed: _locked ? null : () => _choose(true),
-                    child: Text('ECHO', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                    child: Text('FEED', style: AppTypography.btnText.copyWith(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -248,7 +248,7 @@ class _Workout2D2PlayLoopScreenState extends State<Workout2D2PlayLoopScreen> {
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white.withOpacity(0.3)), padding: const EdgeInsets.symmetric(vertical: 15), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99))),
                     onPressed: _locked ? null : () => _choose(false),
-                    child: Text('Not Now', style: AppTypography.btnText.copyWith(color: Colors.white)),
+                    child: Text('LEAVE', style: AppTypography.btnText.copyWith(color: Colors.white)),
                   ),
                 ),
               ],
@@ -276,7 +276,9 @@ class Workout2D3EntryScreen extends StatelessWidget {
         children: [
           Text('Interrupt the Structure', style: AppTypography.h1.copyWith(fontSize: 34), textAlign: TextAlign.center),
           const SizedBox(height: 12),
-          Text('The loop has a predictable sequence.\nBreak it at the growth point.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          Text('The loop has one growth point.\nFind it.', style: AppTypography.p.copyWith(fontSize: 15, color: AppColors.ink.withOpacity(0.45)), textAlign: TextAlign.center),
+          const SizedBox(height: 8),
+          Text('Break it there.', style: AppTypography.columnHeader.copyWith(fontSize: 9, color: AppColors.ink.withOpacity(0.3))),
         ],
       ),
     );
@@ -319,17 +321,17 @@ class _Workout2D3PlayScreenState extends State<Workout2D3PlayScreen> {
                                 setState(() {
                                   selected = i;
                                   locked = true;
-                                  micro = 'This is where the loop grows.\nFear of sensation tells the system: this is urgent.\nInterrupt here, and escalation cannot multiply.';
+                                  micro = 'This is where the loop grows.\nFear of sensation tells the system: this matters.\nInterrupt here, and escalation loses fuel.';
                                 });
                               } else {
                                 setState(() {
                                   selected = i;
                                   micro = i == 0
-                                      ? 'This begins the cycle — but doesn’t grow it.'
+                                      ? "This begins the cycle — but doesn't grow it."
                                       : i == 1
-                                          ? 'Meaning activates the body — but isn’t the growth point.'
+                                          ? "Meaning activates the body — but isn't the growth point."
                                           : i == 2
-                                              ? 'The body reacts — but tension alone isn’t escalation.'
+                                              ? "The body reacts — but tension alone isn't escalation."
                                               : 'Escalation is the result — not the cause.';
                                 });
                               }
