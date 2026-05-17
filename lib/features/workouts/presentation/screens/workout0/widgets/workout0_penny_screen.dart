@@ -7,6 +7,7 @@ import 'package:animate_do/animate_do.dart';
 class Workout0PennyScreen extends StatefulWidget {
   final String text1;
   final String text2;
+  final String? text3;
   final String repLoggedText;
   final VoidCallback onNext;
   final VoidCallback onBack;
@@ -14,6 +15,7 @@ class Workout0PennyScreen extends StatefulWidget {
   const Workout0PennyScreen({
     required this.text1,
     required this.text2,
+    this.text3,
     required this.repLoggedText,
     required this.onNext,
     required this.onBack,
@@ -85,6 +87,18 @@ class _Workout0PennyScreenState extends State<Workout0PennyScreen> {
                       textAlign: TextAlign.center,
                     ),
                   ),
+                  if (widget.text3 != null) ...[
+                    const SizedBox(height: 16),
+                    FadeIn(
+                      delay: const Duration(milliseconds: 1200),
+                      duration: const Duration(seconds: 1),
+                      child: Text(
+                        '"${widget.text3}"',
+                        style: AppTypography.h2.copyWith(fontSize: 26, fontStyle: FontStyle.italic),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),

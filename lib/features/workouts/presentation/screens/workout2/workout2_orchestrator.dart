@@ -125,8 +125,7 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
           lines: const [
             'The first alarm was simple.',
             'The second alarm repeated it.',
-            'Repetition is what built the loop.',
-            'That repetition is added fuel.',
+            'That repetition is fuel.',
           ],
           repLoggedText: 'Escalation Awareness',
           onNext: _onNext,
@@ -142,10 +141,9 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
       case 19:
         return Workout2PennyScreen(
           lines: const [
-            'The second alarm survives',
-            'when it is answered.',
-            'You did not answer.',
-            'That is restraint.',
+            'The second alarm asked for an answer.',
+            'You did not feed it.',
+            'That is loop restraint.',
           ],
           repLoggedText: 'Loop Disruption',
           onNext: _onNext,
@@ -159,10 +157,8 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2PennyScreen(
           lines: const [
             'You found the growth point.',
-            'The loop expands',
-            'when fear is added to sensation.',
-            'Interrupt here,',
-            'and escalation cannot multiply.',
+            'Fear of the sensation expands the loop.',
+            'Interrupt there.',
           ],
           repLoggedText: 'Loop Disruption',
           onNext: _onNext,
@@ -240,9 +236,8 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
       case 36:
         return Workout2PennyScreen(
           lines: const [
-            'You were not feeling danger.',
-            'You were checking for it.',
-            'Monitoring tells the system: this must matter.',
+            'You were not checking danger.',
+            'You were feeding relevance.',
             'No checking. No fuel.',
           ],
           repLoggedText: 'Escalation Awareness',
@@ -263,10 +258,9 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
       case 39:
         return Workout2PennyScreen(
           lines: const [
-            'Control intensifies the loop.',
-            'Force creates rebound.',
-            'Non-interference removes momentum.',
-            'You do not win by overpowering it.',
+            'Force created rebound.',
+            'Non-interference reduced momentum.',
+            'Control was the extra fuel.',
           ],
           repLoggedText: 'Loop Disruption',
           onNext: _onNext,
@@ -286,10 +280,8 @@ class _Workout2OrchestratorState extends ConsumerState<Workout2Orchestrator> {
         return Workout2PennyScreen(
           lines: const [
             'You were not trapped by the sensation.',
-            'You were pulled by the need to escape it.',
-            'When escape is not answered,',
-            'the loop has nothing to build on.',
-            'Reaction fuels alarms. Non-response weakens them.',
+            'You were pulled by the escape reflex.',
+            'No response. Less loop.',
           ],
           repLoggedText: 'Loop Disruption',
           onNext: _onNext,

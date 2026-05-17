@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'closing/workout4_journal_screens.dart';
@@ -105,7 +105,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4Drill1LockInScreen(onNext: next);
       case 16:
         return Workout4PennyScreen(
-          lines: const ['You didn’t stop thoughts.', 'You removed fuel.', 'Noise runs on attention.'],
+          lines: const ['You did not stop the thought.', 'You removed its fuel.', 'Noise runs on attention.'],
           repLabel: 'Attention Control',
           onNext: next,
         );
@@ -121,7 +121,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4Drill2LockInScreen(onNext: next);
       case 21:
         return Workout4PennyScreen(
-          lines: const ['Urgency promised consequences.', 'Nothing arrived.', 'Delay breaks authority.'],
+          lines: const ['Urgency made a promise.', 'Nothing arrived.', 'Delay broke its authority.'],
           repLabel: 'Urgency Resistance',
           onNext: next,
         );
@@ -139,7 +139,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4Drill3LockInScreen(onNext: next);
       case 27:
         return Workout4PennyScreen(
-          lines: const ['The thought stayed unfinished.', 'You didn’t complete it.', 'Nothing required an ending.'],
+          lines: const ['The thought stayed unfinished.', 'You did not complete it.', 'Nothing required an ending.'],
           repLabel: 'Completion Tolerance',
           onNext: next,
         );
@@ -189,7 +189,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4SR1InsightScreen(onNext: next, onBack: back);
       case 45:
         return Workout4PennyScreen(
-          lines: const ['Noise pushes.', 'Signal informs.', 'You can tell the difference.'],
+          lines: const ['Noise pushed.', 'Signal reported.', 'You separated the two.'],
           repLabel: 'Noise or Signal',
           onNext: next,
         );
@@ -201,7 +201,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4SR2PlayScreen(onComplete: next);
       case 48:
         return Workout4PennyScreen(
-          lines: const ["You didn't solve it.", 'You interrupted it.', 'That is the skill.'],
+          lines: const ['You interrupted the noise.', 'You did not answer it.', 'That is control.'],
           repLabel: 'Interrupt Without Solving',
           onNext: next,
         );
@@ -213,7 +213,7 @@ class _Workout4OrchestratorState extends ConsumerState<Workout4Orchestrator> {
         return Workout4SR3PlayScreen(onComplete: next);
       case 51:
         return Workout4PennyScreen(
-          lines: const ['Distance breaks the loop.', 'You are not your thoughts.', 'You observe them.'],
+          lines: const ['You did not change the thought.', 'You changed position.', 'That is why it lost authority.'],
           repLabel: 'Step Back',
           onNext: next,
         );

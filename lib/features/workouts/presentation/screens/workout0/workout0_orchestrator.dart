@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -100,8 +100,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
         return Drill1RevealScreen(onNext: _onNext, onBack: _onBack);
       case 8:
         return Workout0PennyScreen(
-          text1: 'Most reactions are rehearsed.',
-          text2: 'You just interrupted one.',
+          text1: 'Attention moved first.',
+          text2: 'You saw it happen.',
+          text3: 'That is where training begins.',
           repLoggedText: 'Attention Control',
           onNext: _onNext,
           onBack: _onBack,
@@ -114,8 +115,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
         return Drill2RevealScreen(onNext: _onNext, onBack: _onBack);
       case 12:
         return Workout0PennyScreen(
-          text1: 'Urgency is a sensation.',
-          text2: 'Not a directive.',
+          text1: 'Urgency felt real.',
+          text2: 'Nothing required action.',
+          text3: 'Pressure is not authority.',
           repLoggedText: 'Urgency Resistance',
           onNext: _onNext,
           onBack: _onBack,
@@ -128,8 +130,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
         return Drill3ReleaseScreen(onNext: _onNext, onBack: _onBack);
       case 16:
         return Workout0PennyScreen(
-          text1: 'Your system preferred closure.',
-          text2: 'You proved closure is optional.',
+          text1: 'The loop stayed open.',
+          text2: 'Nothing broke.',
+          text3: 'Closure was never required.',
           repLoggedText: 'Completion Tolerance',
           onNext: _onNext,
           onBack: _onBack,
@@ -199,8 +202,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
         return SR1InsightScreen(onNext: _onNext, onBack: _onBack);
       case 29:
         return Workout0PennyScreen(
-          text1: 'Belief wasn’t chosen logically.',
-          text2: 'It felt familiar.',
+          text1: 'Belief felt true.',
+          text2: 'It did not arrive logically.',
+          text3: 'It arrived familiar.',
           repLoggedText: 'Attention Control',
           onNext: _onNext,
           onBack: _onBack,
@@ -220,8 +224,9 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
         return SR2InsightScreen(onNext: _onNext, onBack: _onBack);
       case 33:
         return Workout0PennyScreen(
-          text1: 'You saw attention move first.',
-          text2: 'That makes training possible.',
+          text1: 'The pull happened first.',
+          text2: 'Attention moved automatically.',
+          text3: 'Now it is visible.',
           repLoggedText: 'Attention Control',
           onNext: _onNext,
           onBack: _onBack,
@@ -242,7 +247,8 @@ class _Workout0OrchestratorState extends ConsumerState<Workout0Orchestrator> {
       case 37:
         return Workout0PennyScreen(
           text1: 'You noticed your position.',
-          text2: 'That creates distance.',
+          text2: 'Distance changed the feel.',
+          text3: 'That is where control begins.',
           repLoggedText: 'Completion Tolerance',
           onNext: _onNext,
           onBack: _onBack,

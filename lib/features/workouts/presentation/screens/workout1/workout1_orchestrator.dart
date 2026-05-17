@@ -198,8 +198,9 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case 18:
         return Workout1PennyScreen(
           lines: const [
-            'Intensity rises when interpretation compounds.',
+            'Intensity came from added meaning.',
             'You interrupted the build.',
+            'That is story control under pressure.',
           ],
           repLoggedText: 'Story Separation',
           onNext: _onNext,
@@ -216,9 +217,9 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case 21:
         return Workout1PennyScreen(
           lines: const [
-            'The sentence stayed the same.',
-            'Your position changed.',
-            'That shift is separation.',
+            'The sentence did not change.',
+            'Your position did.',
+            'That is how stories lose authority.',
           ],
           repLoggedText: 'Story Separation',
           onNext: _onNext,
@@ -285,10 +286,8 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
         return Workout1PennyScreen(
           lines: const [
             'The story tried to pull you.',
-            "You didn't remove it.",
-            'You stayed with what was real.',
-            "Control isn't silence.",
-            "It's steadiness under interference.",
+            'You stayed with what was here.',
+            'That is steadiness.',
           ],
           repLoggedText: 'Story Separation',
           minimumDisplayMs: 4000,
@@ -313,10 +312,9 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case 36:
         return Workout1PennyScreen(
           lines: const [
-            'The system rushed toward certainty.',
-            'Reality stayed unclear.',
-            'You held neutral',
-            'without forcing an answer.',
+            'The system rushed to certainty.',
+            'You held the unclear middle.',
+            'That is separation under pressure.',
           ],
           repLoggedText: 'Pattern Recognition',
           minimumDisplayMs: 4000,
@@ -341,10 +339,9 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
       case 39:
         return Workout1PennyScreen(
           lines: const [
-            'Stories feel loud.',
-            'Concrete feels simple.',
-            'You chose action',
-            'over assumption.',
+            'Stories felt louder.',
+            'Concrete stayed usable.',
+            'You chose what moves things forward.',
           ],
           repLoggedText: 'Story Separation',
           minimumDisplayMs: 4000,
@@ -372,15 +369,23 @@ class _Workout1OrchestratorState extends ConsumerState<Workout1Orchestrator> {
   List<String> _d1PennyLines() {
     switch (_d1Result) {
       case D1TapResult.earlyInterpretation:
-        return ['You caught the moment meaning entered.'];
+        return [
+          'Meaning entered there.',
+          'You caught the sentence turning.',
+          'That is separation.',
+        ];
       case D1TapResult.strongInterpretation:
-        return ['You caught the stronger interpretation.'];
+        return [
+          'You caught the stronger story.',
+          'Interpretation had already deepened.',
+          'You still saw it.',
+        ];
       case D1TapResult.noTaps:
       case D1TapResult.none:
         return [
           'Stories feel seamless.',
-          'Until you slow them down.',
-          'Detection is separation.',
+          'Until the moment is slowed down.',
+          'Then meaning becomes visible.',
         ];
     }
   }

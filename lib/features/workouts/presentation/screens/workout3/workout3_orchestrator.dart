@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'drills/workout3_drill_screens.dart';
@@ -80,7 +80,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3Drill1PlayScreen(onComplete: next);
       case 11:
         return Workout3PennyScreen(
-          lines: const ['The sensation came first.', 'Meaning arrived after.', 'You saw the split.'],
+          lines: const ['The sensation came first.', 'Meaning followed it.', 'You saw the split.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
@@ -91,7 +91,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3Drill2PlayScreen(onComplete: next);
       case 14:
         return Workout3PennyScreen(
-          lines: const ['Activation is not regression.', 'A pattern fired.', 'You didn’t become it.'],
+          lines: const ['A pattern fired.', 'Progress did not disappear.', 'Activation is not identity.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
@@ -102,7 +102,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3Drill3PlayScreen(onComplete: next);
       case 17:
         return Workout3PennyScreen(
-          lines: const ['The sensation stayed.', 'You didn’t obey it.', 'That is how safety is learned.'],
+          lines: const ['The sensation stayed.', 'You did not obey it.', 'That is how safety is learned.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
@@ -150,7 +150,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3SR1PlayScreen(onComplete: next);
       case 34:
         return Workout3PennyScreen(
-          lines: const ['You created intensity.', 'Twice.', 'And it ended.', 'The sensation was never the threat.', 'The prediction was.'],
+          lines: const ['You created the signal.', 'The prediction made it dangerous.', 'The sensation was never the threat.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
@@ -167,7 +167,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3SR2PlayScreen(onComplete: next);
       case 37:
         return Workout3PennyScreen(
-          lines: const ['You weren’t responding to sensation.', 'You were responding to the urge to monitor.', 'You ignored the urge.', 'That’s strength.'],
+          lines: const ['You were not responding to sensation.', 'You were responding to the urge to monitor.', 'Ignoring the urge is strength.'],
           repLabel: 'Non-Reactivity',
           onNext: next,
         );
@@ -184,7 +184,7 @@ class _Workout3OrchestratorState extends ConsumerState<Workout3Orchestrator> {
         return Workout3SR3PlayScreen(onComplete: next);
       case 40:
         return Workout3PennyScreen(
-          lines: const ['The word appeared.', 'The meaning appeared faster.', 'You didn’t react to sensation.', 'You reacted to prediction.', 'Fear begins before evidence.'],
+          lines: const ['The word appeared.', 'Meaning arrived faster.', 'Prediction came before evidence.'],
           repLabel: 'Sensation Separation',
           onNext: next,
         );
