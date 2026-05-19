@@ -168,6 +168,15 @@ class _Workout1SRCompleteScreenState extends State<Workout1SRCompleteScreen> {
                     ),
                     const SizedBox(height: 16),
                     FadeInUp(
+                      delay: const Duration(milliseconds: 500),
+                      child: _CompletionAction(
+                        label: 'EXPLORE WORKOUT 1 LIBRARY',
+                        icon: LucideIcons.bookOpen,
+                        onTap: () => context.push('/hub/library/workout1'),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    FadeInUp(
                       delay: const Duration(milliseconds: 600),
                       child: _CompletionAction(
                         label: 'TALK IT THROUGH',
@@ -189,9 +198,9 @@ class _Workout1SRCompleteScreenState extends State<Workout1SRCompleteScreen> {
                     FadeIn(
                       delay: const Duration(milliseconds: 1200),
                       child: TextButton(
-                        onPressed: widget.onHome,
+                        onPressed: () => context.go('/'),
                         child: Text(
-                          'RETURN HOME',
+                          'RETURN TO DASHBOARD',
                           style: AppTypography.columnHeader.copyWith(
                             fontSize: 9,
                             letterSpacing: 2.0,
@@ -254,6 +263,7 @@ class _CompletionAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),

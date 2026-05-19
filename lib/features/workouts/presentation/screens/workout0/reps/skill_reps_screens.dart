@@ -206,6 +206,15 @@ class WorkoutCompleteScreen extends StatelessWidget {
                   
                   // Secondary Actions
                   FadeInUp(
+                    delay: const Duration(milliseconds: 500),
+                    child: _CompletionAction(
+                      label: 'EXPLORE WORKOUT 0 LIBRARY',
+                      icon: LucideIcons.bookOpen,
+                      onTap: () => context.push('/hub/library/workout0'),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  FadeInUp(
                     delay: const Duration(milliseconds: 600),
                     child: _CompletionAction(
                       label: 'TOOLS HUB',
@@ -229,7 +238,7 @@ class WorkoutCompleteScreen extends StatelessWidget {
                   FadeIn(
                     delay: const Duration(milliseconds: 1200),
                     child: TextButton(
-                      onPressed: onHome,
+                      onPressed: () => context.go('/'),
                       child: Text(
                         'RETURN TO DASHBOARD',
                         style: AppTypography.columnHeader.copyWith(
@@ -272,6 +281,7 @@ class _CompletionAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),

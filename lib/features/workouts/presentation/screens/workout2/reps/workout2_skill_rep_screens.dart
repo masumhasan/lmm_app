@@ -418,6 +418,15 @@ class Workout2SkillRepsCompleteScreen extends StatelessWidget {
                       onTap: onContinueWorkout3,
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 850),
+                    child: _CompletionAction(
+                      label: 'EXPLORE WORKOUT 2 LIBRARY',
+                      icon: LucideIcons.bookOpen,
+                      onTap: () => context.push('/hub/library/workout2'),
+                    ),
+                  ),
                   const SizedBox(height: 12),
                   FadeInUp(
                     delay: const Duration(milliseconds: 900),
@@ -431,9 +440,9 @@ class Workout2SkillRepsCompleteScreen extends StatelessWidget {
                   FadeIn(
                     delay: const Duration(milliseconds: 1400),
                     child: TextButton(
-                      onPressed: onHome,
+                      onPressed: () => context.go('/'),
                       child: Text(
-                        'RETURN HOME',
+                        'RETURN TO DASHBOARD',
                         style: AppTypography.columnHeader.copyWith(
                           fontSize: 9,
                           letterSpacing: 2.0,
@@ -472,6 +481,7 @@ class _CompletionAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),

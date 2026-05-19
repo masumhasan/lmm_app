@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lmm_app/core/theme/app_colors.dart';
 import 'package:lmm_app/core/theme/app_typography.dart';
 import '../widgets/workout4_content_layout.dart';
@@ -888,6 +889,16 @@ class _Workout4SkillRepsCompleteScreenState extends State<Workout4SkillRepsCompl
                     FadeInUp(
                       delay: const Duration(milliseconds: 400),
                       child: _CompletionAction4(
+                        label: 'EXPLORE WORKOUT 4 LIBRARY',
+                        icon: LucideIcons.bookOpen,
+                        isPrimary: true,
+                        onTap: () => context.push('/hub/library/workout4'),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    FadeInUp(
+                      delay: const Duration(milliseconds: 500),
+                      child: _CompletionAction4(
                         label: 'EXPLORE TOOLS HUB',
                         icon: LucideIcons.layoutGrid,
                         onTap: widget.onHub,
@@ -935,6 +946,7 @@ class _CompletionAction4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),

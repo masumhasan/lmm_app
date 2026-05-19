@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-enum OnboardingStepType { welcome, bulletPoints, listItems, negativePoints }
+enum OnboardingStepType { 
+  welcome, 
+  bulletPoints, 
+  listItems, 
+  negativePoints, 
+  simpleBody,
+  createAccount 
+}
 
 class OnboardingStepModel {
   final int stepIndex;
@@ -9,6 +16,7 @@ class OnboardingStepModel {
   final OnboardingStepType type;
   final List<String>? mainPoints;
   final List<OnboardingItem>? listItems;
+  final String? body;
   final String? subtitle;
   final String? footerText;
   final String? buttonLabel;
@@ -20,6 +28,7 @@ class OnboardingStepModel {
     required this.type,
     this.mainPoints,
     this.listItems,
+    this.body,
     this.subtitle,
     this.footerText,
     this.buttonLabel = 'Continue',
@@ -28,25 +37,23 @@ class OnboardingStepModel {
 
   static List<OnboardingStepModel> steps = [
     OnboardingStepModel(
-      stepIndex: 0,
-      title: '',
-      subtitle: 'See how your mind actually works. \nTrain it in real time',
+      stepIndex: 1,
+      title: 'Learn My Mind',
+      subtitle: 'Train the mind you live in.',
       type: OnboardingStepType.welcome,
       welcomeIcon: LucideIcons.brain,
-      buttonLabel: 'Get Started',
-    ),
-    OnboardingStepModel(
-      stepIndex: 1,
-      title: 'What This Is',
-      type: OnboardingStepType.bulletPoints,
-      mainPoints: [
-        'A structured mental training system.',
-        'Built around cognitive workouts.',
-        'Designed to strengthen attention and separation.',
-      ],
+      buttonLabel: 'Begin',
+      footerText: 'Not therapy.\nNot motivation.\nNot emotional support.\nTraining.',
     ),
     OnboardingStepModel(
       stepIndex: 2,
+      title: 'What This Is',
+      type: OnboardingStepType.simpleBody,
+      body: '“A structured cognitive training system.\n\nBuilt around:\n• attention\n• interruption\n• separation\n• awareness under pressure\n\nDesigned to strengthen recognition before automatic reaction.”',
+      buttonLabel: 'Continue',
+    ),
+    OnboardingStepModel(
+      stepIndex: 3,
       title: 'What This Isn\'t',
       type: OnboardingStepType.negativePoints,
       mainPoints: [
@@ -55,40 +62,49 @@ class OnboardingStepModel {
         'Not emotional support.',
         'Not a quick fix.',
       ],
-      footerText: 'IT DOES NOT CHANGE HOW YOU FEEL. IT TRAINS WHERE ATTENTION GOES.',
+      footerText: 'It does not change how you feel.\nIt trains where attention goes.',
+      buttonLabel: 'Continue',
     ),
     OnboardingStepModel(
-      stepIndex: 3,
+      stepIndex: 4,
       title: 'How Training Works',
       type: OnboardingStepType.listItems,
       listItems: [
         OnboardingItem(
           icon: LucideIcons.zap,
           title: 'WORKOUTS',
-          description: 'Structured cognitive sessions.',
+          description: 'Structured cognitive training sessions.',
         ),
         OnboardingItem(
           icon: LucideIcons.checkCircle,
           title: 'SKILL REPS',
-          description: 'Short drills that strengthen control.',
+          description: 'Short training games that reinforce recognition and interruption.',
         ),
         OnboardingItem(
           icon: LucideIcons.layoutGrid,
           title: 'TRAINING LOG',
-          description: 'Track what you noticed.',
+          description: 'Record replay, interruption, and awareness patterns.',
         ),
       ],
-      footerText: 'REPETITION BUILDS AUTOMATIC STRENGTH.',
+      footerText: 'Repetition builds automatic strength.',
+      buttonLabel: 'Continue',
     ),
     OnboardingStepModel(
-      stepIndex: 4,
+      stepIndex: 5,
+      title: 'What Starts Changing',
+      type: OnboardingStepType.simpleBody,
+      body: '“You may still experience:\n• thoughts\n• replay\n• uncertainty\n• sensations\n• urgency\n\nBut there’s a higher chance you’ll:\n• notice patterns sooner\n• interrupt automatic reactions earlier\n• see replay before it fully runs\n• recognize when attention gets captured\n• respond with more choice inside the moment”',
+      buttonLabel: 'Continue',
+    ),
+    OnboardingStepModel(
+      stepIndex: 6,
       title: 'Three Ways to Train',
       type: OnboardingStepType.listItems,
       listItems: [
         OnboardingItem(
           icon: LucideIcons.zap,
           title: 'WORKOUTS',
-          description: 'Build core mental muscles.',
+          description: 'Build core cognitive muscles.',
         ),
         OnboardingItem(
           icon: LucideIcons.refreshCw,
@@ -101,6 +117,14 @@ class OnboardingStepModel {
           description: 'Pattern exposure through media.',
         ),
       ],
+      buttonLabel: 'Continue',
+    ),
+    OnboardingStepModel(
+      stepIndex: 7,
+      title: 'Create Account',
+      type: OnboardingStepType.createAccount,
+      buttonLabel: 'Enter Training Floor',
+      footerText: 'I understand this is an educational training system.',
     ),
   ];
 }

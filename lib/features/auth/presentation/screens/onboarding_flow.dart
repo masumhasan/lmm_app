@@ -75,7 +75,7 @@ class _OnboardingStepView extends StatelessWidget {
           ],
           if (!isWelcome) ...[
             Text(
-              'STEP ${step.stepIndex} OF 5'.toUpperCase(),
+              'STEP ${step.stepIndex} OF 7'.toUpperCase(),
               style: AppTypography.columnHeader.copyWith(
                 color: AppColors.ink.withOpacity(0.2),
                 letterSpacing: 3.0,
@@ -109,19 +109,22 @@ class _OnboardingStepView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 48),
               child: Text(
-                step.footerText!.toUpperCase(),
+                step.type == OnboardingStepType.welcome || step.type == OnboardingStepType.negativePoints 
+                    ? step.footerText! 
+                    : step.footerText!.toUpperCase(),
                 style: AppTypography.columnHeader.copyWith(
                   fontSize: 10,
                   letterSpacing: isWelcome ? 2.5 : 1.5,
-                  color: isWelcome ? AppColors.ink.withOpacity(0.2) : AppColors.ink.withOpacity(0.3),
+                  color: isWelcome ? AppColors.ink.withOpacity(0.5) : AppColors.ink.withOpacity(0.3),
                   height: 1.8,
+                  textBaseline: TextBaseline.alphabetic,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
           ],
           SizedBox(
-            width: 200,
+            width: 240,
             child: AppButton(
               text: step.buttonLabel!,
               icon: LucideIcons.play,
@@ -149,17 +152,36 @@ class _OnboardingStepView extends StatelessWidget {
   Widget _buildContent() {
     switch (step.type) {
       case OnboardingStepType.welcome:
+        return const SizedBox.shrink();
+      case OnboardingStepType.simpleBody:
+        return Text(
+          step.body ?? '',
+          style: AppTypography.p.copyWith(
+            fontSize: 16,
+            color: AppColors.ink.withOpacity(0.6),
+            height: 1.6,
+          ),
+          textAlign: TextAlign.center,
+        );
+      case OnboardingStepType.createAccount:
         return Column(
           children: [
-            Text(
-              '"NOT THERAPY.\nNOT MOTIVATION.\nTRAINING."',
-              style: AppTypography.columnHeader.copyWith(
-                fontSize: 12,
-                letterSpacing: 4.0,
-                color: AppColors.ink.withOpacity(0.3),
-                height: 2.0,
-              ),
-              textAlign: TextAlign.center,
+            _AccountOption(
+              icon: LucideIcons.mail,
+              label: 'Continue with Email',
+              onTap: () {},
+            ),
+            const SizedBox(height: 12),
+            _AccountOption(
+              icon: LucideIcons.apple,
+              label: 'Continue with Apple',
+              onTap: () {},
+            ),
+            const SizedBox(height: 12),
+            _AccountOption(
+              icon: LucideIcons.chrome,
+              label: 'Continue with Google',
+              onTap: () {},
             ),
           ],
         );
@@ -225,5 +247,46 @@ class _OnboardingStepView extends StatelessWidget {
               .toList(),
         );
     }
+  }
+}
+
+class _AccountOption extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _AccountOption({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.ink.withOpacity(0.1)),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 20, color: AppColors.ink),
+            const SizedBox(width: 16),
+            Text(
+              label,
+              style: AppTypography.p.copyWith(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.ink,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

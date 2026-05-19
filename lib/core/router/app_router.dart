@@ -16,6 +16,9 @@ import 'package:lmm_app/features/tools_hub/presentation/screens/tools_hub_screen
 import 'package:lmm_app/features/ai_coach/presentation/screens/ai_coach_screen.dart';
 import 'package:lmm_app/features/muscle_dashboard/presentation/screens/muscle_dashboard_main.dart';
 import 'package:lmm_app/features/library/presentation/screens/library_screen.dart';
+import 'package:lmm_app/features/library/presentation/screens/library_module_screen.dart';
+import 'package:lmm_app/features/library/presentation/screens/library_module_entry_screen.dart';
+import 'package:lmm_app/features/library/domain/models/library_content.dart';
 import 'package:lmm_app/features/profile/presentation/screens/profile_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -141,6 +144,83 @@ final appRouter = GoRouter(
                 GoRoute(
                   path: 'library',
                   builder: (context, state) => const LibraryScreen(),
+                  routes: [
+                    GoRoute(
+                      path: 'workout0',
+                      builder: (context, state) => const LibraryModuleEntryScreen(
+                        workoutIndex: 0,
+                        title: 'Workout 0: Attention Control',
+                        muscle: 'Attention Control',
+                        onStartPath: '/hub/library/workout0/cards',
+                      ),
+                      routes: [
+                        GoRoute(
+                          path: 'cards',
+                          builder: (context, state) => LibraryModuleScreen(module: workout0LibraryModule),
+                        ),
+                      ],
+                    ),
+                    GoRoute(
+                      path: 'workout1',
+                      builder: (context, state) => const LibraryModuleEntryScreen(
+                        workoutIndex: 1,
+                        title: 'Workout 1: Story Separation',
+                        muscle: 'Story Separation',
+                        onStartPath: '/hub/library/workout1/cards',
+                      ),
+                      routes: [
+                        GoRoute(
+                          path: 'cards',
+                          builder: (context, state) => LibraryModuleScreen(module: workout1LibraryModule),
+                        ),
+                      ],
+                    ),
+                    GoRoute(
+                      path: 'workout2',
+                      builder: (context, state) => const LibraryModuleEntryScreen(
+                        workoutIndex: 2,
+                        title: 'Workout 2: Alarm Loop',
+                        muscle: 'Alarm Loop Recognition',
+                        onStartPath: '/hub/library/workout2/cards',
+                      ),
+                      routes: [
+                        GoRoute(
+                          path: 'cards',
+                          builder: (context, state) => LibraryModuleScreen(module: workout2LibraryModule),
+                        ),
+                      ],
+                    ),
+                    GoRoute(
+                      path: 'workout3',
+                      builder: (context, state) => const LibraryModuleEntryScreen(
+                        workoutIndex: 3,
+                        title: 'Workout 3: Reset',
+                        muscle: 'Sensation Separation',
+                        onStartPath: '/hub/library/workout3/cards',
+                      ),
+                      routes: [
+                        GoRoute(
+                          path: 'cards',
+                          builder: (context, state) => LibraryModuleScreen(module: workout3LibraryModule),
+                        ),
+                      ],
+                    ),
+                    GoRoute(
+                      path: 'workout4',
+                      builder: (context, state) => const LibraryModuleEntryScreen(
+                        workoutIndex: 4,
+                        title: 'Workout 4: Thought & Attention',
+                        muscle: 'Cognitive Distance',
+                        onStartPath: '/hub/library/workout4/cards',
+                      ),
+                      routes: [
+                        GoRoute(
+                          path: 'cards',
+                          builder: (context, state) => LibraryModuleScreen(module: workout4LibraryModule),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -92,66 +92,81 @@ class LibraryScreen extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final module = modules[index];
+                  final moduleData = modules[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 24),
-                    child: Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.03),
-                            blurRadius: 20,
-                            offset: const Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            module['muscle']!.toUpperCase(),
-                            style: AppTypography.columnHeader.copyWith(
-                              fontSize: 9,
-                              color: AppColors.accent,
-                              letterSpacing: 1.5,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (index == 0) {
+                          context.push('/hub/library/workout0');
+                        } else if (index == 1) {
+                          context.push('/hub/library/workout1');
+                        } else if (index == 2) {
+                          context.push('/hub/library/workout2');
+                        } else if (index == 3) {
+                          context.push('/hub/library/workout3');
+                        } else if (index == 4) {
+                          context.push('/hub/library/workout4');
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.03),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            module['title']!,
-                            style: AppTypography.h2.copyWith(fontSize: 20),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            module['subtitle']!,
-                            style: AppTypography.p.copyWith(
-                              fontSize: 14,
-                              color: AppColors.ink.withOpacity(0.5),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              moduleData['muscle']!.toUpperCase(),
+                              style: AppTypography.columnHeader.copyWith(
+                                fontSize: 9,
+                                color: AppColors.accent,
+                                letterSpacing: 1.5,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              Text(
-                                'VIEW MODULE',
-                                style: AppTypography.columnHeader.copyWith(
-                                  fontSize: 10,
-                                  color: AppColors.ink.withOpacity(0.3),
-                                  letterSpacing: 1.0,
+                            const SizedBox(height: 12),
+                            Text(
+                              moduleData['title']!,
+                              style: AppTypography.h2.copyWith(fontSize: 20),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              moduleData['subtitle']!,
+                              style: AppTypography.p.copyWith(
+                                fontSize: 14,
+                                color: AppColors.ink.withOpacity(0.5),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Text(
+                                  'VIEW MODULE',
+                                  style: AppTypography.columnHeader.copyWith(
+                                    fontSize: 10,
+                                    color: (index <= 4) ? AppColors.ink : AppColors.ink.withOpacity(0.3),
+                                    letterSpacing: 1.0,
+                                  ),
                                 ),
-                              ),
-                              const Spacer(),
-                              Icon(
-                                LucideIcons.chevronRight,
-                                size: 16,
-                                color: AppColors.ink.withOpacity(0.2),
-                              ),
-                            ],
-                          ),
-                        ],
+                                const Spacer(),
+                                Icon(
+                                  LucideIcons.chevronRight,
+                                  size: 16,
+                                  color: (index <= 4) ? AppColors.ink : AppColors.ink.withOpacity(0.2),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
