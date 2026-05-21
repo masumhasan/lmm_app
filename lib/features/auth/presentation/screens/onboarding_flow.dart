@@ -60,6 +60,7 @@ class _OnboardingStepView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWelcome = step.type == OnboardingStepType.welcome;
+    final isCreateAccount = step.type == OnboardingStepType.createAccount;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 48),
@@ -73,7 +74,7 @@ class _OnboardingStepView extends StatelessWidget {
               height: 100,
             ),
           ],
-          if (!isWelcome) ...[
+          if (!isWelcome && !isCreateAccount) ...[
             Text(
               'STEP ${step.stepIndex} OF 7'.toUpperCase(),
               style: AppTypography.columnHeader.copyWith(
@@ -83,15 +84,16 @@ class _OnboardingStepView extends StatelessWidget {
             ),
             const SizedBox(height: 12),
           ],
-          Text(
-            step.title,
-            style: AppTypography.h1.copyWith(
-              fontSize: isWelcome ? 48 : 36,
-              fontWeight: FontWeight.w400,
+          if (!isCreateAccount)
+            Text(
+              step.title,
+              style: AppTypography.h1.copyWith(
+                fontSize: isWelcome ? 48 : 36,
+                fontWeight: FontWeight.w400,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          if (step.subtitle != null) ...[
+          if (step.subtitle != null && !isCreateAccount) ...[
             const SizedBox(height: 16),
             Text(
               step.subtitle!,
@@ -105,7 +107,7 @@ class _OnboardingStepView extends StatelessWidget {
           const Spacer(flex: 2),
           _buildContent(),
           const Spacer(flex: 3),
-          if (step.footerText != null) ...[
+          if (step.footerText != null && !isCreateAccount) ...[
             Padding(
               padding: const EdgeInsets.only(bottom: 48),
               child: Text(
@@ -164,26 +166,12 @@ class _OnboardingStepView extends StatelessWidget {
           textAlign: TextAlign.center,
         );
       case OnboardingStepType.createAccount:
-        return Column(
-          children: [
-            _AccountOption(
-              icon: LucideIcons.mail,
-              label: 'Continue with Email',
-              onTap: () {},
-            ),
-            const SizedBox(height: 12),
-            _AccountOption(
-              icon: LucideIcons.apple,
-              label: 'Continue with Apple',
-              onTap: () {},
-            ),
-            const SizedBox(height: 12),
-            _AccountOption(
-              icon: LucideIcons.chrome,
-              label: 'Continue with Google',
-              onTap: () {},
-            ),
-          ],
+        return Text(
+          'AUTH SCREEN',
+          style: AppTypography.h1.copyWith(
+            color: AppColors.ink.withOpacity(0.2),
+          ),
+          textAlign: TextAlign.center,
         );
       case OnboardingStepType.bulletPoints:
       case OnboardingStepType.negativePoints:
@@ -250,43 +238,3 @@ class _OnboardingStepView extends StatelessWidget {
   }
 }
 
-class _AccountOption extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const _AccountOption({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-        decoration: BoxDecoration(
-          border: Border.all(color: AppColors.ink.withOpacity(0.1)),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, size: 20, color: AppColors.ink),
-            const SizedBox(width: 16),
-            Text(
-              label,
-              style: AppTypography.p.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: AppColors.ink,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

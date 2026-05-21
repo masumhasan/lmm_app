@@ -49,7 +49,7 @@ class OnboardingStepModel {
       stepIndex: 2,
       title: 'What This Is',
       type: OnboardingStepType.simpleBody,
-      body: '“A structured cognitive training system.\n\nBuilt around:\n• attention\n• interruption\n• separation\n• awareness under pressure\n\nDesigned to strengthen recognition before automatic reaction.”',
+      body: 'A structured cognitive training system.\n\nBuilt around:\n attention • interruption • separation\n & awareness under pressure\n\n“Designed to strengthen recognition before automatic reaction.”',
       buttonLabel: 'Continue',
     ),
     OnboardingStepModel(
@@ -93,7 +93,7 @@ class OnboardingStepModel {
       stepIndex: 5,
       title: 'What Starts Changing',
       type: OnboardingStepType.simpleBody,
-      body: '“You may still experience:\n• thoughts\n• replay\n• uncertainty\n• sensations\n• urgency\n\nBut there’s a higher chance you’ll:\n• notice patterns sooner\n• interrupt automatic reactions earlier\n• see replay before it fully runs\n• recognize when attention gets captured\n• respond with more choice inside the moment”',
+      body: '"You may still experience:\n• thoughts\n• replay\n• uncertainty\n• sensations\n• urgency\n\nBut there\'s a higher chance you\'ll:\n• notice patterns sooner\n• interrupt automatic reactions earlier\n• see replay before it fully runs\n• recognize when attention gets captured\n• respond with more choice inside the moment"',
       buttonLabel: 'Continue',
     ),
     OnboardingStepModel(
