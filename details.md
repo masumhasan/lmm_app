@@ -1,6 +1,6 @@
 # Project Technical Details
 
-**Last Updated**: 2026-05-09
+**Last Updated**: 2026-05-21
 
 This document lists the SDKs, packages, and 3rd party components used in the **lmm_app** project.
 
@@ -34,8 +34,21 @@ This document lists the SDKs, packages, and 3rd party components used in the **l
 
 ## Key Components & Architecture
 - **State Management**: Provider/Riverpod pattern.
-- **Navigation**: Shell routing with persistence for bottom navigation.
+- **Navigation**: Shell routing with persistence for bottom navigation (via `go_router`).
 - **UI Design**: "Expensive Minimal" design system with customized typography and animations.
+- **Onboarding/Auth**: Currently features a simplified flow with a mocked "AUTH SCREEN" for rapid iteration.
+
+## Features (In Progress/Implemented)
+- **Auth & Onboarding**: Multi-step educational onboarding flow.
+- **Dashboard**: Central hub for user activity and progress.
+- **Muscle Dashboard**: Visualization of cognitive training progress.
+- **Workouts**: Structured cognitive training sessions.
+- **Library**: Repository of training materials and drills.
+- **Drift**: Pattern exposure through media integrations.
+- **Return to Now**: Quick mental reset tools.
+- **AI Coach**: Integrated assistive training guidance.
+- **Tools Hub**: Centralized access to various training utilities.
+- **Profile**: User settings and personal data management.
 
 ## Assets
 
