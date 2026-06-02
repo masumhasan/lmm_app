@@ -38,7 +38,7 @@ class OnboardingStepModel {
   static List<OnboardingStepModel> steps = [
     OnboardingStepModel(
       stepIndex: 1,
-      title: 'Learn My Mind',
+      title: ' ',
       subtitle: 'Train the mind you live in.',
       type: OnboardingStepType.welcome,
       welcomeIcon: LucideIcons.brain,
@@ -49,7 +49,7 @@ class OnboardingStepModel {
       stepIndex: 2,
       title: 'What This Is',
       type: OnboardingStepType.simpleBody,
-      body: 'A structured cognitive training system.\n\nBuilt around:\n attention • interruption • separation\n & awareness under pressure\n\n“Designed to strengthen recognition before automatic reaction.”',
+      body: 'A structured cognitive training system.\n\nBuilt around:\n attention • interruption • separation\n & \n awareness under pressure\n\n“Designed to strengthen recognition before automatic reaction.”',
       buttonLabel: 'Continue',
     ),
     OnboardingStepModel(

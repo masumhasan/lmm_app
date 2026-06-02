@@ -35,7 +35,7 @@ final workout0LibraryModule = LibraryModuleModel(
     ),
     LibraryCardModel(
       id: 'Library_Workout0_Card3',
-      title: '👁️ Why Awareness Changes Everything',
+      title: 'Why Awareness Changes Everything',
       body: '“When attention moves automatically,\nthe system leads.\n\nWhen attention becomes visible,\nyou gain more choice inside the moment.\n\nAwareness creates a gap.\n\nInside that gap:\n- reactions become more visible\n- patterns become easier to interrupt\n- moments become less automatic\n\nYou are not trying to stop thoughts.\n\nYou are not trying to force different feelings.\n\nYou are training the ability to notice earlier.\n\nAnd when a pattern becomes visible,\nit becomes more trainable.\n\n‘Awareness is not passive.\nIt changes how moments are experienced.’”',
     ),
   ],
