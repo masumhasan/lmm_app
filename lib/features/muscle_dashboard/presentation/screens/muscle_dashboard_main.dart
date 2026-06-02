@@ -89,51 +89,46 @@ class MuscleDashboardMain extends StatelessWidget {
               itemBuilder: (context, index) {
                 final muscle = muscles[index];
                 final sessions = List<int>.from(muscle['sessions'] as List);
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      muscle['name'] as String,
-                      style: AppTypography.h2.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Sessions Trained:',
-                      style: AppTypography.columnHeader.copyWith(
-                        fontSize: 10,
-                        color: AppColors.ink.withOpacity(0.4),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      sessions.isEmpty ? 'None' : sessions.map((s) => 'Session $s').join(', '),
-                      style: AppTypography.p.copyWith(
-                        fontSize: 14,
-                        color: AppColors.ink.withOpacity(0.6),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Text(
-                          'Reps: ',
-                          style: AppTypography.columnHeader.copyWith(
-                            fontSize: 10,
-                            color: AppColors.ink.withOpacity(0.4),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            muscle['name'] as String,
+                            style: AppTypography.h2.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          muscle['reps'].toString(),
-                          style: AppTypography.p.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.ink,
+                          const SizedBox(height: 12),
+                          Text(
+                            'Sessions Trained:',
+                            style: AppTypography.columnHeader.copyWith(
+                              fontSize: 10,
+                              color: AppColors.ink.withOpacity(0.4),
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            sessions.isEmpty ? 'None' : sessions.map((s) => 'Session $s').join(', '),
+                            style: AppTypography.p.copyWith(
+                              fontSize: 14,
+                              color: AppColors.ink.withOpacity(0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      muscle['reps'].toString(),
+                      style: AppTypography.h1.copyWith(
+                        fontSize: 64,
+                        color: AppColors.ink.withOpacity(0.1),
+                        fontStyle: FontStyle.normal,
+                      ),
                     ),
                   ],
                 );
