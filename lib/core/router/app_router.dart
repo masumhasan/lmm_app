@@ -20,6 +20,10 @@ import 'package:lmm_app/features/library/presentation/screens/library_module_scr
 import 'package:lmm_app/features/library/presentation/screens/library_module_entry_screen.dart';
 import 'package:lmm_app/features/library/domain/models/library_content.dart';
 import 'package:lmm_app/features/profile/presentation/screens/profile_screen.dart';
+import 'package:lmm_app/features/micro_moments/presentation/screens/micro_moments_main_screen.dart';
+import 'package:lmm_app/features/micro_moments/presentation/screens/micro_moments_theme_screen.dart';
+import 'package:lmm_app/features/micro_moments/presentation/screens/micro_moment_orchestrator.dart';
+import 'package:lmm_app/features/micro_moments/presentation/screens/micro_moment_completion_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
@@ -140,6 +144,47 @@ final appRouter = GoRouter(
                 GoRoute(
                   path: 'muscle-dashboard',
                   builder: (context, state) => const MuscleDashboardMain(),
+                ),
+                GoRoute(
+                  path: 'micro-moments',
+                  builder: (context, state) => const MicroMomentsMainScreen(),
+                  routes: [
+                    GoRoute(
+                      path: ':themeId',
+                      builder: (context, state) {
+                        final themeId = state.pathParameters['themeId']!;
+                        return MicroMomentsThemeScreen(themeId: themeId);
+                      },
+                      routes: [
+                        GoRoute(
+                          path: ':momentId',
+                          parentNavigatorKey: _rootNavigatorKey,
+                          builder: (context, state) {
+                            final themeId = state.pathParameters['themeId']!;
+                            final momentId = state.pathParameters['momentId']!;
+                            return MicroMomentOrchestrator(
+                              themeId: themeId,
+                              momentId: momentId,
+                            );
+                          },
+                          routes: [
+                            GoRoute(
+                              path: 'completion',
+                              parentNavigatorKey: _rootNavigatorKey,
+                              builder: (context, state) {
+                                final themeId = state.pathParameters['themeId']!;
+                                final momentId = state.pathParameters['momentId']!;
+                                return MicroMomentCompletionScreen(
+                                  themeId: themeId,
+                                  momentId: momentId,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 GoRoute(
                   path: 'library',

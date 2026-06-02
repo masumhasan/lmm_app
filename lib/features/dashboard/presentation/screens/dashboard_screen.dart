@@ -145,6 +145,53 @@ class DashboardScreen extends StatelessWidget {
             ),
             const SizedBox(height: 48),
 
+            // Quick Re-entry (Micro Moments)
+            Text(
+              'QUICK RE-ENTRY',
+              style: AppTypography.columnHeader,
+            ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () => context.push('/hub/micro-moments'),
+              child: PremiumCard(
+                padding: const EdgeInsets.all(24),
+                borderRadius: 32,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: AppColors.accent,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(LucideIcons.zap, color: Colors.white, size: 24),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'MICRO MOMENTS',
+                            style: AppTypography.columnHeader.copyWith(letterSpacing: 1.0),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Recognize it while it’s happening.',
+                            style: AppTypography.p.copyWith(
+                              fontSize: 14, 
+                              color: AppColors.ink.withOpacity(0.4),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 48),
+
             // Quick Stats
             Text(
               'QUICK STATS',

@@ -55,6 +55,11 @@ class ToolsHubScreen extends StatelessWidget {
                   onTap: () => context.go('/ai-coach'),
                 ),
                 _ToolCard(
+                  icon: LucideIcons.zap,
+                  label: 'Micro Moments',
+                  onTap: () => context.push('/hub/micro-moments'),
+                ),
+                _ToolCard(
                   icon: LucideIcons.wind,
                   label: 'Drift',
                   onTap: () => context.go('/drift'),
@@ -70,7 +75,7 @@ class ToolsHubScreen extends StatelessWidget {
                   onTap: () => context.push('/hub/muscle-dashboard'),
                 ),
                 _ToolCard(
-                  icon: LucideIcons.zap,
+                  icon: LucideIcons.activity,
                   label: 'Return To Now',
                   onTap: () => context.go('/now'),
                 ),

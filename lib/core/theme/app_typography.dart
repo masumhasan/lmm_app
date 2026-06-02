@@ -32,6 +32,14 @@ class AppTypography {
         color: AppColors.inkWithOpacity(0.8),
       );
 
+  static TextStyle get h4 => const TextStyle(
+        fontFamily: 'Inter',
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColors.ink,
+        letterSpacing: -0.2,
+      );
+
   static TextStyle get p => TextStyle(
         fontFamily: 'Inter',
         fontSize: 15,
