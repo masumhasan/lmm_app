@@ -143,14 +143,18 @@ class _SectionTileState extends State<_SectionTile> {
 
   @override
   Widget build(BuildContext context) {
-    final hasSubSections = widget.section.subSections != null;
+    final subSections = widget.section.subSections;
+    final hasMultipleSubSections = subSections != null && subSections.length > 1;
+    final hasSingleSubSection = subSections != null && subSections.length == 1;
 
     return Column(
       children: [
         PremiumCard(
           onTap: () {
-            if (hasSubSections) {
+            if (hasMultipleSubSections) {
               setState(() => isExpanded = !isExpanded);
+            } else if (hasSingleSubSection) {
+              context.push('/workouts/${widget.workoutId}/play?section=${subSections.first.id}');
             } else {
               context.push('/workouts/${widget.workoutId}/play?section=${widget.section.id}');
             }
@@ -196,18 +200,18 @@ class _SectionTileState extends State<_SectionTile> {
                   ],
                 ),
               ),
-              if (!hasSubSections)
+              if (!hasMultipleSubSections)
                 Icon(LucideIcons.chevronRight, size: 14, color: AppColors.ink.withOpacity(0.1))
               else
                 Icon(isExpanded ? LucideIcons.chevronUp : LucideIcons.chevronDown, size: 14, color: AppColors.ink.withOpacity(0.2)),
             ],
           ),
         ),
-        if (hasSubSections && isExpanded)
+        if (hasMultipleSubSections && isExpanded)
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Column(
-              children: widget.section.subSections!.map((s) => _SubSectionTile(section: s, workoutId: widget.workoutId)).toList(),
+              children: subSections.map((s) => _SubSectionTile(section: s, workoutId: widget.workoutId)).toList(),
             ),
           ),
       ],
