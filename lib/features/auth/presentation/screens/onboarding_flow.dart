@@ -156,14 +156,32 @@ class _OnboardingStepView extends StatelessWidget {
       case OnboardingStepType.welcome:
         return const SizedBox.shrink();
       case OnboardingStepType.simpleBody:
-        return Text(
-          step.body ?? '',
-          style: AppTypography.p.copyWith(
-            fontSize: 16,
-            color: AppColors.ink.withOpacity(0.6),
-            height: 1.6,
-          ),
-          textAlign: TextAlign.center,
+        final lines = (step.body ?? '').split('\n');
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: lines.map((line) {
+            final trimLine = line.trim();
+            final isBullet = trimLine.startsWith('•');
+            
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: 4,
+                left: isBullet ? 48 : 0, // Indent bullets to look left-aligned but roughly centered as a block
+              ),
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  line,
+                  style: AppTypography.p.copyWith(
+                    fontSize: 16,
+                    color: AppColors.ink.withOpacity(0.6),
+                    height: 1.6,
+                  ),
+                  textAlign: isBullet ? TextAlign.left : TextAlign.center,
+                ),
+              ),
+            );
+          }).toList(),
         );
       case OnboardingStepType.createAccount:
         return Text(

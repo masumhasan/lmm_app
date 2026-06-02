@@ -87,6 +87,7 @@ class DashboardScreen extends StatelessWidget {
                   AppButton(
                     text: 'Continue Training',
                     icon: LucideIcons.playCircle,
+                    type: AppButtonType.secondary,
                     onPressed: () => context.go('/workouts'),
                   ),
                   const SizedBox(height: 16),
@@ -188,6 +189,52 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+            const SizedBox(height: 32),
+
+            // Noticed Earlier Card
+            Container(
+              padding: const EdgeInsets.all(32),
+              decoration: BoxDecoration(
+                color: AppColors.accent,
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.accent.withOpacity(0.2),
+                    blurRadius: 30,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Noticed Earlier',
+                    style: AppTypography.h4.copyWith(
+                      color: AppColors.surface.withOpacity(0.6),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'You may be starting to notice small things sooner.',
+                    style: AppTypography.p.copyWith(
+                      color: AppColors.surface,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      height: 1.4,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  AppButton(
+                    text: 'View Training Log',
+                    type: AppButtonType.secondary,
+                    onPressed: () => context.push('/hub/muscle-dashboard'),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 48),
