@@ -260,14 +260,14 @@ class AICoachScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 16),
                           Text(
-                            'Expansion Pending',
+                            'Coming Soon',
                             style: AppTypography.h2.copyWith(color: Colors.white, fontSize: 22),
                           ),
                         ],
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Full neural integration, including real-time stress-response guidance, is scheduled for the next system expansion.',
+                        'Full AI integration, including real-time stress-response guidance, is scheduled for the next system expansion.',
                         style: AppTypography.p.copyWith(
                           color: Colors.white.withOpacity(0.5),
                           height: 1.6,
@@ -280,7 +280,7 @@ class AICoachScreen extends StatelessWidget {
                           Icon(LucideIcons.activity, size: 12, color: Colors.white.withOpacity(0.3)),
                           const SizedBox(width: 12),
                           Text(
-                            'LAYER B PROTOCOL REQUIRED',
+                            'AI chat will be available soon.',
                             style: AppTypography.columnHeader.copyWith(
                               color: Colors.white.withOpacity(0.3),
                               letterSpacing: 2.0,
